@@ -1,4 +1,4 @@
-1. kode html / page taruh di "source/views"
+1. kode html / page taruh di "resource/views"
 2. kode css taruh di "public/css"
 3. kode js taruh di "public/js"
 
