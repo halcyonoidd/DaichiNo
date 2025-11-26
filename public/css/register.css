@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #faf5f2;
+    font-family: "Poppins", sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.card {
+    background: #ffffff;
+    width: 400px;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #b83227;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    transition: 0.2s;
+}
+
+input:focus {
+    border-color: #d14920;
+    outline: none;
+    box-shadow: 0 0 4px rgba(209, 73, 32, 0.4);
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #b83227, #d14920);
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.switch {
+    margin-top: 18px;
+}
+
+.switch a {
+    color: #d14920;
+    font-weight: bold;
+}
+
+.msg {
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.msg.error {
+    background: #f8d7da;
+    color: #721c24;
+}
