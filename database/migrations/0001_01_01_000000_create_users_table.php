@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable()->unique();
-            $table->string('email')->nullable()->unique();
+            $table->string('name')->nullable(); // Hapus unique jika nama boleh sama
+            $table->string('email')->unique(); // Email wajib unique
             $table->string('phone')->nullable()->unique();
-            $table->string('password')->nullable();
+            $table->string('password');
+            // Tambahkan kolom role dengan default customer
+            $table->enum('role', ['admin', 'customer'])->default('customer');
             $table->rememberToken();
             $table->timestamps();
         });

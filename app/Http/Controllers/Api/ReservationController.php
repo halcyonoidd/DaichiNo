@@ -37,7 +37,7 @@ class ReservationController extends Controller
     }
 
     /**
-     * Display a listing of reservations.
+     * Display a listing of the reservations.
      *
      * @return JsonResponse
      */

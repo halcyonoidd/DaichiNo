@@ -2,20 +2,27 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ReservationController;
+use App\Http\Controllers\Api\ProductController; // Pastikan baris ini ada!
 use Illuminate\Support\Facades\Route;
 
-// routes/api.php
 
-// Public routes (tidak perlu autentikasi)
+// Public Routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-// Reservation: create is public so guests can book
 Route::post('/reservations', [ReservationController::class, 'store']);
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
 
-// Protected routes (perlu autentikasi dengan token)
+// Protected Routes (Butuh Token)
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/profile', [AuthController::class, 'profile']);
-    // Protected: list reservations (for admin/authorized users)
+    
+    // Reservation List
     Route::get('/reservations', [ReservationController::class, 'index']);
+
+    // Admin Products Management
+    Route::post('/products', [ProductController::class, 'store']);
+    Route::put('/products/{id}', [ProductController::class, 'update']);
+    Route::delete('/products/{id}', [ProductController::class, 'destroy']); 
 });
