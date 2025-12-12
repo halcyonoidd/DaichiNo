@@ -12,177 +12,393 @@
 <body>
     <nav class="navbar transparent" id="navbar">
         <div class="nav-section left">
-            <a href="#about" class="nav-link light">About</a>
-            <a href="#voucher" class="nav-link light">Voucher</a>
-            <a href="#contact" class="nav-link light">Contact</a>
+            <a href="{{ route('about') }}" class="nav-link light">About</a>
+            <a href="{{ route('contact') }}" class="nav-link light">Contact</a>
+            <a href="{{ route('voucher') }}" class="nav-link light">Voucher</a>
         </div>
         
         <div class="nav-center">
-            <a href="#" class="home-link dark">Daichi No</a>
+            <a href="{{ route('home') }}" class="home-link dark">Daichi No</a>
         </div>
         
         <div class="nav-section right">
-            <a href="#reservation" class="nav-link light">Reservation</a>
-            <a href="#cart" class="nav-link light">Cart</a>
-            <a href="/register" class="nav-link light">Register</a>
+            <a href="{{ route('menu') }}" class="nav-link light">Menu</a>
+            <a href="{{ route('reservation') }}" class="nav-link light">Reservation</a>
+            <a href="{{ route('cart') }}" class="nav-link light">Cart</a>
         </div>
     </nav>
 
     <section class="hero light">
-        <h1>A Fragment of <b style="color: var(--light-accent)">Everything</b>,</h1>
-        <h1>Things that are Delicious</h1>
+        <h1>A Fragment of <b style="color: #ebc34c">Everything</b>,</h1>
+        <h1>On earth that are Delicious</h1>
         <div class="hero-buttons">
             <a href="#reservation" class="btn">Make Reservation</a>
             <a href="#menu" class="btn" style="background-color: transparent; border: 2px solid white; margin-left: 15px;">View Menu</a>
         </div>
     </section>
 
-    <section class="section about" id="about">
+    <section class="section about" id="aboutUs">
         <div class="container">
             <div class="section-title">
-                <h2>Our Story</h2>
-                <p class="subtitle">Discover the tradition and passion behind Daichi No</p>
+                <h2>A Fragment of a Tale</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3 class="title is-3">Authentic Japanese Cuisine</h3>
-                    <p>Founded in 2005, Daichi No brings the authentic taste of Japan to your table. Our chefs have trained in Tokyo and Kyoto, mastering traditional techniques while incorporating modern culinary innovations.</p>
-                    <p>We source our ingredients carefully, with many items imported directly from Japan to ensure an authentic dining experience. From the freshest sashimi to perfectly seasoned rice, every dish tells a story of Japanese culinary heritage.</p>
-                    <p>At Daichi No, we believe that dining is not just about nourishment, but about creating memorable experiences that engage all the senses.</p>
-                    <a href="#reservation" class="btn" style="margin-top: 20px;">Visit Us</a>
+                    <h3 class="title is-3">We serve experience, not food!</h3>
+                    <p>Daichi No brings the authentic taste and experience of Nihon to your doorstep.</p>
+                    <p>We differ in the way we serve our customers.</p>
+                    <p>Customers must move to different area to enjoy specific dishes.</p>
+                    <p>We believe this service pushes the already magnificent quality of our food.</p><br>
+                    <p>Ouringredients directly sourced from the rising sun.</p>
+                    <p>Also Handled by our best chefs who have trained for years</p>
+                    <p>In Tokyo and Kyoto, To perfect their crafts.</p>
+                    <p>In doing so, creating something that is both</p>
+                    <p><b style="color:var(--primary-color)">Unique</b> yet amazingly, feel <b style="color:var(--light-accent)">home.</b></p>
+                    <a href="about.html" class="btn" style="margin-top: 20px;">More</a>
                 </div>
                 <div class="about-image">
-                    <img src="/img/restaurantInterior.png" alt="Japanese Restaurant Interior">
+                    <div class="carousel-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <img src="../img/landingImage/crsl1.jpg">
+                                <div class="slide-caption">
+                                    <h2 class="title is-4 has-text-white">Appetizer Area</h2>
+                                    <p>Traditional skewers stand</p>
+                                </div>
+                            </div>
+
+                            <div class="carousel-slide">
+                                <img src="../img/landingImage/crsl2.jpg">
+                                <div class="slide-caption">
+                                    <h2 class="title is-4 has-text-white">Mitarashi Dango</h2>
+                                    <p>Sweet doughy dessert that can be found in Ten Area</p>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-slide">
+                                <img src="../img/landingImage/crsl3.jpg">
+                                <div class="slide-caption">
+                                    <h2 class="title is-4 has-text-white">Lake View</h2>
+                                    <p>Tranquil lake that will certainly soothe minds</p>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-slide">
+                                <img src="../img/landingImage/crsl4.jpg">
+                                <div class="slide-caption">
+                                    <h2 class="title is-4 has-text-white">Tonkotsu Ramen</h2>
+                                    <p>The best of bone broth ramen, testament of the earth</p>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section rekomendasi" id="rekomendasi">
+    <section class="section menu" id="menu">
         <div class="container">
             <div class="section-title">
-                <h2>Our Recommendation</h2>
-                <p class="subtitle">A culinary journey through the flavors of Japan</p>
+                <h2>The Menu</h2>
             </div>
             <div class="menu-categories">
-                <div class="menu-category active">Sushi & Sashimi</div>
-                <div class="menu-category">Ramen & Noodles</div>
-                <div class="menu-category">Grilled Specialties</div>
-                <div class="menu-category">Appetizers</div>
-                <div class="menu-category">Desserts</div>
+                <div class="menu-category active" data-category="mizu">Mizu</div>
+                <div class="menu-category" data-category="danpen">Danpen</div>
+                <div class="menu-category" data-category="kaen">Kaen</div>
+                <div class="menu-category" data-category="yomi">Yomi</div>
+                <div class="menu-category" data-category="ten">Ten</div>
             </div>
-            <div class="menu-items">
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=627&q=80" alt="Salmon Sashimi">
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-name">Salmon Sashimi</h3>
-                            <span class="menu-item-price">$18</span>
+            <div class="menu-category-content active" id="mizu-content">
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/salmon_sashimi.jpg">
                         </div>
-                        <p class="menu-item-description">Fresh Atlantic salmon, thinly sliced and served with wasabi and soy sauce</p>
-                        <a href="#cart" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Add to Cart</a>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Salmon Sashimi</h3>
+                                <span class="menu-item-price">$18</span>
+                            </div>
+                            <p class="menu-item-description">Fresh Atlantic salmon, thinly sliced and served with wasabi and soy sauce.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/saba_sushi.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Saba Sushi</h3>
+                                <span class="menu-item-price">$22</span>
+                            </div>
+                            <p class="menu-item-description">Tightly packed slices of pickled mackarel and rice wrapped in bamboo leaves.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/uni_gunkan.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Uni Gunkan</h3>
+                                <span class="menu-item-price">$26</span>
+                            </div>
+                            <p class="menu-item-description">Rich and fresh uni placed atop of rice and wrapped loosely in nori.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/hosomaki.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Hosomaki</h3>
+                                <span class="menu-item-price">$12</span>
+                            </div>
+                            <p class="menu-item-description">Modest variety piece of salmon, tuna, and cucumber wrapped in rice and nori.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Dragon Roll">
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-name">Dragon Roll</h3>
-                            <span class="menu-item-price">$22</span>
+            </div>
+
+            <div class="menu-category-content" id="danpen-content">
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/inarizushi.jpg">
                         </div>
-                        <p class="menu-item-description">Eel, cucumber, avocado, and tobiko with eel sauce drizzle</p>
-                        <a href="#cart" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Add to Cart</a>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Inarizushi</h3>
+                                <span class="menu-item-price">$8</span>
+                            </div>
+                            <p class="menu-item-description">Sweet soy bean curd filled with rice and topped with sesame seed.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/ten_don.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Ten Don</h3>
+                                <span class="menu-item-price">$17</span>
+                            </div>
+                            <p class="menu-item-description">Fried vegetables variety and shrimp atop bowl of rice.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/crsl4.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Tonkotsu Ramen</h3>
+                                <span class="menu-item-price">$21</span>
+                            </div>
+                            <p class="menu-item-description">Rich bone broth with ramen noodle topped with slices of chashu pork and bamboo shoot.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/katsu.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Katsu</h3>
+                                <span class="menu-item-price">$12</span>
+                            </div>
+                            <p class="menu-item-description">Flatten chicken, breaded and fired to a perfection of juiciness and crispiness.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Tonkotsu Ramen">
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-name">Tonkotsu Ramen</h3>
-                            <span class="menu-item-price">$16</span>
+            </div>
+
+            <div class="menu-category-content" id="kaen-content">
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/isobeyaki.jpg">
                         </div>
-                        <p class="menu-item-description">Rich pork broth with chashu pork, soft-boiled egg, and bamboo shoots</p>
-                        <a href="#cart" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Add to Cart</a>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Isobeyaki</h3>
+                                <span class="menu-item-price">$11</span>
+                            </div>
+                            <p class="menu-item-description">Plain grilled mochi with cripy outside and the gooey inside, brushed off with soy sauce for extra savouriness.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/yakitori.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Yakitori</h3>
+                                <span class="menu-item-price">$14</span>
+                            </div>
+                            <p class="menu-item-description">Grilled chicken skewers with teriyaki glaze. Tender and juicy.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/unagi_don.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Unagi Don</h3>
+                                <span class="menu-item-price">$25</span>
+                            </div>
+                            <p class="menu-item-description">Grilled grade A eel with kabayaki sauce over rice.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/yakiniku.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Yakiniku</h3>
+                                <span class="menu-item-price">$30</span>
+                            </div>
+                            <p class="menu-item-description">Slices of beef grilled to perfection over rice and with variety of sides.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category-content" id="yomi-content">
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/edamame.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Edamame</h3>
+                                <span class="menu-item-price">$5</span>
+                            </div>
+                            <p class="menu-item-description">Young soy bean steamed and flavoured with salt.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/agedashi_tofu.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Agedashi Tofu</h3>
+                                <span class="menu-item-price">$10</span>
+                            </div>
+                            <p class="menu-item-description">Fried silken tofu served with tentsuyu. Topped with grated daikon radish and chopped spring onion.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/chawanmushi.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Chawanmushi</h3>
+                                <span class="menu-item-price">$15</span>
+                            </div>
+                            <p class="menu-item-description">Steamed silky custard egg filled with various svaoury filling.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/gyoza.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Gyoza</h3>
+                                <span class="menu-item-price">$15</span>
+                            </div>
+                            <p class="menu-item-description">Soft dumpling pan-fried until crispy at the bottom. Served with ponzu sauce.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="section reservation" id="reservation">
-        <div class="container">
-            <div class="section-title">
-                <h2>Make a Reservation</h2>
-                <p class="subtitle">Book your table for an unforgettable dining experience</p>
+        <div class="menu-category-content" id="ten-content">
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/crsl2.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Mitarashi Dango</h3>
+                                <span class="menu-item-price">$8</span>
+                            </div>
+                            <p class="menu-item-description">Dumpling made of glutinous rice formed into a ball. Skewered and served with sweet syrup.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/mochi.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Mochi</h3>
+                                <span class="menu-item-price">$6</span>
+                            </div>
+                            <p class="menu-item-description">Colourful glutinous rice cakes fromed into balls with sweet fillings.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/strb_icecream.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Strawberry Cream Parfait</h3>
+                                <span class="menu-item-price">$16</span>
+                            </div>
+                            <p class="menu-item-description">Sweet cream, strawberries, crumbles stacked to form a faux cake in a glass.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="../img/landingImage/flan_cake.jpg">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">Flan Cake</h3>
+                                <span class="menu-item-price">$17</span>
+                            </div>
+                            <p class="menu-item-description">Flan or custard base with a layer of clear caramel atop.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="reservation-form">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" class="form-control" placeholder="Your Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" class="form-control" placeholder="Your Phone">
-                    </div>
-                    <div class="columns">
-                        <div class="column">
-                            <div class="form-group">
-                                <label for="date">Date</label>
-                                <input type="date" id="date" class="form-control">
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="form-group">
-                                <label for="time">Time</label>
-                                <input type="time" id="time" class="form-control">
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="form-group">
-                                <label for="guests">Number of Guests</label>
-                                <select id="guests" class="form-control">
-                                    <option value="1">1 Person</option>
-                                    <option value="2">2 People</option>
-                                    <option value="3">3 People</option>
-                                    <option value="4">4 People</option>
-                                    <option value="5">5 People</option>
-                                    <option value="6">6 People</option>
-                                    <option value="7">7+ People</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="special-requests">Special Requests</label>
-                        <textarea id="special-requests" class="form-control" rows="3" placeholder="Any special requirements or requests"></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%;">Book Now</button>
-                </form>
-            </div>
+        </div>
+        
+        <div class="menu-down">
+            <a href="{{ route('menu') }}" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">More Items</a>
         </div>
     </section>
 
     <section class="section testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>What Our Customers Say</h2>
-                <p class="subtitle">Don't just take our word for it</p>
-            </div>
-            <div class="testimonial-slider">
-                <div class="testimonial">
-                    <p class="testimonial-text">The best Japanese food I've had outside of Japan. The sushi was incredibly fresh and the service was impeccable. Will definitely be returning soon!</p>
-                    <p class="testimonial-author">- Sarah Johnson</p>
+                <h2>Our Rep.</h2>
+            <div class="trapezoid">
+                <div class="testimonial-slider">
+                    <div class="testimonial">
+                        <p class="testimonial-text">The best Japanese food I've had outside of Japan. The sushi was incredibly fresh and the service was impeccable. Will definitely be returning soon!</p>
+                        <p class="testimonial-author">- Sarah Johnson</p>
+                    </div>
+                </div>
+                <div class="michelin">
+                    <div>
+                        <img src="../img/landingImage/MichelinStar.png" class="michelin-image-1">
+                        <img src="../img/landingImage/MichelinStar.png" class="michelin-image-2">
+                    </div>
+                    <div>
+                        <h2>Certified two michelin 2020</h2>
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,7 +408,6 @@
         <div class="container">
             <div class="section-title">
                 <h2>Visit Us</h2>
-                <p class="subtitle">Come experience authentic Japanese cuisine</p>
             </div>
             <div class="location-content">
                 <div class="location-info">
@@ -248,11 +463,11 @@
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#menu">Our Menu</a></li>
-                        <li><a href="#reservation">Reservations</a></li>
-                        <li><a href="#voucher">Gift Vouchers</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="reservation.html">Reservations</a></li>
+                        <li><a href="voucher.html">Gift Vouchers</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -263,66 +478,12 @@
                         <li>Holidays: 12:00 PM - 9:00 PM</li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to our newsletter for updates and special offers.</p>
-                    <div class="field has-addons" style="margin-top: 15px;">
-                        <div class="control">
-                            <input class="input" type="email" placeholder="Your email address">
-                        </div>
-                        <div class="control">
-                            <button class="button is-primary">Subscribe</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Daichi No. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent-color);"></i></p>
+                <p>&copy; 2025 Daichi No. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent-color);"></i></p>
             </div>
         </div>
     </footer>
 
-    <script>
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            const scrollPosition = window.scrollY;
-            
-            if (scrollPosition > 100) {
-                navbar.classList.remove('transparent');
-                navbar.classList.add('solid');
-            } else {
-                navbar.classList.remove('solid');
-                navbar.classList.add('transparent');
-            }
-        });
-
-        // Simple menu category selection
-        document.querySelectorAll('.menu-category').forEach(category => {
-            category.addEventListener('click', function() {
-                document.querySelectorAll('.menu-category').forEach(cat => {
-                    cat.classList.remove('active');
-                });
-                this.classList.add('active');
-            });
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="{{ asset('js/landing.js') }}"></script>
 </body>
 </html>

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable(); // Hapus unique jika nama boleh sama
-            $table->string('email')->unique(); // Email wajib unique
+            $table->string('name')->nullable(); 
+            $table->string('email')->unique(); 
             $table->string('phone')->nullable()->unique();
             $table->string('password');
             // Tambahkan kolom role dengan default customer
