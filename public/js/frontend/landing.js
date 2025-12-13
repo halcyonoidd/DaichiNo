@@ -154,14 +154,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    logoutBtn.addEventListener('click', function() {
-        if (confirm('Are you sure you want to log out?')) {
-            alert('You have been logged out successfully.');
-            setTimeout(() => {
-                window.location.href = 'login.html';
-            }, 1000);
-            
-            closeUserPanel();
+    logoutBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (confirm('Logout sekarang?')) {
+            const form = document.getElementById('logout-form');
+            if (form) {
+                form.submit();
+            }
         }
     });
     

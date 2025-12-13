@@ -228,7 +228,7 @@
         </div>
         
         <div class="panel-actions">
-            <a href="profile.html" class="panel-btn panel-btn-primary">
+            <a href="{{ route('profile') }}" class="panel-btn panel-btn-primary">
                 <i class="fas fa-user-circle mr-2"></i> View Profile
             </a>
             <a href="reservation.html" class="panel-btn panel-btn-secondary">
@@ -242,6 +242,8 @@
             </button>
         </div>
     </div>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
 
     <script src="{{ asset('js/frontend/contact.js') }}"></script>
 </body>

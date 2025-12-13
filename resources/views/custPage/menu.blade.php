@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daichi No - Menu</title>
     <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/vendors/all.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/frontend/menu.css') }}">
 </head>
 <body>
@@ -916,7 +916,7 @@
         </div>
         
         <div class="panel-actions">
-            <a href="profile.html" class="panel-btn panel-btn-primary">
+            <a href="{{ route('profile') }}" class="panel-btn panel-btn-primary">
                 <i class="fas fa-user-circle mr-2"></i> View Profile
             </a>
             <a href="reservation.html" class="panel-btn panel-btn-secondary">
@@ -930,6 +930,8 @@
             </button>
         </div>
     </div>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
 
     <script src="{{ asset('js/frontend/menu.js') }}"></script>
 </body>

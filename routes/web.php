@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\AuthController;
+use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminVoucherController;
@@ -43,6 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', function () {
         return view('custPage.landing');
     })->name('home');
+
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('/cart', function () {
         return view('custPage.cart');
