@@ -16,7 +16,6 @@
                 <div class="level-left">
                     <div>
                         <h1 class="title is-2">Edit Product</h1>
-                        <p class="subtitle is-5">Ubah detail produk {{ $product->name }}</p>
                     </div>
                 </div>
                 <div class="level-right">

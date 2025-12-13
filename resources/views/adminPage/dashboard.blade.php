@@ -45,7 +45,7 @@
             <div class="column is-3">
                 <div class="stats-card">
                     <p class="heading">Total Users</p>
-                    <p class="stats-number">{{ \App\Models\User::count() }}</p>
+                    <p class="stats-number">{{ \App\Models\User::where('role', 'customer')->count() }}</p>
                 </div>
             </div>
             <div class="column is-3">
@@ -124,10 +124,10 @@
             <div class="column is-4">
                 <a href="#" class="menu-card">
                     <span class="icon is-large">
-                        <i class="fas fa-cog fa-3x"></i>
+                        <i class="fas fa-ticket-alt fa-3x"></i>
                     </span>
-                    <p class="title">Settings</p>
-                    <p class="subtitle">System configuration</p>
+                    <p class="title">Voucher</p>
+                    <p class="subtitle">Manage and update vouchers</p>
                 </a>
             </div>
         </div>

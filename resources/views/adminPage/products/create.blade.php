@@ -16,7 +16,6 @@
                 <div class="level-left">
                     <div>
                         <h1 class="title is-2">Create Product</h1>
-                        <p class="subtitle is-5">Tambah produk baru ke menu</p>
                     </div>
                 </div>
                 <div class="level-right">
@@ -80,7 +79,7 @@
 
                 <!-- Price -->
                 <div class="field">
-                    <label class="label">Price ($)</label>
+                    <label class="label">Price (Rp)</label>
                     <div class="control">
                         <input class="input @error('price') is-danger @enderror" type="number" name="price" step="0.01" value="{{ old('price') }}" required>
                     </div>

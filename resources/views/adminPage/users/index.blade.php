@@ -16,7 +16,6 @@
                 <div class="level-left">
                     <div>
                         <h1 class="title is-2">Manage Users</h1>
-                        <p class="subtitle is-5">Kelola akun customer Daichi No</p>
                     </div>
                 </div>
                 <div class="level-right">
@@ -24,7 +23,7 @@
                         <span class="icon is-small">
                             <i class="fas fa-arrow-left"></i>
                         </span>
-                        <span>Kembali</span>
+                        <span>Back</span>
                     </a>
                     <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                         @csrf

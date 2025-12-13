@@ -16,7 +16,6 @@
                 <div class="level-left">
                     <div>
                         <h1 class="title is-2">Manage Products</h1>
-                        <p class="subtitle is-5">Kelola menu produk Daichi No</p>
                     </div>
                 </div>
                 <div class="level-right">
