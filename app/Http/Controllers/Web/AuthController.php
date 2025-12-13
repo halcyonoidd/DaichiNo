@@ -46,12 +46,33 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            
+            // Check user role and redirect accordingly
+            $user = Auth::user();
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard')->with('status', 'Login berhasil sebagai Admin!');
+            }
+            
             return redirect()->route('home')->with('status', 'Login berhasil!');
         }
 
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ])->onlyInput('email');
+    }
+
+    /**
+     * Handle web logout and redirect to register page.
+     */
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        // Redirect otomatis ke halaman register sesuai permintaan
+        return redirect()->route('register');
     }
 
 }

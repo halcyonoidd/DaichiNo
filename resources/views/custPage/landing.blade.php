@@ -10,7 +10,7 @@
 
 </head>
 <body>
-    <nav class="navbar transparent" id="navbar">
+<nav class="navbar transparent" id="navbar">
         <div class="nav-section left">
             <a href="{{ route('about') }}" class="nav-link light">About</a>
             <a href="{{ route('contact') }}" class="nav-link light">Contact</a>
@@ -21,11 +21,23 @@
             <a href="{{ route('home') }}" class="home-link dark">Daichi No</a>
         </div>
         
-        <div class="nav-section right">
-            <a href="{{ route('menu') }}" class="nav-link light">Menu</a>
-            <a href="{{ route('reservation') }}" class="nav-link light">Reservation</a>
-            <a href="{{ route('cart') }}" class="nav-link light">Cart</a>
-        </div>
+    <div class="nav-section right" style="display: flex; align-items: center;">
+        <a href="{{ route('menu') }}" class="nav-link light">Menu</a>
+        <a href="{{ route('reservation') }}" class="nav-link light">Reservation</a>
+        <a href="{{ route('cart') }}" class="nav-link light">Cart</a>
+
+        @auth
+            <a href="{{ route('logout') }}" 
+            class="nav-link light" 
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Logout
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        @endauth
+    </div>
     </nav>
 
     <section class="hero light">

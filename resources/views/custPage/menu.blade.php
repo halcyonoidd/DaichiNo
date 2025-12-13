@@ -70,84 +70,145 @@
                 <p>Select a category using the 3D hexahedron controls</p>
             </div>
             
+            <!-- Sushi & Sashimi Category -->
             <div class="menu-items active" id="sushi-items">
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=627&q=80" alt="Salmon Sashimi">
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-name">Salmon Sashimi</h3>
-                            <span class="menu-item-price">$18</span>
+                @forelse($products->where('category', 'sushi_and_sashimi') as $product)
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{{ asset($product->image_path ?? 'img/placeholders/placeholder-sushi.svg') }}" alt="{{ $product->name }}">
                         </div>
-                        <p class="menu-item-description">Fresh Atlantic salmon, thinly sliced and served with wasabi and soy sauce</p>
-                        <a href="#cart" class="btn btn-small">Add to Cart</a>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Dragon Roll">
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-name">Dragon Roll</h3>
-                            <span class="menu-item-price">$22</span>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">{{ $product->name }}</h3>
+                                <span class="menu-item-price">${{ number_format($product->price, 2) }}</span>
+                            </div>
+                            <p class="menu-item-description">{{ $product->description ?? 'A delicious Japanese specialty' }}</p>
+                            <a href="#cart" class="btn btn-small">Add to Cart</a>
                         </div>
-                        <p class="menu-item-description">Eel, cucumber, avocado, and tobiko with eel sauce drizzle</p>
-                        <a href="#cart" class="btn btn-small">Add to Cart</a>
                     </div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1611143669185-af250c7e7e99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Rainbow Roll">
+                @empty
+                    <div class="menu-item">
+                        <p style="text-align: center; padding: 2rem;">No items available in this category</p>
                     </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-name">Rainbow Roll</h3>
-                            <span class="menu-item-price">$20</span>
-                        </div>
-                        <p class="menu-item-description">California roll topped with assorted sashimi and avocado</p>
-                        <a href="#cart" class="btn btn-small">Add to Cart</a>
-                    </div>
-                </div>
+                @endforelse
             </div>
             
             <!-- Ramen & Noodles Category -->
             <div class="menu-items" id="ramen-items">
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Tonkotsu Ramen">
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-name">Tonkotsu Ramen</h3>
-                            <span class="menu-item-price">$16</span>
+                @forelse($products->where('category', 'ramen_and_noodles') as $product)
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{{ asset($product->image_path ?? 'img/placeholders/placeholder-ramen.svg') }}" alt="{{ $product->name }}">
                         </div>
-                        <p class="menu-item-description">Rich pork broth with chashu pork, soft-boiled egg, and bamboo shoots</p>
-                        <a href="#cart" class="btn btn-small">Add to Cart</a>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1552611052-33b04c5d78a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Miso Ramen">
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-name">Miso Ramen</h3>
-                            <span class="menu-item-price">$15</span>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">{{ $product->name }}</h3>
+                                <span class="menu-item-price">${{ number_format($product->price, 2) }}</span>
+                            </div>
+                            <p class="menu-item-description">{{ $product->description ?? 'A delicious Japanese specialty' }}</p>
+                            <a href="#cart" class="btn btn-small">Add to Cart</a>
                         </div>
-                        <p class="menu-item-description">Savory miso broth with corn, bean sprouts, and ground pork</p>
-                        <a href="#cart" class="btn btn-small">Add to Cart</a>
                     </div>
-                </div>
+                @empty
+                    <div class="menu-item">
+                        <p style="text-align: center; padding: 2rem;">No items available in this category</p>
+                    </div>
+                @endforelse
             </div>
             
             <!-- Grilled Specialties Category -->
             <div class="menu-items" id="grilled-items">
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1585969009662-1ad1fa8123ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Yakitori">
+                @forelse($products->where('category', 'grilled_specialties') as $product)
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{{ asset($product->image_path ?? 'img/placeholders/placeholder-grilled.svg') }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">{{ $product->name }}</h3>
+                                <span class="menu-item-price">${{ number_format($product->price, 2) }}</span>
+                            </div>
+                            <p class="menu-item-description">{{ $product->description ?? 'A delicious Japanese specialty' }}</p>
+                            <a href="#cart" class="btn btn-small">Add to Cart</a>
+                        </div>
                     </div>
+                @empty
+                    <div class="menu-item">
+                        <p style="text-align: center; padding: 2rem;">No items available in this category</p>
+                    </div>
+                @endforelse
+            </div>
+            
+            <!-- Appetizer Category -->
+            <div class="menu-items" id="appetizers-items">
+                @forelse($products->where('category', 'appetizer') as $product)
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{{ asset($product->image_path ?? 'img/placeholders/placeholder-appetizer.svg') }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">{{ $product->name }}</h3>
+                                <span class="menu-item-price">${{ number_format($product->price, 2) }}</span>
+                            </div>
+                            <p class="menu-item-description">{{ $product->description ?? 'A delicious Japanese specialty' }}</p>
+                            <a href="#cart" class="btn btn-small">Add to Cart</a>
+                        </div>
+                    </div>
+                @empty
+                    <div class="menu-item">
+                        <p style="text-align: center; padding: 2rem;">No items available in this category</p>
+                    </div>
+                @endforelse
+            </div>
+            
+            <!-- Dessert Category -->
+            <div class="menu-items" id="desserts-items">
+                @forelse($products->where('category', 'dessert') as $product)
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{{ asset($product->image_path ?? 'img/placeholders/placeholder-dessert.svg') }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">{{ $product->name }}</h3>
+                                <span class="menu-item-price">${{ number_format($product->price, 2) }}</span>
+                            </div>
+                            <p class="menu-item-description">{{ $product->description ?? 'A delicious Japanese specialty' }}</p>
+                            <a href="#cart" class="btn btn-small">Add to Cart</a>
+                        </div>
+                    </div>
+                @empty
+                    <div class="menu-item">
+                        <p style="text-align: center; padding: 2rem;">No items available in this category</p>
+                    </div>
+                @endforelse
+            </div>
+            
+            <!-- Beverages Category -->
+            <div class="menu-items" id="beverages-items">
+                @forelse($products->where('category', 'drink') as $product)
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{{ asset($product->image_path ?? 'img/placeholders/placeholder-drink.svg') }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">{{ $product->name }}</h3>
+                                <span class="menu-item-price">${{ number_format($product->price, 2) }}</span>
+                            </div>
+                            <p class="menu-item-description">{{ $product->description ?? 'A delicious Japanese specialty' }}</p>
+                            <a href="#cart" class="btn btn-small">Add to Cart</a>
+                        </div>
+                    </div>
+                @empty
+                    <div class="menu-item">
+                        <p style="text-align: center; padding: 2rem;">No items available in this category</p>
+                    </div>
+                @endforelse
+            </div>
+        </div>
+    </section>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h3 class="menu-item-name">Yakitori</h3>
@@ -270,7 +331,7 @@
             <p>Experience the art of Japanese cuisine</p>
         </div>
     </footer>
-
-    
 </body>
+
+<script src="{{ asset('js/menu.js') }}"></script>
 </html>
