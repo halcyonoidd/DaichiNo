@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             specialty: "Modern Kaiseki, Fusion Japanese-French Cuisine",
             years: "8 years",
             quote: "\"True culinary art honors tradition while embracing innovation.\"",
-            image: "source/misc/ex.jpg"
+            image: "/img/aboutImage/ex.jpg"
         },
         {
             id: 2,
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
             specialty: "Edomae-style Sushi, Live Seafood Preparation",
             years: "12 years",
             quote: "\"The sea offers its gifts; our hands must honor them with respect.\"",
-            image: "source/misc/sous.avif"
+            image: "/img/aboutImage/sous.jpg"
         },
         {
             id: 3,
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
             specialty: "Japanese-French Fusion Desserts, Molecular Gastronomy Pastry",
             years: "6 years",
             quote: "\"Desserts should delight both the eye and the palate in perfect harmony.\"",
-            image: "source/misc/pastry.jpg"
+            image: "/img/aboutImage/pastry.jpg"
         },
         {
             id: 4,
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             specialty: "Robatayaki, Yakitori, Charcoal Grilling Techniques",
             years: "15 years",
             quote: "\"Fire is not just heat; it's the soul of flavor transformation.\"",
-            image: "source/misc/fire.jpg"
+            image: "/img/aboutImage/fire.jpg"
         },
         {
             id: 5,
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
             specialty: "Kaiseki, Seasonal Japanese Cuisine, Plating Artistry",
             years: "5 years",
             quote: "\"Each ingredient tells a story; our role is to listen and translate it to the plate.\"",
-            image: "source/misc/sous.avif"
+            image: "/img/aboutImage/sous2.jpg"
         }
     ];
     

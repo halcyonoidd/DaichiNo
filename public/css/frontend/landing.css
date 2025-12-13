@@ -124,7 +124,7 @@ body {
     color: white;
     padding: 0 20px;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('C:/Users/Protozoid/OneDrive/ドキュメント/Daichi No/source/bg/foo.jpg') no-repeat center center/cover;
+                url('/img/landingImage/landingBackground.png') no-repeat center center/cover;
 }
 
 .hero h1 {
@@ -382,7 +382,7 @@ body {
 
 .testimonials {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                url('C:/Users/Protozoid/OneDrive/ドキュメント/Daichi No/source/bg/holo.avif') no-repeat center center/cover;
+                url('/DaichiNo3/public/img/landingImage/crsl1.jpg') no-repeat center center/cover;
 }
 
 .testimonials h2{

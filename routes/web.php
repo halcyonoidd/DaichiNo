@@ -27,7 +27,7 @@ Route::middleware('guest')->group(function () {
 });
 
 // Authenticated pages
-Route::middleware(['auth', 'prevent.back'])->group(function () {
+Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Customer pages

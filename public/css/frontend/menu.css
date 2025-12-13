@@ -114,7 +114,7 @@ body {
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('C:/Users/Protozoid/OneDrive/ドキュメント/Daichi No/source/bg/menu.avif') no-repeat center center/cover;
+                url('/img/menuImage/menuBackground.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;

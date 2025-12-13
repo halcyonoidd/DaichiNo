@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daichi No - Japanese Restaurant</title>
     <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/vendors/all.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/frontend/landing.css') }}">
 </head>
 <body>
@@ -59,7 +59,7 @@
                     <div class="carousel-container">
                         <div class="carousel-track">
                             <div class="carousel-slide">
-                                <img src="source\misc\crsl1.jpg">
+                                <img src="/img/landingImage/crsl1.jpg">
                                 <div class="slide-caption">
                                     <h2 class="title is-4 has-text-white">Appetizer Area</h2>
                                     <p>Traditional skewers stand</p>
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="carousel-slide">
-                                <img src="source\ten\crsl2.jpg">
+                                <img src="/img/landingImage/crsl2.jpg">
                                 <div class="slide-caption">
                                     <h2 class="title is-4 has-text-white">Mitarashi Dango</h2>
                                     <p>Sweet doughy dessert that can be found in Ten Area</p>
@@ -75,7 +75,7 @@
                             </div>
                             
                             <div class="carousel-slide">
-                                <img src="source\misc\crsl3.jpg">
+                                <img src="/img/landingImage/crsl3.jpg">
                                 <div class="slide-caption">
                                     <h2 class="title is-4 has-text-white">Lake View</h2>
                                     <p>Tranquil lake that will certainly soothe minds</p>
@@ -83,7 +83,7 @@
                             </div>
                             
                             <div class="carousel-slide">
-                                <img src="source\danpen\crsl4.jpg">
+                                <img src="/img/landingImage/crsl4.jpg">
                                 <div class="slide-caption">
                                     <h2 class="title is-4 has-text-white">Tonkotsu Ramen</h2>
                                     <p>The best of bone broth ramen, testament of the earth</p>
@@ -111,7 +111,7 @@
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\mizu\salmon_sashimi.jpg">
+                            <img src="/img/landingImage/salmon_sashimi.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -122,7 +122,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\mizu\saba-sushi.jpg">
+                            <img src="/img/landingImage/saba_sushi.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -133,7 +133,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\mizu\uni-gunkan.jpg">
+                            <img src="/img/landingImage/uni_gunkan.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -144,7 +144,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\mizu\hosomaki.jpg">
+                            <img src="/img/landingImage/hosomaki.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -160,7 +160,7 @@
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\danpen\inarizushi.jpg">
+                            <img src="/img/landingImage/inarizushi.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -171,7 +171,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\danpen\ten-don.jpg">
+                            <img src="/img/landingImage/ten_don.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -182,7 +182,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\danpen\crsl4.jpg">
+                            <img src="/img/landingImage/crsl4.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -193,7 +193,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\danpen\katsu.jpg">
+                            <img src="/img/landingImage/katsu.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -209,7 +209,7 @@
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\kaen\isobeyaki.jpg">
+                            <img src="/img/landingImage/isobeyaki.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -220,7 +220,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\kaen\yakitori.jpg">
+                            <img src="/img/landingImage/yakitori.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -231,7 +231,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\kaen\unagi-don.jpg">
+                            <img src="/img/landingImage/unagi_don.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -242,7 +242,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\kaen\yakiniku.jpg">
+                            <img src="/img/landingImage/yakiniku.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -258,7 +258,7 @@
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\yomi\edamame.jpg">
+                            <img src="/img/landingImage/edamame.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -269,7 +269,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\yomi\agedashi-tofu.jpg">
+                            <img src="/img/landingImage/agedashi_tofu.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -280,7 +280,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\yomi\chawanmushi.jpg">
+                            <img src="/img/landingImage/chawanmushi.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -291,7 +291,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\yomi\gyosa.jpg">
+                            <img src="/img/landingImage/gyoza.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -308,7 +308,7 @@
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\ten\crsl2.jpg">
+                            <img src="/img/landingImage/crsl2.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -319,7 +319,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\ten\mochi.jpg">
+                            <img src="/img/landingImage/mochi.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -330,7 +330,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\ten\strb-cream-parfait.jpg">
+                            <img src="/img/landingImage/strb_icecream.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -341,7 +341,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="source\ten\flan-cake.jpg">
+                            <img src="/img/landingImage/flan_cake.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
@@ -397,8 +397,8 @@
                 </div>
                 <div class="michelin">
                     <div>
-                        <img src="source\misc\MichelinStar.svg.png" class="michelin-image-1">
-                        <img src="source\misc\MichelinStar.svg.png" class="michelin-image-2">
+                        <img src="/img/landingImage/MichelinStar.svg.png" class="michelin-image-1">
+                        <img src="/img/landingImage/MichelinStar.svg.png" class="michelin-image-2">
                     </div>
                     <div class="michelin-word">
                         <p><b>Certified</b></p><br>

@@ -125,7 +125,7 @@ body {
     position: relative;
     overflow: hidden;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                url('C:/Users/Protozoid/OneDrive/ドキュメント/Daichi No/source/bg/holo.avif') no-repeat center center/cover;
+                url('/img/landingImage/restaurantInterior.png') no-repeat center center/cover;
 }
 
 .about-section {

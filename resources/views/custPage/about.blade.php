@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daichi No - About Us</title>
     <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/vendors/all.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/frontend/about.css') }}">
 </head>
 <body>
@@ -124,7 +124,7 @@
                 
                 <div class="column is-6">
                     <figure class="image is-16by9">
-                        <img src="source\bg\cook.avif">
+                        <img src="/img/aboutImage/img.jpg" alt="Vision Image">
                     </figure>
                 </div>
             </div>
@@ -171,7 +171,7 @@
             </header>
             <section class="modal-card-body">
                 <div class="modal-image">
-                    <img id="modal-chef-image" src="" alt="Chef">
+                    <img id="modal-chef-image" src="/img/aboutImage/img.jpg" alt="Chef">
                 </div>
                 <div class="modal-content">
                     <div class="modal-title" id="modal-chef-title">Chef Title</div>
