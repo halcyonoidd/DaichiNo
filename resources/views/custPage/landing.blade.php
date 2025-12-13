@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daichi No - Japanese Restaurant</title>
-    <link rel="stylesheet" href="{{ asset('css/bulma.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frontend/landing.css') }}">
 </head>
 <body>
-<nav class="navbar transparent" id="navbar">
+    <nav class="navbar transparent" id="navbar">
         <div class="nav-section left">
             <a href="{{ route('about') }}" class="nav-link light">About</a>
             <a href="{{ route('contact') }}" class="nav-link light">Contact</a>
@@ -18,38 +17,26 @@
         </div>
         
         <div class="nav-center">
-            <a href="{{ route('home') }}" class="home-link dark">Daichi No</a>
+            <a href="#" class="home-link dark">Daichi No</a>
         </div>
         
-    <div class="nav-section right" style="display: flex; align-items: center;">
-        <a href="{{ route('menu') }}" class="nav-link light">Menu</a>
-        <a href="{{ route('reservation') }}" class="nav-link light">Reservation</a>
-        <a href="{{ route('cart') }}" class="nav-link light">Cart</a>
-
-        @auth
-            <a href="{{ route('logout') }}" 
-            class="nav-link light" 
-            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            Logout
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        @endauth
-    </div>
+        <div class="nav-section right">
+            <a href="{{ route('menu') }}" class="nav-link light">Menu</a>
+            <a href="{{ route('reservation') }}" class="nav-link light">Reservation</a>
+            <a href="{{ route('cart') }}" class="nav-link light">Cart()</a>
+        </div>
     </nav>
 
     <section class="hero light">
         <h1>A Fragment of <b style="color: #ebc34c">Everything</b>,</h1>
         <h1>On earth that are Delicious</h1>
         <div class="hero-buttons">
-            <a href="#reservation" class="btn">Make Reservation</a>
+            <a href="reservation.html" class="btn">Experience Now!</a>
             <a href="#menu" class="btn" style="background-color: transparent; border: 2px solid white; margin-left: 15px;">View Menu</a>
         </div>
     </section>
 
-    <section class="section about" id="aboutUs">
+    <section class="section about" id="about">
         <div class="container">
             <div class="section-title">
                 <h2>A Fragment of a Tale</h2>
@@ -65,14 +52,14 @@
                     <p>Also Handled by our best chefs who have trained for years</p>
                     <p>In Tokyo and Kyoto, To perfect their crafts.</p>
                     <p>In doing so, creating something that is both</p>
-                    <p><b style="color:var(--primary-color)">Unique</b> yet amazingly, feel <b style="color:var(--light-accent)">home.</b></p>
+                    <p><b style="color:var(--primary-color)">Unique</b> yet feel, <b style="color:var(--light-accent)">home.</b></p>
                     <a href="about.html" class="btn" style="margin-top: 20px;">More</a>
                 </div>
                 <div class="about-image">
                     <div class="carousel-container">
                         <div class="carousel-track">
                             <div class="carousel-slide">
-                                <img src="../img/landingImage/crsl1.jpg">
+                                <img src="source\misc\crsl1.jpg">
                                 <div class="slide-caption">
                                     <h2 class="title is-4 has-text-white">Appetizer Area</h2>
                                     <p>Traditional skewers stand</p>
@@ -80,7 +67,7 @@
                             </div>
 
                             <div class="carousel-slide">
-                                <img src="../img/landingImage/crsl2.jpg">
+                                <img src="source\ten\crsl2.jpg">
                                 <div class="slide-caption">
                                     <h2 class="title is-4 has-text-white">Mitarashi Dango</h2>
                                     <p>Sweet doughy dessert that can be found in Ten Area</p>
@@ -88,7 +75,7 @@
                             </div>
                             
                             <div class="carousel-slide">
-                                <img src="../img/landingImage/crsl3.jpg">
+                                <img src="source\misc\crsl3.jpg">
                                 <div class="slide-caption">
                                     <h2 class="title is-4 has-text-white">Lake View</h2>
                                     <p>Tranquil lake that will certainly soothe minds</p>
@@ -96,7 +83,7 @@
                             </div>
                             
                             <div class="carousel-slide">
-                                <img src="../img/landingImage/crsl4.jpg">
+                                <img src="source\danpen\crsl4.jpg">
                                 <div class="slide-caption">
                                     <h2 class="title is-4 has-text-white">Tonkotsu Ramen</h2>
                                     <p>The best of bone broth ramen, testament of the earth</p>
@@ -115,7 +102,7 @@
             </div>
             <div class="menu-categories">
                 <div class="menu-category active" data-category="mizu">Mizu</div>
-                <div class="menu-category" data-category="danpen">Danpen</div>
+                <div class="menu-category" data-category="danpen">Daichi</div>
                 <div class="menu-category" data-category="kaen">Kaen</div>
                 <div class="menu-category" data-category="yomi">Yomi</div>
                 <div class="menu-category" data-category="ten">Ten</div>
@@ -124,48 +111,44 @@
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/salmon_sashimi.jpg">
+                            <img src="source\mizu\salmon_sashimi.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Salmon Sashimi</h3>
-                                <span class="menu-item-price">$18</span>
                             </div>
                             <p class="menu-item-description">Fresh Atlantic salmon, thinly sliced and served with wasabi and soy sauce.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/saba_sushi.jpg">
+                            <img src="source\mizu\saba-sushi.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Saba Sushi</h3>
-                                <span class="menu-item-price">$22</span>
                             </div>
                             <p class="menu-item-description">Tightly packed slices of pickled mackarel and rice wrapped in bamboo leaves.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/uni_gunkan.jpg">
+                            <img src="source\mizu\uni-gunkan.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Uni Gunkan</h3>
-                                <span class="menu-item-price">$26</span>
                             </div>
                             <p class="menu-item-description">Rich and fresh uni placed atop of rice and wrapped loosely in nori.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/hosomaki.jpg">
+                            <img src="source\mizu\hosomaki.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Hosomaki</h3>
-                                <span class="menu-item-price">$12</span>
                             </div>
                             <p class="menu-item-description">Modest variety piece of salmon, tuna, and cucumber wrapped in rice and nori.</p>
                         </div>
@@ -177,48 +160,44 @@
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/inarizushi.jpg">
+                            <img src="source\danpen\inarizushi.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Inarizushi</h3>
-                                <span class="menu-item-price">$8</span>
                             </div>
                             <p class="menu-item-description">Sweet soy bean curd filled with rice and topped with sesame seed.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/ten_don.jpg">
+                            <img src="source\danpen\ten-don.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Ten Don</h3>
-                                <span class="menu-item-price">$17</span>
                             </div>
                             <p class="menu-item-description">Fried vegetables variety and shrimp atop bowl of rice.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/crsl4.jpg">
+                            <img src="source\danpen\crsl4.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Tonkotsu Ramen</h3>
-                                <span class="menu-item-price">$21</span>
                             </div>
                             <p class="menu-item-description">Rich bone broth with ramen noodle topped with slices of chashu pork and bamboo shoot.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/katsu.jpg">
+                            <img src="source\danpen\katsu.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Katsu</h3>
-                                <span class="menu-item-price">$12</span>
                             </div>
                             <p class="menu-item-description">Flatten chicken, breaded and fired to a perfection of juiciness and crispiness.</p>
                         </div>
@@ -230,48 +209,44 @@
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/isobeyaki.jpg">
+                            <img src="source\kaen\isobeyaki.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Isobeyaki</h3>
-                                <span class="menu-item-price">$11</span>
                             </div>
                             <p class="menu-item-description">Plain grilled mochi with cripy outside and the gooey inside, brushed off with soy sauce for extra savouriness.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/yakitori.jpg">
+                            <img src="source\kaen\yakitori.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Yakitori</h3>
-                                <span class="menu-item-price">$14</span>
                             </div>
-                            <p class="menu-item-description">Grilled chicken skewers with teriyaki glaze. Tender and juicy.</p>
+                            <p class="menu-item-description">Grilled chicken skewers with teriyaki glaze. Tender and juicy</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/unagi_don.jpg">
+                            <img src="source\kaen\unagi-don.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Unagi Don</h3>
-                                <span class="menu-item-price">$25</span>
                             </div>
                             <p class="menu-item-description">Grilled grade A eel with kabayaki sauce over rice.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/yakiniku.jpg">
+                            <img src="source\kaen\yakiniku.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Yakiniku</h3>
-                                <span class="menu-item-price">$30</span>
                             </div>
                             <p class="menu-item-description">Slices of beef grilled to perfection over rice and with variety of sides.</p>
                         </div>
@@ -283,48 +258,44 @@
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/edamame.jpg">
+                            <img src="source\yomi\edamame.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Edamame</h3>
-                                <span class="menu-item-price">$5</span>
                             </div>
-                            <p class="menu-item-description">Young soy bean steamed and flavoured with salt.</p>
+                            <p class="menu-item-description">Young soy bean steamed and flavoured with salt</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/agedashi_tofu.jpg">
+                            <img src="source\yomi\agedashi-tofu.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Agedashi Tofu</h3>
-                                <span class="menu-item-price">$10</span>
                             </div>
                             <p class="menu-item-description">Fried silken tofu served with tentsuyu. Topped with grated daikon radish and chopped spring onion.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/chawanmushi.jpg">
+                            <img src="source\yomi\chawanmushi.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Chawanmushi</h3>
-                                <span class="menu-item-price">$15</span>
                             </div>
                             <p class="menu-item-description">Steamed silky custard egg filled with various svaoury filling.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/gyoza.jpg">
+                            <img src="source\yomi\gyosa.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Gyoza</h3>
-                                <span class="menu-item-price">$15</span>
                             </div>
                             <p class="menu-item-description">Soft dumpling pan-fried until crispy at the bottom. Served with ponzu sauce.</p>
                         </div>
@@ -337,48 +308,44 @@
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/crsl2.jpg">
+                            <img src="source\ten\crsl2.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Mitarashi Dango</h3>
-                                <span class="menu-item-price">$8</span>
                             </div>
                             <p class="menu-item-description">Dumpling made of glutinous rice formed into a ball. Skewered and served with sweet syrup.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/mochi.jpg">
+                            <img src="source\ten\mochi.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Mochi</h3>
-                                <span class="menu-item-price">$6</span>
                             </div>
                             <p class="menu-item-description">Colourful glutinous rice cakes fromed into balls with sweet fillings.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/strb_icecream.jpg">
+                            <img src="source\ten\strb-cream-parfait.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Strawberry Cream Parfait</h3>
-                                <span class="menu-item-price">$16</span>
                             </div>
                             <p class="menu-item-description">Sweet cream, strawberries, crumbles stacked to form a faux cake in a glass.</p>
                         </div>
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="../img/landingImage/flan_cake.jpg">
+                            <img src="source\ten\flan-cake.jpg">
                         </div>
                         <div class="menu-item-content">
                             <div class="menu-item-header">
                                 <h3 class="menu-item-name">Flan Cake</h3>
-                                <span class="menu-item-price">$17</span>
                             </div>
                             <p class="menu-item-description">Flan or custard base with a layer of clear caramel atop.</p>
                         </div>
@@ -388,7 +355,7 @@
         </div>
         
         <div class="menu-down">
-            <a href="{{ route('menu') }}" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">More Items</a>
+            <a href="menu.html" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">More Items</a>
         </div>
     </section>
 
@@ -398,18 +365,45 @@
                 <h2>Our Rep.</h2>
             <div class="trapezoid">
                 <div class="testimonial-slider">
-                    <div class="testimonial">
-                        <p class="testimonial-text">The best Japanese food I've had outside of Japan. The sushi was incredibly fresh and the service was impeccable. Will definitely be returning soon!</p>
-                        <p class="testimonial-author">- Sarah Johnson</p>
+                    <div class="testimonial-track">
+                        <div class="testimonial">
+                            <p class="testimonial-text">The best Japanese food I've had outside of Japan. The sushi was incredibly fresh and the service was impeccable. Will definitely be returning soon!</p>
+                            <p class="testimonial-author">- Sarah Johnson</p>
+                        </div>
+
+                        <div class="testimonial">
+                            <p class="testimonial-text">An unforgettable dining experience. Each dish was a work of art, perfectly balanced and beautifully presented. The omakase menu exceeded all expectations.</p>
+                            <p class="testimonial-author">- Michael Tanaka</p>
+                        </div>
+
+                        <div class="testimonial">
+                            <p class="testimonial-text">The attention to detail is remarkable. From the ambiance to the exquisite flavors, every aspect of the meal was carefully curated. Truly worthy of its Michelin stars.</p>
+                            <p class="testimonial-author">- Elena Rodriguez</p>
+                        </div>
+
+                        <div class="testimonial">
+                            <p class="testimonial-text">I've dined at many Michelin-starred restaurants worldwide, but this one stands out. The chef's creativity with traditional Japanese techniques is simply brilliant.</p>
+                            <p class="testimonial-author">- David Chen</p>
+                        </div>
                     </div>
+
+                    <div class="slider-indicators">
+                        <div class="indicator-s active" data-slide="0"></div>
+                        <div class="indicator-s" data-slide="1"></div>
+                        <div class="indicator-s" data-slide="2"></div>
+                        <div class="indicator-s" data-slide="3"></div>
+                    </div>
+                    
                 </div>
                 <div class="michelin">
                     <div>
-                        <img src="../img/landingImage/MichelinStar.png" class="michelin-image-1">
-                        <img src="../img/landingImage/MichelinStar.png" class="michelin-image-2">
+                        <img src="source\misc\MichelinStar.svg.png" class="michelin-image-1">
+                        <img src="source\misc\MichelinStar.svg.png" class="michelin-image-2">
                     </div>
-                    <div>
-                        <h2>Certified two michelin 2020</h2>
+                    <div class="michelin-word">
+                        <p><b>Certified</b></p><br>
+                        <p><b>Two <i>Michelin Star</i></b></p><br>
+                        <p><b>2020</b></p>
                     </div>
                 </div>
             </div>
@@ -427,7 +421,7 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h3 class="title is-5">Address</h3>
-                            <p>123 Sakura Street, Downtown<br>Tokyo, Japan 100-0001</p>
+                            <p>123, Graha Natural Park<br>Surabaya, Indonesia</p>
                         </div>
                     </div>
                     <div class="info-item">
@@ -441,7 +435,7 @@
                         <i class="fas fa-phone"></i>
                         <div>
                             <h3 class="title is-5">Phone</h3>
-                            <p>+81 3 1234 5678</p>
+                            <p>+62 6767 1234 567</p>
                         </div>
                     </div>
                     <div class="info-item">
@@ -453,7 +447,7 @@
                     </div>
                 </div>
                 <div class="location-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.747798533325!2d139.7432442152581!3d35.65858048019966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bb0daa74d31%3A0x6c2ec4f5e9b1bf61!2sShibuya%20Crossing!5e0!3m2!1sen!2sjp!4v1651234567890!5m2!1sen!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1978.8494529390725!2d112.66829891943792!3d-7.275061392425836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1765610106263!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -469,7 +463,6 @@
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -490,12 +483,62 @@
                         <li>Holidays: 12:00 PM - 9:00 PM</li>
                     </ul>
                 </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Daichi No. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent-color);"></i></p>
-            </div>
         </div>
     </footer>
 
-    <script src="{{ asset('js/landing.js') }}"></script>
+    <div class="panel-overlay" id="panel-overlay"></div>
+
+    <div class="floating-user-btn" id="floating-user-btn">
+        <i class="fas fa-user"></i>
+    </div>
+
+    <div class="user-panel" id="user-panel">
+        <div class="user-panel-header">
+            <h3>My Account</h3>
+            <button class="close-panel" id="close-panel">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-info">
+            <div class="user-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="user-name" id="user-name">Takashi Yamada</div>
+            <div class="user-email" id="user-email">takashi.yamada@email.com</div>
+            
+            <div class="user-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="reservation-count">3</div>
+                    <div class="stat-label">Reservations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="points-earned">1,250</div>
+                    <div class="stat-label">Points</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="vouchers-owned">2</div>
+                    <div class="stat-label">Vouchers</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel-actions">
+            <a href="profile.html" class="panel-btn panel-btn-primary">
+                <i class="fas fa-user-circle mr-2"></i> View Profile
+            </a>
+            <a href="reservation.html" class="panel-btn panel-btn-secondary">
+                <i class="fas fa-calendar-alt mr-2"></i> My Reservations
+            </a>
+            <a href="voucher.html" class="panel-btn panel-btn-secondary">
+                <i class="fas fa-gift mr-2"></i> My Vouchers
+            </a>
+            <button class="panel-btn panel-btn-logout" id="logout-btn">
+                <i class="fas fa-sign-out-alt mr-2"></i> Log Out
+            </button>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/frontend/landing.js') }}"></script>
 </body>
 </html>

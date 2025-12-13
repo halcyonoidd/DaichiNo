@@ -4,19 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daichi No - Gift Vouchers & Experiences</title>
-    <!-- Bulma CSS Framework -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('css/voucher.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frontend/voucher.css') }}">
 </head>
 <body>
     <nav class="navbar transparent" id="navbar">
         <div class="nav-section left">
-            <a href="{{ route('home') }}" class="nav-link light">Home</a>
             <a href="{{ route('about') }}" class="nav-link light">About</a>
-            <a href="{{ route('menu') }}" class="nav-link light">Menu</a>
-            <a href="{{ route('reservation') }}" class="nav-link light">Experiences</a>
             <a href="{{ route('contact') }}" class="nav-link light">Contact</a>
+            <a href="{{ route('voucher') }}" class="nav-link light">Voucher</a>
         </div>
         
         <div class="nav-center">
@@ -24,20 +21,17 @@
         </div>
         
         <div class="nav-section right">
-            <a href="#" class="nav-link light" id="view-cart-btn">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count">0</span>
-            </a>
+            <a href="{{ route('menu') }}" class="nav-link light">Menu</a>
+            <a href="{{ route('reservation') }}" class="nav-link light">Reservation</a>
+            <a href="{{ route('cart') }}" class="nav-link light">Cart(0)</a>
         </div>
     </nav>
 
-    <!-- Cart Notification -->
     <div class="cart-notification" id="cart-notification">
         <i class="fas fa-check-circle"></i>
         <span>Added to cart!</span>
     </div>
 
-    <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
             <h3>Your Voucher Cart</h3>
@@ -46,7 +40,6 @@
             </button>
         </div>
         <div class="cart-items" id="cart-items">
-            <!-- Cart items will be dynamically added here -->
             <div class="has-text-centered py-6" id="empty-cart-message">
                 <i class="fas fa-shopping-cart fa-3x mb-4 has-text-grey-light"></i>
                 <p class="subtitle is-6 has-text-grey">Your cart is empty</p>
@@ -73,7 +66,6 @@
     </section>
 
     <div class="vouchers-container">
-        <!-- Voucher Types -->
         <div class="section-title">
             <h2>Choose Voucher Type</h2>
             <p class="subtitle">Select from different voucher categories to find the perfect gift or discount</p>
@@ -113,14 +105,12 @@
             </div>
         </div>
         
-        <!-- Vouchers Grid -->
         <div class="section-title">
             <h2>Available Vouchers</h2>
             <p class="subtitle">Each voucher can be applied to your dining experience for discounts or enhancements</p>
         </div>
         
         <div class="vouchers-grid" id="vouchers-grid">
-            <!-- Voucher 1: Full Experience -->
             <div class="voucher-card" data-type="experience" data-id="1">
                 <div class="voucher-header">
                     <div class="voucher-tier experience-voucher">Experience Voucher</div>
@@ -157,8 +147,7 @@
                     </button>
                 </div>
             </div>
-            
-            <!-- Voucher 2: Discount -->
+
             <div class="voucher-card" data-type="discount" data-id="2">
                 <div class="voucher-header">
                     <div class="voucher-tier discount-voucher">Discount Voucher</div>
@@ -194,8 +183,7 @@
                     </button>
                 </div>
             </div>
-            
-            <!-- Voucher 3: Wine Pairing -->
+
             <div class="voucher-card" data-type="meal" data-id="3">
                 <div class="voucher-header">
                     <div class="voucher-tier meal-voucher">Meal Add-on</div>
@@ -233,7 +221,6 @@
                 </div>
             </div>
             
-            <!-- Voucher 4: Gift Card -->
             <div class="voucher-card" data-type="experience" data-id="4">
                 <div class="voucher-header">
                     <div class="voucher-tier gift-voucher">Gift Card</div>
@@ -284,8 +271,7 @@
                     </button>
                 </div>
             </div>
-            
-            <!-- Voucher 5: Wagyu Upgrade -->
+
             <div class="voucher-card" data-type="meal" data-id="5">
                 <div class="voucher-header">
                     <div class="voucher-tier meal-voucher">Meal Add-on</div>
@@ -323,7 +309,6 @@
                 </div>
             </div>
             
-            <!-- Voucher 6: Anniversary Special -->
             <div class="voucher-card" data-type="discount" data-id="6">
                 <div class="voucher-header">
                     <div class="voucher-tier discount-voucher">Special Offer</div>
@@ -362,7 +347,6 @@
             </div>
         </div>
         
-        <!-- How It Works -->
         <div class="how-it-works">
             <div class="section-title">
                 <h2>How Vouchers Work</h2>
@@ -396,7 +380,6 @@
             </div>
         </div>
         
-        <!-- FAQ Section -->
         <div class="section-title">
             <h2>Frequently Asked Questions</h2>
             <p class="subtitle">Get answers to common questions about our vouchers</p>
@@ -427,30 +410,91 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <h3 class="title is-5 has-text-white">Daichi No</h3>
-                    <p>Authentic Japanese dining experiences</p>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Daichi No</h3>
+                    <p>Experience the authentic taste of Japan with our carefully crafted dishes made from the finest ingredients.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
-                <div class="column">
-                    <h3 class="title is-5 has-text-white">Voucher Support</h3>
-                    <p><i class="fas fa-phone mr-2"></i> +81 3 1234 5678</p>
-                    <p><i class="fas fa-envelope mr-2"></i> vouchers@daichino.com</p>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="reservation.html">Reservations</a></li>
+                        <li><a href="voucher.html">Gift Vouchers</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
                 </div>
-                <div class="column">
-                    <h3 class="title is-5 has-text-white">Follow Us</h3>
-                    <p>
-                        <a href="#" class="has-text-light mr-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="has-text-light mr-3"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="has-text-light"><i class="fab fa-twitter"></i></a>
-                    </p>
+                <div class="footer-column">
+                    <h3>Opening Hours</h3>
+                    <ul class="footer-links">
+                        <li>Monday - Friday: 11:00 AM - 10:00 PM</li>
+                        <li>Saturday - Sunday: 11:00 AM - 11:00 PM</li>
+                        <li>Holidays: 12:00 PM - 9:00 PM</li>
+                    </ul>
                 </div>
-            </div>
-            <hr class="mt-5 mb-5" style="background-color: rgba(255,255,255,0.1);">
-            <p>&copy; 2023 Daichi No. All rights reserved.</p>
-            <p>Vouchers valid for 6-18 months from purchase date. Terms and conditions apply.</p>
         </div>
     </footer>
+
+    <div class="panel-overlay" id="panel-overlay"></div>
+
+    <div class="floating-user-btn" id="floating-user-btn">
+        <i class="fas fa-user"></i>
+    </div>
+
+    <div class="user-panel" id="user-panel">
+        <div class="user-panel-header">
+            <h3>My Account</h3>
+            <button class="close-panel" id="close-panel">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-info">
+            <div class="user-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="user-name" id="user-name">Takashi Yamada</div>
+            <div class="user-email" id="user-email">takashi.yamada@email.com</div>
+            
+            <div class="user-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="reservation-count">3</div>
+                    <div class="stat-label">Reservations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="points-earned">1,250</div>
+                    <div class="stat-label">Points</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="vouchers-owned">2</div>
+                    <div class="stat-label">Vouchers</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel-actions">
+            <a href="profile.html" class="panel-btn panel-btn-primary">
+                <i class="fas fa-user-circle mr-2"></i> View Profile
+            </a>
+            <a href="reservation.html" class="panel-btn panel-btn-secondary">
+                <i class="fas fa-calendar-alt mr-2"></i> My Reservations
+            </a>
+            <a href="voucher.html" class="panel-btn panel-btn-secondary">
+                <i class="fas fa-gift mr-2"></i> My Vouchers
+            </a>
+            <button class="panel-btn panel-btn-logout" id="logout-btn">
+                <i class="fas fa-sign-out-alt mr-2"></i> Log Out
+            </button>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/frontend/voucher.js') }}"></script>
+
 </body>
-<script src="{{ asset('js/voucher.js') }}"></script>
 </html>

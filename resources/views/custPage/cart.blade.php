@@ -4,38 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daichi No - Your Cart & Checkout</title>
-    <!-- Bulma CSS Framework -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
-
-
-    
+    <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frontend/cart.css') }}">
 </head>
 <body>
-    <nav class="navbar solid" id="navbar">
+    <nav class="navbar transparent" id="navbar">
         <div class="nav-section left">
-            <a href="{{ route('home') }}" class="nav-link">Home</a>
-            <a href="{{ route('about') }}" class="nav-link">About</a>
-            <a href="{{ route('menu') }}" class="nav-link">Menu</a>
-            <a href="{{ route('reservation') }}" class="nav-link">Experiences</a>
-            <a href="{{ route('voucher') }}" class="nav-link">Vouchers</a>
-            <a href="{{ route('contact') }}" class="nav-link">Contact</a>
+            <a href="{{ route('about') }}" class="nav-link light">About</a>
+            <a href="{{ route('contact') }}" class="nav-link light">Contact</a>
+            <a href="{{ route('voucher') }}" class="nav-link light">Voucher</a>
         </div>
         
         <div class="nav-center">
-            <a href="{{ route('home') }}" class="home-link">Daichi No</a>
+            <a href="{{ route('home') }}" class="home-link dark">Daichi No</a>
         </div>
         
         <div class="nav-section right">
-            <a href="cart.html" class="nav-link">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-badge" id="cart-badge">3</span>
-            </a>
+            <a href="{{ route('menu') }}" class="nav-link light">Menu</a>
+            <a href="{{ route('reservation') }}" class="nav-link light">Reservation</a>
+            <a href="{{ route('cart') }}" class="nav-link light">Cart(0)</a>
         </div>
     </nav>
 
-    <!-- Checkout Success Modal -->
     <div class="checkout-modal" id="checkout-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -82,21 +73,16 @@
     </section>
 
     <div class="cart-container">
-        <!-- Cart Items Section -->
         <div class="cart-items-section">
             <div class="section-title">
                 <h2>Items in Your Cart</h2>
-                <p class="subtitle">You have <span id="item-count">3</span> items in your cart</p>
+                <p class="subtitle">You have <span id="item-count">2</span> items in your cart</p>
             </div>
             
-            <!-- Cart Items -->
             <div class="cart-items" id="cart-items">
-                <!-- Cart items will be dynamically added here -->
-                
-                <!-- Sample Item 1: Experience -->
                 <div class="cart-item" data-id="exp-1" data-price="25000" data-type="experience">
                     <div class="cart-item-image">
-                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Fuji Experience">
+                        <img src="source\bg\fuji.jpg">
                     </div>
                     <div class="cart-item-content">
                         <div class="cart-item-header">
@@ -107,7 +93,6 @@
                             <div class="cart-item-price">¥25,000</div>
                         </div>
                         <div class="cart-item-details">
-                            <p>Luxurious private dining in a traditional tatami room with exclusive 9-course kaiseki menu.</p>
                             <p><strong>Duration:</strong> 2.5 hours | <strong>Group Size:</strong> 2-8 people | <strong>Date:</strong> Flexible booking</p>
                         </div>
                         <div class="cart-item-controls">
@@ -125,7 +110,6 @@
                     </div>
                 </div>
                 
-                <!-- Sample Item 2: Voucher -->
                 <div class="cart-item" data-id="voucher-2" data-price="8000" data-type="voucher">
                     <div class="cart-item-image voucher">
                         <i class="fas fa-percentage"></i>
@@ -156,41 +140,8 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Sample Item 3: Meal Add-on -->
-                <div class="cart-item" data-id="addon-3" data-price="5500" data-type="addon">
-                    <div class="cart-item-image">
-                        <img src="https://images.unsplash.com/photo-1581338834647-b0fb407c6e59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Sake Pairing">
-                    </div>
-                    <div class="cart-item-content">
-                        <div class="cart-item-header">
-                            <div>
-                                <div class="cart-item-title">Premium Sake Pairing</div>
-                                <span class="cart-item-category category-experience">Meal Add-on</span>
-                            </div>
-                            <div class="cart-item-price">¥5,500</div>
-                        </div>
-                        <div class="cart-item-details">
-                            <p>Enhanced beverage experience with 5 premium sake tastings and expert pairing guidance.</p>
-                            <p><strong>Validity:</strong> 12 months | <strong>For:</strong> 1 person</p>
-                        </div>
-                        <div class="cart-item-controls">
-                            <div class="quantity-controls">
-                                <button class="qty-btn decrease-qty">-</button>
-                                <span class="qty-value">2</span>
-                                <button class="qty-btn increase-qty">+</button>
-                                <span class="ml-3">Person(s)</span>
-                            </div>
-                            <button class="remove-item">
-                                <i class="fas fa-trash"></i>
-                                Remove
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
-            
-            <!-- Empty Cart State (Hidden by default) -->
+
             <div class="empty-cart" id="empty-cart" style="display: none;">
                 <div class="empty-cart-icon">
                     <i class="fas fa-shopping-cart"></i>
@@ -213,7 +164,6 @@
                 </div>
             </div>
             
-            <!-- Promo Code Section -->
             <div class="promo-section">
                 <div class="promo-title">Apply Promo Code</div>
                 <div class="promo-input-group">
@@ -224,7 +174,6 @@
             </div>
         </div>
         
-        <!-- Order Summary Sidebar -->
         <div class="summary-sidebar">
             <div class="summary-card">
                 <div class="summary-title">Order Summary</div>
@@ -254,7 +203,6 @@
                     <span class="summary-amount" id="total">¥48,350</span>
                 </div>
                 
-                <!-- Payment Methods -->
                 <div class="payment-methods">
                     <div class="payment-title">Select Payment Method</div>
                     <div class="payment-options">
@@ -299,19 +247,16 @@
                     </div>
                 </div>
                 
-                <!-- Pay Now Button -->
                 <button class="pay-now-btn" id="pay-now-btn">
                     <i class="fas fa-lock"></i>
                     Pay Now
                 </button>
                 
-                <!-- Continue Shopping Button -->
                 <a href="reservations.html" class="continue-shopping">
                     <i class="fas fa-arrow-left"></i>
                     Continue Shopping
                 </a>
-                
-                <!-- Security Note -->
+
                 <div class="has-text-centered mt-4">
                     <p class="is-size-7 has-text-grey">
                         <i class="fas fa-lock mr-1"></i>
@@ -319,8 +264,7 @@
                     </p>
                 </div>
             </div>
-            
-            <!-- Need Help Section -->
+
             <div class="summary-card">
                 <div class="summary-title">Need Help?</div>
                 <div class="content">
@@ -340,30 +284,90 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <h3 class="title is-5 has-text-white">Daichi No</h3>
-                    <p>Authentic Japanese dining experiences</p>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Daichi No</h3>
+                    <p>Experience the authentic taste of Japan with our carefully crafted dishes made from the finest ingredients.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
-                <div class="column">
-                    <h3 class="title is-5 has-text-white">Order Support</h3>
-                    <p><i class="fas fa-phone mr-2"></i> +81 3 1234 5678</p>
-                    <p><i class="fas fa-clock mr-2"></i> 9:00 AM - 9:00 PM JST</p>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="reservation.html">Reservations</a></li>
+                        <li><a href="voucher.html">Gift Vouchers</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
                 </div>
-                <div class="column">
-                    <h3 class="title is-5 has-text-white">Follow Us</h3>
-                    <p>
-                        <a href="#" class="has-text-light mr-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="has-text-light mr-3"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="has-text-light"><i class="fab fa-twitter"></i></a>
-                    </p>
+                <div class="footer-column">
+                    <h3>Opening Hours</h3>
+                    <ul class="footer-links">
+                        <li>Monday - Friday: 11:00 AM - 10:00 PM</li>
+                        <li>Saturday - Sunday: 11:00 AM - 11:00 PM</li>
+                        <li>Holidays: 12:00 PM - 9:00 PM</li>
+                    </ul>
                 </div>
-            </div>
-            <hr class="mt-5 mb-5" style="background-color: rgba(255,255,255,0.1);">
-            <p>&copy; 2023 Daichi No. All rights reserved.</p>
-            <p>All transactions are secured with SSL encryption.</p>
         </div>
     </footer>
+
+    <div class="panel-overlay" id="panel-overlay"></div>
+
+    <div class="floating-user-btn" id="floating-user-btn">
+        <i class="fas fa-user"></i>
+    </div>
+
+    <div class="user-panel" id="user-panel">
+        <div class="user-panel-header">
+            <h3>My Account</h3>
+            <button class="close-panel" id="close-panel">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-info">
+            <div class="user-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="user-name" id="user-name">Takashi Yamada</div>
+            <div class="user-email" id="user-email">takashi.yamada@email.com</div>
+            
+            <div class="user-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="reservation-count">3</div>
+                    <div class="stat-label">Reservations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="points-earned">1,250</div>
+                    <div class="stat-label">Points</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="vouchers-owned">2</div>
+                    <div class="stat-label">Vouchers</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel-actions">
+            <a href="profile.html" class="panel-btn panel-btn-primary">
+                <i class="fas fa-user-circle mr-2"></i> View Profile
+            </a>
+            <a href="reservation.html" class="panel-btn panel-btn-secondary">
+                <i class="fas fa-calendar-alt mr-2"></i> My Reservations
+            </a>
+            <a href="voucher.html" class="panel-btn panel-btn-secondary">
+                <i class="fas fa-gift mr-2"></i> My Vouchers
+            </a>
+            <button class="panel-btn panel-btn-logout" id="logout-btn">
+                <i class="fas fa-sign-out-alt mr-2"></i> Log Out
+            </button>
+        </div>
+    </div>
+
+    <script src ="{{ asset('js/custPage/cart.js') }}"></script>
 </body>
-<script src="{{ asset('js/cart.js') }}"></script>
 </html>

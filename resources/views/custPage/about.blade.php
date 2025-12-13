@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daichi No - About Us</title>
-    <!-- Bulma CSS Framework -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frontend/about.css') }}">
 </head>
 <body>
     <nav class="navbar transparent" id="navbar">
         <div class="nav-section left">
-            <a href="{{ route('home') }}" class="nav-link light">Home</a>
-            <a href="{{ route('menu') }}" class="nav-link light">Menu</a>
+            <a href="#" class="nav-link light">About</a>
+            <a href="{{ route('contact') }}" class="nav-link light">Contact</a>
+            <a href="{{ route('voucher') }}" class="nav-link light">Voucher</a>
         </div>
         
         <div class="nav-center">
@@ -21,8 +21,9 @@
         </div>
         
         <div class="nav-section right">
+            <a href="{{ route('menu') }}" class="nav-link light">Menu</a>
             <a href="{{ route('reservation') }}" class="nav-link light">Reservation</a>
-            <a href="{{ route('contact') }}" class="nav-link light">Contact</a>
+            <a href="{{ route('cart') }}" class="nav-link light">Cart(0)</a>
         </div>
     </nav>
 
@@ -30,7 +31,7 @@
         <div class="container">
             <div class="columns is-centered">
                 <div class="column is-8">
-                    <h1 class="title is-1 has-text-white mb-4">Our Story</h1>
+                    <h1 class="title is-1 has-text-white mb-4">The Story</h1>
                     <p class="subtitle is-4 has-text-light">Where tradition meets innovation in the art of Japanese cuisine</p>
                 </div>
             </div>
@@ -40,14 +41,13 @@
     <section class="about-section history-section" id="history">
         <div class="container">
             <div class="section-title">
-                <h2 class="title is-2">Our History</h2>
-                <p class="subtitle is-5 has-text-grey">A journey of culinary excellence spanning three decades</p>
+                <h2 class="title is-2">Fragment of History</h2>
             </div>
             
             <div class="timeline-container">
                 <div class="timeline-item">
                     <div class="timeline-year">
-                        <div class="year-box">1990</div>
+                        <div class="year-box">2018</div>
                     </div>
                     <div class="timeline-content">
                         <div class="box">
@@ -59,12 +59,24 @@
                 
                 <div class="timeline-item">
                     <div class="timeline-year">
-                        <div class="year-box">1998</div>
+                        <div class="year-box">2019</div>
                     </div>
                     <div class="timeline-content">
                         <div class="box">
                             <h3 class="title is-4">First Michelin Star</h3>
                             <p>After eight years of dedication to culinary perfection, Daichi No received its first Michelin star. This recognition validated Chef Tanaka's vision of bringing traditional Japanese cooking techniques to a modern audience.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">
+                        <div class="year-box">2020</div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="box">
+                            <h3 class="title is-4">Second Michelin Star</h3>
+                            <p>Daichi No was founded by Master Chef Hiroshi Tanaka in a small Kyoto neighborhood. With just six tables and a commitment to authentic Japanese flavors, the restaurant quickly gained recognition for its exquisite sushi and warm hospitality.</p>
                         </div>
                     </div>
                 </div>
@@ -75,8 +87,7 @@
     <section class="about-section vision-section" id="vision">
         <div class="container">
             <div class="section-title">
-                <h2 class="title is-2">Our Vision & Philosophy</h2>
-                <p class="subtitle is-5 has-text-grey">More than just a restaurant - a culinary experience</p>
+                <h2 class="title is-2">Vision & Philosophy</h2>
             </div>
             
             <div class="columns is-vcentered">
@@ -113,7 +124,7 @@
                 
                 <div class="column is-6">
                     <figure class="image is-16by9">
-                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Restaurant Philosophy">
+                        <img src="source\bg\cook.avif">
                     </figure>
                 </div>
             </div>
@@ -124,14 +135,11 @@
         <div class="container">
             <div class="section-title">
                 <h2 class="title is-2">Meet Our Master Chefs</h2>
-                <p class="subtitle is-5 has-text-grey">The culinary artists behind Daichi No's exceptional dishes</p>
             </div>
         </div>
         
-        <!-- Fixed Pop-up Carousel -->
         <div class="chef-carousel-wrapper">
             <div class="chef-carousel-container" id="chef-carousel-container">
-                <!-- Chef cards will be dynamically positioned -->
             </div>
         </div>
         
@@ -141,8 +149,7 @@
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 
-                <button class="carousel-btn carousel-play-pause" id="play-pause">
-                    <i class="fas fa-pause" id="play-pause-icon"></i>
+                <button class="carousel-btn carousel-play-pause" id="play-pause" style="visibility: hidden;">
                 </button>
                 
                 <button class="carousel-btn" id="next-chef">
@@ -151,12 +158,10 @@
             </div>
             
             <div class="carousel-dots" id="carousel-dots">
-                <!-- Dots will be dynamically added -->
             </div>
         </div>
     </section>
 
-    <!-- Chef Details Modal -->
     <div class="modal chef-modal" id="chef-modal">
         <div class="modal-background"></div>
         <div class="modal-card">
@@ -199,10 +204,90 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2023 Daichi No. All rights reserved.</p>
-            <p>Honoring tradition, embracing innovation</p>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Daichi No</h3>
+                    <p>Experience the authentic taste of Japan with our carefully crafted dishes made from the finest ingredients.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="reservation.html">Reservations</a></li>
+                        <li><a href="voucher.html">Gift Vouchers</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Opening Hours</h3>
+                    <ul class="footer-links">
+                        <li>Monday - Friday: 11:00 AM - 10:00 PM</li>
+                        <li>Saturday - Sunday: 11:00 AM - 11:00 PM</li>
+                        <li>Holidays: 12:00 PM - 9:00 PM</li>
+                    </ul>
+                </div>
         </div>
     </footer>
+
+    <div class="panel-overlay" id="panel-overlay"></div>
+
+    <div class="floating-user-btn" id="floating-user-btn">
+        <i class="fas fa-user"></i>
+    </div>
+
+    <div class="user-panel" id="user-panel">
+        <div class="user-panel-header">
+            <h3>My Account</h3>
+            <button class="close-panel" id="close-panel">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-info">
+            <div class="user-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="user-name" id="user-name">Takashi Yamada</div>
+            <div class="user-email" id="user-email">takashi.yamada@email.com</div>
+            
+            <div class="user-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="reservation-count">3</div>
+                    <div class="stat-label">Reservations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="points-earned">1,250</div>
+                    <div class="stat-label">Points</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="vouchers-owned">2</div>
+                    <div class="stat-label">Vouchers</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel-actions">
+            <a href="profile.html" class="panel-btn panel-btn-primary">
+                <i class="fas fa-user-circle mr-2"></i> View Profile
+            </a>
+            <a href="reservation.html" class="panel-btn panel-btn-secondary">
+                <i class="fas fa-calendar-alt mr-2"></i> My Reservations
+            </a>
+            <a href="voucher.html" class="panel-btn panel-btn-secondary">
+                <i class="fas fa-gift mr-2"></i> My Vouchers
+            </a>
+            <button class="panel-btn panel-btn-logout" id="logout-btn">
+                <i class="fas fa-sign-out-alt mr-2"></i> Log Out
+            </button>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/frontend/about.js') }}"></script>
 </body>
-<script src="{{ asset('js/about.js') }}"></script>
 </html>

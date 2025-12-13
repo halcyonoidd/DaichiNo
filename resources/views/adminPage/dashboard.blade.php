@@ -104,7 +104,7 @@
                 </a>
             </div>
             <div class="column is-4">
-                <a href="#" class="menu-card">
+                <a href="{{ route('admin.reservations.index') }}" class="menu-card">
                     <span class="icon is-large">
                         <i class="fas fa-calendar-check fa-3x"></i>
                     </span>
@@ -122,7 +122,7 @@
                 </a>
             </div>
             <div class="column is-4">
-                <a href="#" class="menu-card">
+                <a href="{{ route('admin.vouchers.index') }}" class="menu-card">
                     <span class="icon is-large">
                         <i class="fas fa-ticket-alt fa-3x"></i>
                     </span>

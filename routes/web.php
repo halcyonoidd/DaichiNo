@@ -4,46 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminVoucherController;
+use App\Http\Controllers\Admin\AdminReservationController;
 
+// Guest landing
 Route::get('/', function () {
     return view('guestPage.landingGuest');
-});
+})->name('landingGuest');
 
-Route::get('/menu', function () {
-    $products = \App\Models\Product::where('is_available', true)
-        ->groupBy('category')
-        ->selectRaw('category, count(*) as total')
-        ->pluck('category');
-    
-    $products = \App\Models\Product::where('is_available', true)->get();
-    
-    return view('custPage.menu', compact('products'));
-})->name('menu');
-
-Route::get('/about', function () {
-    return view('custPage.about');
-})->name('about');
-
-Route::get('/home', function () {
-    return view('custPage.landing');
-})->name('home');
-
-Route::get('/cart', function () {
-    return view('custPage.cart');
-})->name('cart');
-
-Route::get('/contact', function () {
-    return view('custPage.contact');
-})->name('contact');
-
-Route::get('/reservation', function () {
-    return view('custPage.reservation');
-})->name('reservation');
-
-Route::get('/voucher', function () {
-    return view('custPage.voucher');
-})->name('voucher');
-
+// Guest-only auth pages
 Route::middleware('guest')->group(function () {
     Route::get('/login', function () {
         return view('guestPage.login');
@@ -57,20 +26,57 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 });
 
-Route::middleware('auth')->group(function () {
+// Authenticated pages
+Route::middleware(['auth', 'prevent.back'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    
-    // Admin routes
-    Route::middleware('admin')->group(function () {
-        Route::get('/admin/dashboard', function () {
+
+    // Customer pages
+    Route::get('/menu', function () {
+        $products = \App\Models\Product::where('is_available', true)->get();
+        return view('custPage.menu', compact('products'));
+    })->name('menu');
+
+    Route::get('/about', function () {
+        return view('custPage.about');
+    })->name('about');
+
+    Route::get('/home', function () {
+        return view('custPage.landing');
+    })->name('home');
+
+    Route::get('/cart', function () {
+        return view('custPage.cart');
+    })->name('cart');
+
+    Route::get('/contact', function () {
+        return view('custPage.contact');
+    })->name('contact');
+
+    Route::get('/reservation', function () {
+        return view('custPage.reservation');
+    })->name('reservation');
+
+    Route::get('/voucher', function () {
+        return view('custPage.voucher');
+    })->name('voucher');
+
+    // Admin routes (grouped for clarity)
+    Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
+        Route::get('/dashboard', function () {
             return view('adminPage.dashboard');
-        })->name('admin.dashboard');
-        
+        })->name('dashboard');
+
         // User management
-        Route::resource('admin/users', AdminUserController::class, ['as' => 'admin']);
-        
+        Route::resource('users', AdminUserController::class);
+
         // Product management
-        Route::resource('admin/products', AdminProductController::class, ['as' => 'admin']);
+        Route::resource('products', AdminProductController::class);
+
+        // Voucher management
+        Route::resource('vouchers', AdminVoucherController::class);
+
+        // Reservation management
+        Route::resource('reservations', AdminReservationController::class);
     });
 });
 

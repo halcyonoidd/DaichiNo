@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daichi No - Japanese Restaurant</title>
-    <link rel="stylesheet" href="{{ asset('css/bulma.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frontend/landing.css') }}">
 
 </head>
 <body>
@@ -484,6 +484,6 @@
         </div>
     </footer>
 
-    <script src="{{ asset('js/landing.js') }}"></script>
+    <script src="{{ asset('js/frontend/landing.js') }}"></script>
 </body>
 </html>

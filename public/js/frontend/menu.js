@@ -11,11 +11,11 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// 3D Hexahedron Menu Selector with FIXED ORIENTATION
 document.addEventListener('DOMContentLoaded', function() {
     const hexahedron = document.getElementById('hexahedron');
     const faces = document.querySelectorAll('.face');
     const menuItems = document.querySelectorAll('.menu-items');
+    const categoryDescriptions = document.querySelectorAll('.category-description');
     const categoryIndicator = document.getElementById('category-indicator');
     
     const rotateUpBtn = document.getElementById('rotate-up');
@@ -23,17 +23,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const rotateDownBtn = document.getElementById('rotate-down');
     const rotateRightBtn = document.getElementById('rotate-right');
     
-    // CORRECTED ROTATION ANGLES - Each face will properly face front
     const faceRotations = {
-        'sushi': { x: 0, y: 0 },        // Front face (default)
-        'ramen': { x: 0, y: 180 },      // Back face (rotate 180° on Y)
-        'grilled': { x: 0, y: -90 },    // Right face (rotate -90° on Y)
-        'appetizers': { x: 0, y: 90 },  // Left face (rotate 90° on Y)
-        'desserts': { x: -90, y: 0 },   // Top face (rotate -90° on X)
-        'beverages': { x: 90, y: 0 }    // Bottom face (rotate 90° on X)
+        'sushi': { x: 0, y: 0 },     
+        'ramen': { x: 0, y: 180 },
+        'grilled': { x: 0, y: -90 }, 
+        'appetizers': { x: 0, y: 90 },
+        'desserts': { x: -90, y: 0 },
+        'beverages': { x: 90, y: 0 }
     };
     
-    // Navigation logic - which face is next for each direction
     const navigationMap = {
         'sushi': { up: 'desserts', down: 'beverages', left: 'grilled', right: 'appetizers' },
         'ramen': { up: 'desserts', down: 'beverages', left: 'appetizers', right: 'grilled' },
@@ -45,29 +43,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentCategory = 'sushi';
     
-    // Initialize with proper rotation
     rotateToFace('sushi');
     
-    // Function to rotate to a specific face
     function rotateToFace(category) {
         currentCategory = category;
         const targetRotation = faceRotations[category];
         
-        // Apply the rotation
         hexahedron.style.transform = `rotateX(${targetRotation.x}deg) rotateY(${targetRotation.y}deg)`;
         
-        // Update active face
         updateActiveFace(category);
         
-        // Update category indicator
         const faceText = Array.from(faces).find(f => f.getAttribute('data-category') === category).textContent;
         categoryIndicator.textContent = `Current Category: ${faceText}`;
         
-        // Update menu items display
         updateMenuDisplay();
+
+        updateCategoryDescription();
     }
     
-    // Function to update active face
     function updateActiveFace(category) {
         faces.forEach((face) => {
             if (face.getAttribute('data-category') === category) {
@@ -78,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Function to update menu display based on active category
     function updateMenuDisplay() {
         menuItems.forEach(items => {
             if (items.id === `${currentCategory}-items`) {
@@ -89,7 +81,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Event listeners for navigation buttons
+    function updateCategoryDescription() {
+        categoryDescriptions.forEach(desc => {
+            if (desc.id === `${currentCategory}-description`) {
+                desc.classList.add('active');
+            } else {
+                desc.classList.remove('active');
+            }
+        });
+    }
+    
     rotateUpBtn.addEventListener('click', () => {
         const nextCategory = navigationMap[currentCategory].up;
         rotateToFace(nextCategory);
@@ -110,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
         rotateToFace(nextCategory);
     });
     
-    // Keyboard navigation
     document.addEventListener('keydown', e => {
         switch(e.key) {
             case 'ArrowUp':
@@ -136,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Touch swipe functionality
     let touchStartX = 0;
     let touchStartY = 0;
     
@@ -157,35 +156,139 @@ document.addEventListener('DOMContentLoaded', function() {
         const deltaY = endY - startY;
         
         if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            // Horizontal swipe
             if (deltaX < -swipeThreshold) {
-                // Swipe left
                 const leftCategory = navigationMap[currentCategory].left;
                 rotateToFace(leftCategory);
             } else if (deltaX > swipeThreshold) {
-                // Swipe right
                 const rightCategory = navigationMap[currentCategory].right;
                 rotateToFace(rightCategory);
             }
         } else {
-            // Vertical swipe
             if (deltaY < -swipeThreshold) {
-                // Swipe up
                 const upCategory = navigationMap[currentCategory].up;
                 rotateToFace(upCategory);
             } else if (deltaY > swipeThreshold) {
-                // Swipe down
                 const downCategory = navigationMap[currentCategory].down;
                 rotateToFace(downCategory);
             }
         }
     }
     
-    // Direct click on cube faces
     faces.forEach(face => {
         face.addEventListener('click', () => {
             const category = face.getAttribute('data-category');
             rotateToFace(category);
         });
+    });
+    
+    document.querySelectorAll('.btn-small').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const menuItem = this.closest('.menu-item');
+            const itemName = menuItem.querySelector('.menu-item-name').textContent;
+            const itemPrice = menuItem.querySelector('.menu-item-price').textContent;
+            
+            alert(`Added ${itemName} (${itemPrice}) to cart!`);
+            
+            const originalText = this.textContent;
+            this.innerHTML = '<i class="fas fa-check"></i> Added!';
+            this.style.backgroundColor = '#2e7d32';
+            
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.style.backgroundColor = '';
+            }, 2000);
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const floatingUserBtn = document.getElementById('floating-user-btn');
+    const userPanel = document.getElementById('user-panel');
+    const closePanelBtn = document.getElementById('close-panel');
+    const panelOverlay = document.getElementById('panel-overlay');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    function openUserPanel() {
+        userPanel.classList.add('open');
+        panelOverlay.classList.add('active');
+        floatingUserBtn.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeUserPanel() {
+        userPanel.classList.remove('open');
+        panelOverlay.classList.remove('active');
+        floatingUserBtn.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    floatingUserBtn.addEventListener('click', openUserPanel);
+
+    closePanelBtn.addEventListener('click', closeUserPanel);
+
+    panelOverlay.addEventListener('click', closeUserPanel);
+    
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && userPanel.classList.contains('open')) {
+            closeUserPanel();
+        }
+    });
+    
+    logoutBtn.addEventListener('click', function() {
+        if (confirm('Are you sure you want to log out?')) {
+            alert('You have been logged out successfully.');
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 1000);
+            
+            closeUserPanel();
+        }
+    });
+    
+    //data
+    function updateUserStats() {
+        const userName = "Takashi Yamada";
+        const userEmail = "takashi.yamada@email.com";
+        const reservations = 3;
+        const points = 1250;
+        const vouchers = 2;
+        
+        document.getElementById('user-name').textContent = userName;
+        document.getElementById('user-email').textContent = userEmail;
+        document.getElementById('reservation-count').textContent = reservations;
+        document.getElementById('points-earned').textContent = points.toLocaleString();
+        document.getElementById('vouchers-owned').textContent = vouchers;
+    }
+
+    updateUserStats();
+    
+    let panelTouchStartY = 0;
+    let panelTouchStartTime = 0;
+    
+    userPanel.addEventListener('touchstart', e => {
+        panelTouchStartY = e.touches[0].clientY;
+        panelTouchStartTime = Date.now();
+    });
+    
+    userPanel.addEventListener('touchend', e => {
+        const panelTouchEndY = e.changedTouches[0].clientY;
+        const panelTouchDeltaY = panelTouchEndY - panelTouchStartY;
+        const panelTouchDuration = Date.now() - panelTouchStartTime;
+
+        if (panelTouchDeltaY > 100 || (panelTouchDeltaY > 50 && panelTouchDuration < 300)) {
+            closeUserPanel();
+        }
+    });
+
+    window.addEventListener('scroll', function() {
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        const scrollPosition = window.scrollY;
+        
+        if (scrollPosition > 100) {
+            scrollIndicator.innerHTML = '<i class="fas fa-check mr-2"></i> Button stays visible';
+        } else {
+            scrollIndicator.innerHTML = '<i class="fas fa-arrow-down mr-2"></i> Scroll to test';
+        }
     });
 });
