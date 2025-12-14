@@ -62,7 +62,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Handle web logout and redirect to register page.
+     * Handle web logout and redirect to guest landing page.
      */
     public function logout(Request $request): RedirectResponse
     {
@@ -71,8 +71,8 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        // Redirect otomatis ke halaman register sesuai permintaan
-        return redirect()->route('register');
+        // Redirect ke halaman landing guest
+        return redirect()->route('landingGuest');
     }
 
 }

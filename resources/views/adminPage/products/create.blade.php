@@ -77,17 +77,6 @@
                     @enderror
                 </div>
 
-                <!-- Price -->
-                <div class="field">
-                    <label class="label">Price (Rp)</label>
-                    <div class="control">
-                        <input class="input @error('price') is-danger @enderror" type="number" name="price" step="0.01" value="{{ old('price') }}" required>
-                    </div>
-                    @error('price')
-                        <p class="help is-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-
                 <!-- Description -->
                 <div class="field">
                     <label class="label">Description</label>

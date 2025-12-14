@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuCategories = document.querySelectorAll('.menu-category');
     const menuItems = document.querySelectorAll('.menu-items');
     const categoryDescriptions = document.querySelectorAll('.category-description');
-    const categoryOrder = ['sushi_and_sashimi', 'ramen_and_noodles', 'grilled_specialties', 'appetizer', 'dessert', 'drink'];
-    let currentCategory = 'sushi_and_sashimi';
+    const categoryOrder = ['sushi', 'ramen', 'grilled', 'appetizers', 'desserts', 'beverages'];
+    let currentCategory = 'sushi';
 
     function switchCategory(category) {
         if (!categoryOrder.includes(category)) return;
@@ -85,13 +85,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    logoutBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (confirm('Logout sekarang?')) {
-            const form = document.getElementById('logout-form');
-            if (form) {
-                form.submit();
-            }
+    logoutBtn.addEventListener('click', function() {
+        if (confirm('Are you sure you want to log out?')) {
+            alert('You have been logged out successfully.');
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 1000);
+            
+            closeUserPanel();
         }
     });
     

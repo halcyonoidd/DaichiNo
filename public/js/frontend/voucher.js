@@ -12,78 +12,9 @@ window.addEventListener('scroll', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    let cart = {};
+    // Load cart from localStorage or initialize empty
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
     
-    const vouchers = {
-        1: { 
-            id: 1, 
-            name: "Complete Sakura Experience", 
-            price: 11500, 
-            type: "experience",
-            description: "Full 6-course dining experience for one person",
-            details: "Includes 6-course meal, drinks, dessert",
-            validity: "12 months",
-            discount: "Save ¥1,000 (8% discount)",
-            originalPrice: 12500
-        },
-        2: { 
-            id: 2, 
-            name: "20% Off Any Experience", 
-            price: 8000, 
-            type: "discount",
-            description: "Significant savings on any dining experience",
-            details: "20% off total bill for up to 6 people",
-            validity: "6 months",
-            discount: "Save up to ¥15,200",
-            originalPrice: null
-        },
-        3: { 
-            id: 3, 
-            name: "Premium Sake Pairing", 
-            price: 5500, 
-            type: "meal",
-            description: "Enhanced beverage experience with your meal",
-            details: "Includes 5 premium sake tastings with expert guidance",
-            validity: "12 months",
-            discount: "Save ¥1,000 (15% discount)",
-            originalPrice: 6500
-        },
-        4: { 
-            id: 4, 
-            name: "Custom Amount Gift Card", 
-            price: 15000, 
-            type: "experience",
-            description: "Flexible gift amount for any Daichi No experience",
-            details: "Customizable amount with premium gift packaging",
-            validity: "18 months",
-            discount: "Choose amount at checkout",
-            originalPrice: null,
-            custom: true
-        },
-        5: { 
-            id: 5, 
-            name: "A5 Wagyu Beef Upgrade", 
-            price: 10500, 
-            type: "meal",
-            description: "Upgrade your experience with premium Wagyu",
-            details: "150g A5 Wagyu steak prepared teppanyaki or traditional",
-            validity: "12 months",
-            discount: "Save ¥1,500 (12.5% discount)",
-            originalPrice: 12000
-        },
-        6: { 
-            id: 6, 
-            name: "Anniversary Celebration Package", 
-            price: 12000, 
-            type: "discount",
-            description: "Special package for anniversary celebrations",
-            details: "Includes champagne, dessert, and professional photo session for couples",
-            validity: "3 months",
-            discount: "Save ¥3,000 (20% discount)",
-            originalPrice: 15000
-        }
-    };
-
     const cartSidebar = document.getElementById('cart-sidebar');
     const viewCartBtn = document.getElementById('view-cart-btn');
     const closeCartBtn = document.getElementById('close-cart');
@@ -96,7 +27,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const typeCards = document.querySelectorAll('.type-card');
     const voucherCards = document.querySelectorAll('.voucher-card');
     const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
-    const giftCardAmountSelect = document.getElementById('gift-card-amount');
+
+    // Save cart to localStorage
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartBadge();
+    }
+
+    // Update cart badge on navbar and other pages
+    function updateCartBadge() {
+        const cartBadges = document.querySelectorAll('.cart-count, #cart-badge');
+        let totalItems = 0;
+        Object.values(cart).forEach(item => {
+            totalItems += item.quantity;
+        });
+        cartBadges.forEach(badge => {
+            badge.textContent = totalItems;
+        });
+    }
 
     typeCards.forEach(card => {
         card.addEventListener('click', function() {
@@ -118,15 +66,21 @@ document.addEventListener('DOMContentLoaded', function() {
     addToCartBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             const voucherId = parseInt(this.dataset.id);
-            const isCustom = this.dataset.custom === 'true';
+            const voucherPrice = parseInt(this.dataset.price);
+            const voucherTitle = this.dataset.title;
+            const voucherCard = this.closest('.voucher-card');
+            const voucherType = voucherCard.dataset.type;
+            const voucherBadge = voucherCard.querySelector('.voucher-tier').textContent.trim();
+            const voucherDescription = voucherCard.querySelector('.voucher-description').textContent.trim();
             
-            let voucherData = { ...vouchers[voucherId] };
-            
-            if (isCustom && voucherId === 4) {
-                const selectedAmount = parseInt(giftCardAmountSelect.value);
-                voucherData.price = selectedAmount;
-                voucherData.name = `¥${selectedAmount.toLocaleString()} Gift Card`;
-            }
+            const voucherData = {
+                id: voucherId,
+                name: voucherTitle,
+                price: voucherPrice,
+                type: voucherType,
+                description: voucherDescription,
+                badge: voucherBadge
+            };
             
             addToCart(voucherData);
         });
@@ -140,12 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
             cart[cartKey].totalPrice += item.price;
         } else {
             cart[cartKey] = { 
-                ...item, 
+                ...item,
                 quantity: 1, 
                 totalPrice: item.price 
             };
         }
         
+        saveCart();
         updateCartDisplay();
         showNotification();
     }
@@ -159,8 +114,10 @@ document.addEventListener('DOMContentLoaded', function() {
             totalPrice += item.totalPrice;
         });
         
-        cartCount.textContent = totalItems;
-        cartTotal.textContent = `¥${totalPrice.toLocaleString()}`;
+        if (cartCount) {
+            cartCount.textContent = totalItems;
+        }
+        cartTotal.textContent = `Rp${totalPrice.toLocaleString('id-ID')}`;
         
         cartItems.innerHTML = '';
         
@@ -170,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             emptyCartMessage.style.display = 'none';
             
-            Object.values(cart).forEach(item => {
+            Object.entries(cart).forEach(([cartKey, item]) => {
                 const cartItem = document.createElement('div');
                 cartItem.className = 'cart-item';
                 
@@ -185,14 +142,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div class="cart-item-details">
                         <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-info">${item.description}</div>
-                        <div class="cart-item-info">Valid: ${item.validity}</div>
-                        <div class="cart-item-price">¥${item.totalPrice.toLocaleString()}</div>
+                        <div class="cart-item-info">${item.badge}</div>
+                        <div class="cart-item-price">Rp${item.price.toLocaleString('id-ID')}</div>
                     </div>
                     <div class="cart-item-qty">
-                        <button class="decrease-cart" data-key="${Object.keys(cart).find(key => cart[key] === item)}">-</button>
+                        <button class="decrease-cart" data-key="${cartKey}">-</button>
                         <span>${item.quantity}</span>
-                        <button class="increase-cart" data-key="${Object.keys(cart).find(key => cart[key] === item)}">+</button>
+                        <button class="increase-cart" data-key="${cartKey}">+</button>
                     </div>
                 `;
                 cartItems.appendChild(cartItem);
@@ -207,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         delete cart[key];
                     }
+                    saveCart();
                     updateCartDisplay();
                 });
             });
@@ -217,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (cart[key].quantity < 10) {
                         cart[key].quantity++;
                         cart[key].totalPrice = cart[key].price * cart[key].quantity;
+                        saveCart();
                         updateCartDisplay();
                     }
                 });
@@ -231,61 +189,59 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     }
 
-    viewCartBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        cartSidebar.classList.add('open');
-    });
-
-    closeCartBtn.addEventListener('click', function() {
-        cartSidebar.classList.remove('open');
-    });
-
-    document.addEventListener('click', function(e) {
-        if (!cartSidebar.contains(e.target) && !viewCartBtn.contains(e.target) && cartSidebar.classList.contains('open')) {
+    // Cart sidebar functionality
+    if (closeCartBtn) {
+        closeCartBtn.addEventListener('click', function() {
             cartSidebar.classList.remove('open');
-        }
-    });
+        });
+    }
+
+    // Cart link in navbar
+    const cartLink = document.querySelector('.nav-section.right a[href*="cart"]');
+    if (cartLink) {
+        cartLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            cartSidebar.classList.add('open');
+        });
+    }
 
     checkoutBtn.addEventListener('click', function() {
         if (Object.keys(cart).length === 0) {
-            alert('Your cart is empty');
+            alert('Keranjang Anda kosong');
             return;
         }
         
         let totalPrice = 0;
-        let voucherCodes = [];
+        let cartItems = [];
         
         Object.values(cart).forEach(item => {
             totalPrice += item.totalPrice;
-            const code = `DN-${item.id.toString().padStart(3, '0')}-${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
-            voucherCodes.push({ name: item.name, code: code });
+            cartItems.push({
+                name: item.name,
+                quantity: item.quantity,
+                price: item.price
+            });
         });
         
-        let message = `Purchase confirmed!\n\nTotal: ¥${totalPrice.toLocaleString()}\n\nYour voucher codes:\n`;
-        voucherCodes.forEach(vc => {
-            message += `\n${vc.name}: ${vc.code}`;
+        let message = `Pesanan Dikonfirmasi!\n\nTotal: Rp${totalPrice.toLocaleString('id-ID')}\n\nDetail:\n`;
+        cartItems.forEach(item => {
+            message += `\n- ${item.name}\n  Qty: ${item.quantity} x Rp${item.price.toLocaleString('id-ID')}`;
         });
-        message += `\n\nYou will receive an email with digital vouchers shortly.`;
+        message += `\n\nAnda akan menerima email konfirmasi dalam beberapa saat.`;
         
         alert(message);
         
+        // Clear cart and save
         cart = {};
+        saveCart();
         updateCartDisplay();
         
         cartSidebar.classList.remove('open');
     });
 
+    // Initialize cart display on page load
     updateCartDisplay();
-    
-    if (giftCardAmountSelect) {
-        giftCardAmountSelect.addEventListener('change', function() {
-            const amount = parseInt(this.value);
-            const giftCardBtn = document.querySelector('[data-id="4"]');
-            if (giftCardBtn) {
-                giftCardBtn.querySelector('i').nextSibling.textContent = ` Add to Cart (¥${amount.toLocaleString()})`;
-            }
-        });
-    }
+    updateCartBadge();
 });
 
 document.addEventListener('DOMContentLoaded', function() {

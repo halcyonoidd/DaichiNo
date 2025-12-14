@@ -32,16 +32,14 @@ class AdminVoucherController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'code' => 'required|string|unique:vouchers,code|max:50',
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'discount_type' => 'required|in:percentage,fixed',
-            'discount_value' => 'required|numeric|min:0',
-            'validity_days' => 'required|integer|min:1',
-            'is_active' => 'boolean',
+            'badge' => 'required|string|max:50',
+            'title' => 'required|string|max:255',
+            'category' => 'required|in:experience_vouchers,discount_vouchers,meal_add_ons',
+            'description' => 'required|string',
+            'validity' => 'required|integer|min:1',
+            'capacity' => 'required|integer|min:1',
+            'price' => 'required|numeric|min:0',
         ]);
-
-        $validated['is_active'] = $request->has('is_active');
 
         Voucher::create($validated);
 
@@ -65,16 +63,14 @@ class AdminVoucherController extends Controller
         $voucher = Voucher::findOrFail($id);
 
         $validated = $request->validate([
-            'code' => 'required|string|max:50|unique:vouchers,code,' . $id,
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'discount_type' => 'required|in:percentage,fixed',
-            'discount_value' => 'required|numeric|min:0',
-            'validity_days' => 'required|integer|min:1',
-            'is_active' => 'boolean',
+            'badge' => 'required|string|max:50',
+            'title' => 'required|string|max:255',
+            'category' => 'required|in:experience_vouchers,discount_vouchers,meal_add_ons',
+            'description' => 'required|string',
+            'validity' => 'required|integer|min:1',
+            'capacity' => 'required|integer|min:1',
+            'price' => 'required|numeric|min:0',
         ]);
-
-        $validated['is_active'] = $request->has('is_active');
 
         $voucher->update($validated);
 

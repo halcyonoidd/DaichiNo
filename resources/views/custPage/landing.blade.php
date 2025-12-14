@@ -454,11 +454,6 @@
                 <div class="footer-column">
                     <h3>Daichi No</h3>
                     <p>Experience the authentic taste of Japan with our carefully crafted dishes made from the finest ingredients.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>

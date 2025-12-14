@@ -23,7 +23,7 @@
                         <span class="icon is-small">
                             <i class="fas fa-arrow-left"></i>
                         </span>
-                        <span>Kembali</span>
+                        <span>Back</span>
                     </a>
                     <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                         @csrf
@@ -58,58 +58,59 @@
                 @method('PUT')
 
                 <div class="field">
-                    <label class="label">Voucher Code</label>
+                    <label class="label">Badge</label>
                     <div class="control">
-                        <input class="input" type="text" name="code" value="{{ old('code', $voucher->code) }}" required>
+                        <input class="input" type="text" name="badge" value="{{ old('badge', $voucher->badge) }}" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Voucher Name</label>
+                    <label class="label">Title</label>
                     <div class="control">
-                        <input class="input" type="text" name="name" value="{{ old('name', $voucher->name) }}" required>
+                        <input class="input" type="text" name="title" value="{{ old('title', $voucher->title) }}" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Description</label>
-                    <div class="control">
-                        <textarea class="textarea" name="description">{{ old('description', $voucher->description) }}</textarea>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Discount Type</label>
+                    <label class="label">Category</label>
                     <div class="control">
                         <div class="select">
-                            <select name="discount_type" required>
-                                <option value="">Select type</option>
-                                <option value="percentage" @selected(old('discount_type', $voucher->discount_type) === 'percentage')>Percentage (%)</option>
-                                <option value="fixed" @selected(old('discount_type', $voucher->discount_type) === 'fixed')>Fixed Amount ($)</option>
+                            <select name="category" required>
+                                <option value="">Select category</option>
+                                <option value="experience_vouchers" @selected(old('category', $voucher->category) === 'experience_vouchers')>Experience Vouchers</option>
+                                <option value="discount_vouchers" @selected(old('category', $voucher->category) === 'discount_vouchers')>Discount Vouchers</option>
+                                <option value="meal_add_ons" @selected(old('category', $voucher->category) === 'meal_add_ons')>Meal Add-ons</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Discount Value</label>
+                    <label class="label">Description</label>
                     <div class="control">
-                        <input class="input" type="number" name="discount_value" step="0.01" value="{{ old('discount_value', $voucher->discount_value) }}" required>
+                        <textarea class="textarea" name="description" rows="4" required>{{ old('description', $voucher->description) }}</textarea>
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label">Validity (Days)</label>
                     <div class="control">
-                        <input class="input" type="number" name="validity_days" value="{{ old('validity_days', $voucher->validity_days) }}" required>
+                        <input class="input" type="number" name="validity" value="{{ old('validity', $voucher->validity) }}" min="1" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="checkbox">
-                        <input type="checkbox" name="is_active" value="1" @checked(old('is_active', $voucher->is_active))>
-                        Active
-                    </label>
+                    <label class="label">Capacity (Available Quantity)</label>
+                    <div class="control">
+                        <input class="input" type="number" name="capacity" value="{{ old('capacity', $voucher->capacity) }}" min="1" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Price (Rp)</label>
+                    <div class="control">
+                        <input class="input" type="number" name="price" step="0.01" value="{{ old('price', $voucher->price) }}" min="0" required>
+                    </div>
                 </div>
 
                 <div class="field is-grouped">

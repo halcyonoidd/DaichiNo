@@ -59,32 +59,36 @@
                     <table class="table is-striped is-hoverable is-fullwidth">
                         <thead>
                             <tr>
-                                <th>Code</th>
-                                <th>Name</th>
-                                <th>Discount</th>
+                                <th>Badge</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Price</th>
                                 <th>Validity</th>
-                                <th>Status</th>
+                                <th>Capacity</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($vouchers as $voucher)
                                 <tr>
-                                    <td><strong>{{ $voucher->code }}</strong></td>
-                                    <td>{{ $voucher->name }}</td>
+                                    <td><span class="tag is-info">{{ $voucher->badge }}</span></td>
+                                    <td><strong>{{ $voucher->title }}</strong></td>
                                     <td>
-                                        @if($voucher->discount_type === 'percentage')
-                                            <span class="tag is-warning">{{ $voucher->discount_value }}%</span>
+                                        @if($voucher->category === 'experience_vouchers')
+                                            <span class="tag is-warning">Experience</span>
+                                        @elseif($voucher->category === 'discount_vouchers')
+                                            <span class="tag is-success">Discount</span>
                                         @else
-                                            <span class="tag is-warning">${{ number_format($voucher->discount_value, 2) }}</span>
+                                            <span class="tag is-primary">Meal Add-on</span>
                                         @endif
                                     </td>
-                                    <td>{{ $voucher->validity_days }} days</td>
+                                    <td>Rp{{ number_format($voucher->price, 2) }}</td>
+                                    <td>{{ $voucher->validity }} days</td>
                                     <td>
-                                        @if($voucher->is_active)
-                                            <span class="tag is-success">Active</span>
+                                        @if($voucher->capacity > 0)
+                                            <span class="tag is-success">{{ $voucher->capacity }}</span>
                                         @else
-                                            <span class="tag is-danger">Inactive</span>
+                                            <span class="tag is-danger">Sold Out</span>
                                         @endif
                                     </td>
                                     <td>

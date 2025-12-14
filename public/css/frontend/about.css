@@ -124,8 +124,13 @@ body {
     padding: 300px 20px;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.78)),
                 url('/img/landingImage/restaurantInterior.png') no-repeat center center/cover;
+}
+
+.about-hero h1,
+.about-hero .subtitle {
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
 }
 
 .about-section {
@@ -158,7 +163,7 @@ body {
 }
 
 .history-section {
-    background-color: white;
+    background-color: #fdfbf8;
 }
 
 .timeline-container {
@@ -202,11 +207,12 @@ body {
 }
 
 .timeline-content .box {
-    background-color: white;
+    background: rgba(255, 255, 255, 0.96);
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border-left: 4px solid var(--primary-color);
+    border-radius: 12px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(44, 85, 48, 0.16);
+    border-left: 5px solid var(--primary-color);
     height: 100%;
 }
 

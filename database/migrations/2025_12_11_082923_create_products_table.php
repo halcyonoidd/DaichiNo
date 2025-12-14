@@ -14,16 +14,17 @@ public function up(): void
         
         // kategori 
         $table->enum('category', [
-            'sushi_and_sashimi', 
-            'ramen_and_noodles', 
-            'grilled_specialties', 
-            'appetizer', 
-            'dessert',
-            'drink' 
+            'mizu', 
+            'daichi', 
+            'kaen', 
+            'ten', 
+            'yomi',
+            'danpen',
+            'gaen',
+            'misc'
         ]);
 
         $table->text('description')->nullable();
-        $table->decimal('price', 10, 2);
         $table->string('image_path')->nullable();
         $table->boolean('is_available')->default(true);
         $table->timestamps();

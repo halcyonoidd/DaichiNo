@@ -8,6 +8,31 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 // ===============================
 function saveCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartBadge();
+}
+
+// ===============================
+// UPDATE CART BADGE
+// ===============================
+function updateCartBadge() {
+    const cartBadges = document.querySelectorAll('.cart-count, #cart-badge');
+    let totalItems = 0;
+    
+    // Count from array format (products)
+    if (Array.isArray(cart)) {
+        cart.forEach(item => {
+            totalItems += item.quantity || 1;
+        });
+    } else {
+        // Count from object format (vouchers)
+        Object.values(cart).forEach(item => {
+            totalItems += item.quantity || 1;
+        });
+    }
+    
+    cartBadges.forEach(badge => {
+        badge.textContent = totalItems;
+    });
 }
 
 // ===============================
@@ -81,7 +106,6 @@ function bindAddToCartButtons(products) {
 // ===============================
 // CART UI UPDATE
 // ===============================
-// Update bagian display price di cart. js
 function updateCartDisplay() {
     const cartItemsContainer = document.getElementById('cart-items');
     const emptyCartSection = document.getElementById('empty-cart');
@@ -94,14 +118,34 @@ function updateCartDisplay() {
 
     let subtotal = 0;
     let totalItems = 0;
+    let cartArray = [];
 
-    cart.forEach(item => {
-        subtotal += item.price * item.quantity;
-        totalItems += item.quantity;
+    // Convert cart object (vouchers) to array format if needed
+    if (typeof cart === 'object' && !Array.isArray(cart)) {
+        Object.values(cart).forEach(item => {
+            cartArray.push({
+                id: item.id,
+                name: item.name,
+                price: item.price,
+                quantity: item.quantity,
+                type: item.type || 'voucher',
+                description: item.description || '',
+                badge: item.badge || '',
+                image: null
+            });
+        });
+    } else {
+        cartArray = cart;
+    }
+
+    // Calculate totals
+    cartArray.forEach(item => {
+        subtotal += (item.price || 0) * (item.quantity || 1);
+        totalItems += item.quantity || 1;
     });
 
     const tax = subtotal * 0.10;
-    const serviceFee = cart.length > 0 :  5000 : 0;
+    const serviceFee = cartArray.length > 0 ? 5000 : 0;
     const total = subtotal + tax + serviceFee;
 
     if (cartBadge) cartBadge.textContent = totalItems;
@@ -111,10 +155,10 @@ function updateCartDisplay() {
     if (serviceFeeElement) serviceFeeElement.textContent = `Rp ${serviceFee.toLocaleString('id-ID')}`;
     if (totalElement) totalElement.textContent = `Rp ${total.toLocaleString('id-ID')}`;
 
-    if (! cartItemsContainer) return;
+    if (!cartItemsContainer) return;
 
-    if (cart.length === 0) {
-        cartItemsContainer. innerHTML = '';
+    if (cartArray.length === 0) {
+        cartItemsContainer.innerHTML = '';
         if (emptyCartSection) emptyCartSection.style.display = 'block';
         return;
     }
@@ -122,21 +166,33 @@ function updateCartDisplay() {
     if (emptyCartSection) emptyCartSection.style.display = 'none';
     cartItemsContainer.innerHTML = '';
 
-    cart.forEach((item, index) => {
+    cartArray.forEach((item, index) => {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
 
+        // Determine icon based on type
+        let icon = 'fa-gift';
+        let categoryLabel = item.badge || item.type || 'item';
+        
+        if (item.type === 'experience') icon = 'fa-utensils';
+        if (item.type === 'discount' || item.type === 'discount_vouchers') icon = 'fa-percentage';
+        if (item.type === 'meal' || item.type === 'meal_add_ons') icon = 'fa-wine-glass-alt';
+
+        let itemImageHtml = item.image 
+            ? `<img src="${item.image}" alt="${item.name}">`
+            : `<i class="fas ${icon}"></i>`;
+
         cartItem.innerHTML = `
-            <div class="cart-item-image">
-                <img src="${item. image}" alt="${item.name}">
+            <div class="cart-item-image${item.image ? '' : ' voucher'}">
+                ${itemImageHtml}
             </div>
             <div class="cart-item-content">
                 <div class="cart-item-header">
                     <div>
                         <div class="cart-item-title">${item.name}</div>
-                        <span class="cart-item-category">${item.category. replace(/_/g, ' ')}</span>
+                        <span class="cart-item-category">${categoryLabel}</span>
                     </div>
-                    <div class="cart-item-price">Rp ${Number(item.price).toLocaleString('id-ID')}</div>
+                    <div class="cart-item-price">Rp ${Number(item.price || 0).toLocaleString('id-ID')}</div>
                 </div>
                 <div class="cart-item-details">
                     <p>${item.description || ''}</p>
@@ -158,11 +214,29 @@ function updateCartDisplay() {
     });
 }
 
+// ===============================
+// CART ACTIONS
+// ===============================
 function changeQty(index, delta) {
-    cart[index].quantity += delta;
+    // Convert to array if needed
+    let cartArray = Array.isArray(cart) ? cart : Object.values(cart);
+    
+    cartArray[index].quantity += delta;
 
-    if (cart[index].quantity <= 0) {
-        cart. splice(index, 1);
+    if (cartArray[index].quantity <= 0) {
+        cartArray.splice(index, 1);
+    }
+
+    // Update cart in appropriate format
+    if (Array.isArray(cart)) {
+        cart = cartArray;
+    } else {
+        // Convert back to object format if it was originally
+        const newCart = {};
+        cartArray.forEach(item => {
+            newCart[`voucher-${item.id}`] = item;
+        });
+        cart = newCart;
     }
 
     saveCart();
@@ -170,7 +244,23 @@ function changeQty(index, delta) {
 }
 
 function removeItem(index) {
-    cart.splice(index, 1);
+    // Convert to array if needed
+    let cartArray = Array.isArray(cart) ? cart : Object.values(cart);
+    
+    cartArray.splice(index, 1);
+
+    // Update cart in appropriate format
+    if (Array.isArray(cart)) {
+        cart = cartArray;
+    } else {
+        // Convert back to object format if it was originally
+        const newCart = {};
+        cartArray.forEach(item => {
+            newCart[`voucher-${item.id}`] = item;
+        });
+        cart = newCart;
+    }
+
     saveCart();
     updateCartDisplay();
 }

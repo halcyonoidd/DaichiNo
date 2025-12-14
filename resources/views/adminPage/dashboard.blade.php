@@ -51,7 +51,6 @@
             <div class="column is-3">
                 <div class="stats-card">
                     <p class="heading">Total Orders</p>
-                    <p class="stats-number">{{ \App\Models\Order::count() }}</p>
                 </div>
             </div>
             <div class="column is-3">
@@ -63,7 +62,6 @@
             <div class="column is-3">
                 <div class="stats-card">
                     <p class="heading">Reservations</p>
-                    <p class="stats-number">{{ \App\Models\Reservation::count() }}</p>
                 </div>
             </div>
         </div>

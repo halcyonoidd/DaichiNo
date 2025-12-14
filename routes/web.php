@@ -63,7 +63,8 @@ Route::middleware('auth')->group(function () {
         })->name('reservation');
 
         Route::get('/voucher', function () {
-            return view('custPage.voucher');
+            $vouchers = \App\Models\Voucher::where('capacity', '>', 0)->get();
+            return view('custPage.voucher', compact('vouchers'));
         })->name('voucher');
     });
 

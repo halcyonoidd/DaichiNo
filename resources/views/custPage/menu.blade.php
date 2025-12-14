@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daichi No - Menu</title>
-    <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frontend/menu.css') }}">
+    
 </head>
 <body>
     <nav class="navbar transparent" id="navbar">
@@ -44,12 +45,12 @@
                 <p>Select a category to view dishes</p>
             </div>
             <div class="menu-categories" id="menu-categories">
-                <div class="menu-category active" data-category="sushi_and_sashimi">Sushi &amp; Sashimi</div>
-                <div class="menu-category" data-category="ramen_and_noodles">Ramen &amp; Noodles</div>
-                <div class="menu-category" data-category="grilled_specialties">Grilled Specialties</div>
-                <div class="menu-category" data-category="appetizer">Appetizer</div>
-                <div class="menu-category" data-category="dessert">Dessert</div>
-                <div class="menu-category" data-category="drink">Drink</div>
+                <div class="menu-category active" data-category="sushi">Mizu</div>
+                <div class="menu-category" data-category="ramen">Daichi</div>
+                <div class="menu-category" data-category="grilled">Kaen</div>
+                <div class="menu-category" data-category="appetizers">Yomi</div>
+                <div class="menu-category" data-category="desserts">Ten</div>
+                <div class="menu-category" data-category="beverages">Gawa</div>
             </div>
         </div>
     </section>
@@ -61,11 +62,11 @@
             </div>
 
             <div class="category-description-section">
-                <div class="category-description active" id="sushi_and_sashimi-description">
-                    <h3 class="category-title"><i class="fas fa-fish"></i> Sushi &amp; Sashimi</h3>
+                <div class="category-description active" id="sushi-description">
+                    <h3 class="category-title"><i class="fas fa-fish"></i> 水 (Mizu)</h3>
                     <p class="category-text">
-                        Every part of the sea we could get our hands on. Starting from the most abundant delicacy crafted with
-                        masterful hands, to a unique and downright strange creature captured then served for a wild tongue.
+                        Every part of the sea we could get our hands on. Starting from the most abundant delicacy crafted With
+                        masterful hands, to a unique and downright strange creature captured then served for a wild tounge.
                         Every single bite of fish will leave your senses tingling with melty and velvety texture alongside
                         magnificent taste.
                     </p>
@@ -76,12 +77,12 @@
                     </div>
                 </div>
                 
-                <div class="category-description" id="ramen_and_noodles-description">
-                    <h3 class="category-title"><i class="fas fa-utensils"></i> Ramen &amp; Noodles</h3>
+                <div class="category-description" id="ramen-description">
+                    <h3 class="category-title"><i class="fas fa-utensils"></i> 大地 (Daichi)</h3>
                     <p class="category-text">
-                        Warm your soul with our handcrafted ramen bowls and fried dishes, where broth simmers for over 24 hours
-                        to develop deep, complex flavors and frying is perfected. Our noodles are made fresh daily using
-                        traditional techniques, resulting in the perfect texture and chew. From rich tonkotsu to crispy donburi,
+                        Warm your soul with our handcrafted ramen bowls and fried dishes, where broth simmers for over 24 hours 
+                        to develop deep, complex flavors and frying is perfected. Our noodles are made fresh daily using 
+                        traditional techniques, resulting in the perfect texture and chew. From rich tonkotsu to crispy donburi, 
                         each bowl is a comforting masterpiece that represents the heart of Japanese comfort food.
                     </p>
                     <div class="category-features">
@@ -90,14 +91,14 @@
                         <span class="feature-tag">Fried and broth products</span>
                     </div>
                 </div>
-
-                <div class="category-description" id="grilled_specialties-description">
-                    <h3 class="category-title"><i class="fas fa-fire"></i> Grilled Specialties</h3>
+                
+                <div class="category-description" id="grilled-description">
+                    <h3 class="category-title"><i class="fas fa-fire"></i> 火炎 (Kaen)</h3>
                     <p class="category-text">
-                        Discover the smoky, savory flavors of Japanese grilled cuisine. Using premium ingredients and traditional
-                        binchotan charcoal, our grill masters create dishes that highlight natural flavors with minimal seasoning.
-                        From perfectly charred yakitori to succulent wagyu, each piece is cooked to perfection over controlled heat
-                        for maximum flavor development.
+                        Discover the smoky, savory flavors of Japanese grilled cuisine. Using premium ingredients 
+                        and traditional binchotan charcoal, our grill masters create dishes that highlight natural 
+                        flavors with minimal seasoning. From perfectly charred yakitori to succulent wagyu, each 
+                        piece is cooked to perfection over controlled heat for maximum flavor development.
                     </p>
                     <div class="category-features">
                         <span class="feature-tag">Binchotan Charcoal Grill</span>
@@ -105,14 +106,14 @@
                         <span class="feature-tag">Grilled</span>
                     </div>
                 </div>
-
-                <div class="category-description" id="appetizer-description">
-                    <h3 class="category-title"><i class="fas fa-seedling"></i> Appetizer</h3>
+                
+                <div class="category-description" id="appetizers-description">
+                    <h3 class="category-title"><i class="fas fa-seedling"></i> 黄泉 (Yomi)</h3>
                     <p class="category-text">
-                        Begin your culinary journey with our carefully curated selection of small plates. These dishes are designed
-                        to awaken your palate and prepare you for the main course. From traditional favorites like edamame and gyoza
-                        to innovative creations, each appetizer showcases seasonal ingredients and balanced flavors that reflect
-                        Japanese culinary philosophy.
+                        Begin your culinary journey with our carefully curated selection of small plates. These 
+                        dishes are designed to awaken your palate and prepare you for the main course. From 
+                        traditional favorites like edamame and gyoza to innovative creations, each appetizer 
+                        showcases seasonal ingredients and balanced flavors that reflect Japanese culinary philosophy.
                     </p>
                     <div class="category-features">
                         <span class="feature-tag">Seasonal Ingredients</span>
@@ -120,14 +121,14 @@
                         <span class="feature-tag">Appetizers</span>
                     </div>
                 </div>
-
-                <div class="category-description" id="dessert-description">
-                    <h3 class="category-title"><i class="fas fa-ice-cream"></i> Dessert</h3>
+                
+                <div class="category-description" id="desserts-description">
+                    <h3 class="category-title"><i class="fas fa-ice-cream"></i> 天 (Ten)</h3>
                     <p class="category-text">
-                        Conclude your meal with our exquisite Japanese-inspired desserts that balance sweetness with subtlety.
-                        Unlike Western desserts, our creations focus on natural flavors, elegant presentation, and light textures.
-                        From traditional matcha preparations to modern fusion desserts, each sweet treat provides a perfect ending
-                        to your dining experience.
+                        Conclude your meal with our exquisite Japanese-inspired desserts that balance sweetness 
+                        with subtlety. Unlike Western desserts, our creations focus on natural flavors, elegant 
+                        presentation, and light textures. From traditional matcha preparations to modern fusion 
+                        desserts, each sweet treat provides a perfect ending to your dining experience.
                     </p>
                     <div class="category-features">
                         <span class="feature-tag">Subtle Sweetness</span>
@@ -135,14 +136,14 @@
                         <span class="feature-tag">Desserts</span>
                     </div>
                 </div>
-
-                <div class="category-description" id="drink-description">
-                    <h3 class="category-title"><i class="fas fa-glass-whiskey"></i> Drink</h3>
+                
+                <div class="category-description" id="beverages-description">
+                    <h3 class="category-title"><i class="fas fa-glass-whiskey"></i> 側 (Gawa)</h3>
                     <p class="category-text">
-                        Complement your meal with our carefully selected beverage program. From premium sake curated by our sommelier
-                        to traditional teas and innovative cocktails, each drink is chosen to enhance your dining experience. Our sake
-                        selection includes rare finds and regional specialties, while our tea service follows traditional Japanese
-                        ceremony principles.
+                        Complement your meal with our carefully selected beverage program. From premium sake 
+                        curated by our sommelier to traditional teas and innovative cocktails, each drink is 
+                        chosen to enhance your dining experience. Our sake selection includes rare finds and 
+                        regional specialties, while our tea service follows traditional Japanese ceremony principles.
                     </p>
                     <div class="category-features">
                         <span class="feature-tag">Premium Sake Selection</span>
@@ -152,124 +153,683 @@
                 </div>
             </div>
 
-            <div class="menu-items active" id="sushi_and_sashimi-items">
-                @php $items = $products->where('category', 'sushi_and_sashimi'); @endphp
-                @forelse($items as $product)
-                    <div class="menu-item">
-                        <div class="menu-item-image">
-                            <img src="{{ $product->image_path ? asset($product->image_path) : asset('img/products/placeholder.jpg') }}" alt="{{ $product->name }}">
-                        </div>
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-name">{{ $product->name }}</h3>
-                                <span class="menu-item-price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
-                            </div>
-                            <p class="menu-item-description">{{ $product->description ?? 'No description provided.' }}</p>
-                        </div>
+            <div class="menu-items active" id="sushi-items">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/mizu/salmon_sashimi.jpg') }}" alt="Salmon Sashimi">
                     </div>
-                @empty
-                    <p class="no-items">Belum ada produk tersedia.</p>
-                @endforelse
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Salmon Sashimi</h3>
+                        </div>
+                        <p class="menu-item-description">Fresh Atlantic salmon, thinly sliced and served with wasabi and soy sauce</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/mizu/saba-sushi.jpg') }}" alt="Saba Sushi">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Saba Sushi</h3>
+                        </div>
+                        <p class="menu-item-description">Tightly packed slices of pickled mackarel and rice wrapped in bamboo leaves</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/mizu/cali-roll.jpg') }}" alt="California Roll">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">California Roll</h3>
+                        </div>
+                        <p class="menu-item-description">California roll topped with light roe covering</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/mizu/tuna-nig.jpg') }}" alt="Bluefin Tuna Nigiri">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Bluefin Tuna Nigiri</h3>
+                        </div>
+                        <p class="menu-item-description">Premium bluefin tuna over vinegar rice with a touch of wasabi</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/mizu/uni-gunkan.jpg') }}" alt="Uni Gunkan">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Uni Gunkan</h3>
+                        </div>
+                        <p class="menu-item-description">Rich and fresh uni placed atop of rice and wrapped loosely in nori</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/mizu/ebi-roll.jpg') }}" alt="Ebi Roll">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Ebi Roll</h3>
+                        </div>
+                        <p class="menu-item-description">Fried ebi rolled into a sushi with cucumber and nori, topped with it's tail and breadcrumbs</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/mizu/tako-nig.jpg') }}" alt="Tako Nigiri">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Tako Nigiri</h3>
+                        </div>
+                        <p class="menu-item-description">Freshly cut and cleaned octopus tentacle over rice</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/mizu/ikura-gunkan.jpg') }}" alt="Ikura Gunkan">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Ikura Gunkan</h3>
+                        </div>
+                        <p class="menu-item-description">Cured flying fish roe with rice and wrapped loosely with nori</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/mizu/unagi-nig.jpg') }}" alt="Unagi Nigiri">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Unagi Nigiri</h3>
+                        </div>
+                        <p class="menu-item-description">Rich lightly grilled eel over rice</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/mizu/hosomaki.jpg') }}" alt="Hosomaki">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Hosomaki</h3>
+                        </div>
+                        <p class="menu-item-description">Modest variety piece of salmon, tuna, and cucumber wrapped in rice and nori</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/mizu/flounder-nig.jpg') }}" alt="Flounder Nigiri">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Flounder Nigiri</h3>
+                        </div>
+                        <p class="menu-item-description">Freshly cut flounder fillet served with rice</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/mizu/shirako.jpg') }}" alt="Shirako">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Shirako</h3>
+                        </div>
+                        <p class="menu-item-description">Fish sperm sack soaked in soy sauce atop with radish and green onion</p>
+                    </div>
+                </div>
             </div>
             
-            <div class="menu-items" id="ramen_and_noodles-items">
-                @php $items = $products->where('category', 'ramen_and_noodles'); @endphp
-                @forelse($items as $product)
-                    <div class="menu-item">
-                        <div class="menu-item-image">
-                            <img src="{{ $product->image_path ? asset($product->image_path) : asset('img/products/placeholder.jpg') }}" alt="{{ $product->name }}">
-                        </div>
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-name">{{ $product->name }}</h3>
-                                <span class="menu-item-price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
-                            </div>
-                            <p class="menu-item-description">{{ $product->description ?? 'No description provided.' }}</p>
-                        </div>
+            <div class="menu-items" id="ramen-items">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/danpen/inarizushi.jpg') }}" alt="Inarizushi">
                     </div>
-                @empty
-                    <p class="no-items">Belum ada produk tersedia.</p>
-                @endforelse
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Inarizushi</h3>
+                        </div>
+                        <p class="menu-item-description">Sweet soy bean curd filled with rice and topped with sesame seed</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/danpen/chi-curry.jpg') }}" alt="Chicken Katsu Curry">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Chicken Katsu Curry</h3>
+                        </div>
+                        <p class="menu-item-description">Crispy and tender chicken cutlet paired with rice and heart curry</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/danpen/hamburg-don.jpg') }}" alt="Hamburger Donburi">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Hamburger Donburi</h3>
+                        </div>
+                        <p class="menu-item-description">Hamburger patty on a bowl of rice and optionally paired with raw pasteurized egg yolk</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/danpen/crsl4.jpg') }}" alt="Tonkotsu Ramen">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Tonkotsu Ramen</h3>
+                        </div>
+                        <p class="menu-item-description">Rich bone broth with ramen noodle topped with slices of chashu pork and bamboo shoot</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/danpen/ten-don.jpg') }}" alt="Ten Don">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Ten Don</h3>
+                        </div>
+                        <p class="menu-item-description">Fried vegetables variety and shrimp atop bowl of rice.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/danpen/kitsune-udon.jpg') }}" alt="Kitsune Udon">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Kitsune Udon</h3>
+                        </div>
+                        <p class="menu-item-description">Udon noodle paired with traditonal dashi soup and topped with fried sweet soy bean curd</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/danpen/oden.jpg') }}" alt="Oden">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Oden</h3>
+                        </div>
+                        <p class="menu-item-description">Traditional soup made with dashi soup and featuring konnyaku, boiled egg, and fish cakes</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/danpen/teppanyaki.jpg') }}" alt="Teppanyaki">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Teppanyaki</h3>
+                        </div>
+                        <p class="menu-item-description">Quick cooking session in front of customers, serving warm yakisoba or yakimeshi</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/danpen/okayodon.jpg') }}" alt="Okayodon">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Okayodon</h3>
+                        </div>
+                        <p class="menu-item-description">Stir fried chicken pieces and egg over rice. Mother and Son</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/danpen/gyu soba.jpg') }}" alt="Gyu Soba">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Gyu Soba</h3>
+                        </div>
+                        <p class="menu-item-description">Buckwheat string noodle with dashi and topped with grilled beef</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/danpen/katsu.jpg') }}" alt="Katsu">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Katsu</h3>
+                        </div>
+                        <p class="menu-item-description">Flatten chicken, breaded and fired to a perfection of juiciness and crispiness</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/danpen/pork-katsu.jpg') }}" alt="Pork Katsu">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Pork Katsu</h3>
+                        </div>
+                        <p class="menu-item-description">Flatten porkchop, fried within breadcrumb until tender yet still juicy</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="menu-items" id="grilled_specialties-items">
-                @php $items = $products->where('category', 'grilled_specialties'); @endphp
-                @forelse($items as $product)
-                    <div class="menu-item">
-                        <div class="menu-item-image">
-                            <img src="{{ $product->image_path ? asset($product->image_path) : asset('img/products/placeholder.jpg') }}" alt="{{ $product->name }}">
-                        </div>
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-name">{{ $product->name }}</h3>
-                                <span class="menu-item-price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
-                            </div>
-                            <p class="menu-item-description">{{ $product->description ?? 'No description provided.' }}</p>
-                        </div>
+            <div class="menu-items" id="grilled-items">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/kaen/yakitori.jpg') }}" alt="Yakitori">
                     </div>
-                @empty
-                    <p class="no-items">Belum ada produk tersedia.</p>
-                @endforelse
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Yakitori</h3>
+                        </div>
+                        <p class="menu-item-description">Grilled chicken skewers with teriyaki glaze. Tender and juicy</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/kaen/unagi-don.jpg') }}" alt="Unagi Don">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Unagi Don</h3>
+                        </div>
+                        <p class="menu-item-description">Grilled grade A eel with kabayaki sauce over rice.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/kaen/a5-wagyu.jpg') }}" alt="A5 Wagyu Steak">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">A5 Wagyu Steak</h3>
+                        </div>
+                        <p class="menu-item-description">Premium Japanese wagyu beef grilled to perfection</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/kaen/yakiniku.jpg') }}" alt="Yakiniku">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Yakiniku</h3>
+                        </div>
+                        <p class="menu-item-description">Slices of beef grilled to perfection over rice and with variety of sides.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/kaen/isobeyaki.jpg') }}" alt="Isobeyaki">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Isobeyaki</h3>
+                        </div>
+                        <p class="menu-item-description">Plain grilled mochi with cripy outside and the gooey inside, brushed off with soy sauce for extra savouriness</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/kaen/grill-tako.jpg') }}" alt="Grilled Ika">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Grilled Ika</h3>
+                        </div>
+                        <p class="menu-item-description">Savoury grilled squid served with lemon slices and variety of sauces</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/kaen/kushiyaki.jpg') }}" alt="Kushiyaki">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Kushiyaki</h3>
+                        </div>
+                        <p class="menu-item-description">Sliced and grilled aubergine glazed with sweet soy sauce</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/kaen/mush-yaki.jpg') }}" alt="Mushroom Yaki">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Mushroom Yaki</h3>
+                        </div>
+                        <p class="menu-item-description">Grilled and sliced pieces of variety savoury mushroom</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/kaen/grill-onigiri.jpg') }}" alt="Grilled Onigiri">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Grilled Onigiri</h3>
+                        </div>
+                        <p class="menu-item-description">Ball of rice filled with fermented persimmons. Served Grilled and with Nori</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/kaen/shioyaki.jpg') }}" alt="Saba no Shioyaki">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Saba no Shioyaki</h3>
+                        </div>
+                        <p class="menu-item-description">Grilled halibut glazed with sweet soy sauce</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/kaen/tsukune.jpg') }}" alt="Tsukune">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Tsukune</h3>
+                        </div>
+                        <p class="menu-item-description">Based on the mythical snake. It's a skewer of ground meat that have been grilled</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/kaen/sishamo.jpg') }}" alt="Sishamo">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Sishamo</h3>
+                        </div>
+                        <p class="menu-item-description">Grilled and glazed egg filled fish. Served on a skewer</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="menu-items" id="appetizer-items">
-                @php $items = $products->where('category', 'appetizer'); @endphp
-                @forelse($items as $product)
-                    <div class="menu-item">
-                        <div class="menu-item-image">
-                            <img src="{{ $product->image_path ? asset($product->image_path) : asset('img/products/placeholder.jpg') }}" alt="{{ $product->name }}">
-                        </div>
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-name">{{ $product->name }}</h3>
-                                <span class="menu-item-price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
-                            </div>
-                            <p class="menu-item-description">{{ $product->description ?? 'No description provided.' }}</p>
-                        </div>
+            <div class="menu-items" id="appetizers-items">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/yomi/edamame.jpg') }}" alt="Edamame">
                     </div>
-                @empty
-                    <p class="no-items">Belum ada produk tersedia.</p>
-                @endforelse
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Edamame</h3>
+                        </div>
+                        <p class="menu-item-description">Young soy bean steamed and flavoured with salt</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/yomi/gyosa.jpg') }}" alt="Gyoza">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Gyoza</h3>
+                        </div>
+                        <p class="menu-item-description">Soft dumpling pan-fried until crispy at the bottom. Served with ponzu sauce</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/yomi/agedashi-tofu.jpg') }}" alt="Agedashi Tofu">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Agedashi Tofu</h3>
+                        </div>
+                        <p class="menu-item-description">Fried silken tofu served with tentsuyu. Topped with grated daikon radish and chopped spring onion</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/yomi/okonomi.jpg') }}" alt="Okonomiyaki">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Okonomiyaki</h3>
+                        </div>
+                        <p class="menu-item-description">Fried batter of shredded cabbage and onion, topped with katsuobushi</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                    <img src="{{ asset('img/source/yomi/chawanmushi.jpg') }}" alt="Chawanmushi">
+                    </div>
+                    <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Chawanmushi</h3>
+                    </div>
+                    <p class="menu-item-description">Steamed silky custard egg filled with various svaoury filling.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/yomi/takoyaki.jpg') }}" alt="Takoyaki">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Takoyaki</h3>
+                        </div>
+                        <p class="menu-item-description">Fried batter formed into balls and stuffed with pieces of octopus</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/yomi/egg-sand.jpg') }}" alt="Egg Sando">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Egg Sando</h3>
+                        </div>
+                        <p class="menu-item-description">Egg mayo salad sandwich with soft boiled egg in the middle</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/yomi/musubi.jpg') }}" alt="Spam Musubi">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Spam Musubi</h3>
+                        </div>
+                        <p class="menu-item-description">Childhood spam musubi. Thick slice of spam on rice, wrapped in nori</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/yomi/tempura.jpg') }}" alt="Tempura">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Tempura</h3>
+                        </div>
+                        <p class="menu-item-description">Crispy fried tempura, soft on the inside and perfectly delicious</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/yomi/croq.jpg') }}" alt="Potato Croquette">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Potato Croquette</h3>
+                        </div>
+                        <p class="menu-item-description">Japanese croquette deep fried into perfect crispiness and soft insides</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/yomi/katsu-sand.jpg') }}" alt="Katsu Sando">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Katsu Sando</h3>
+                        </div>
+                        <p class="menu-item-description">Deep fried prok katsu sandwiched between white soft bread and some mayo and cabbages</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/yomi/agemochi.jpg') }}" alt="Agemochi">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Agemochi</h3>
+                        </div>
+                        <p class="menu-item-description">Savoury mochi on a skewer. Deep fried alongside nori slices</p>
+                    </div>
+                </div>
+                
             </div>
 
-            <div class="menu-items" id="dessert-items">
-                @php $items = $products->where('category', 'dessert'); @endphp
-                @forelse($items as $product)
-                    <div class="menu-item">
-                        <div class="menu-item-image">
-                            <img src="{{ $product->image_path ? asset($product->image_path) : asset('img/products/placeholder.jpg') }}" alt="{{ $product->name }}">
-                        </div>
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-name">{{ $product->name }}</h3>
-                                <span class="menu-item-price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
-                            </div>
-                            <p class="menu-item-description">{{ $product->description ?? 'No description provided.' }}</p>
-                        </div>
+            <div class="menu-items" id="desserts-items">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/ten/mochi.jpg') }}" alt="Mochi">
                     </div>
-                @empty
-                    <p class="no-items">Belum ada produk tersedia.</p>
-                @endforelse
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Mochi</h3>
+                        </div>
+                        <p class="menu-item-description">Colourful glutinous rice cakes fromed into balls with sweet fillings.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/ten/matcha.jpg') }}" alt="Matcha Tiramisu">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Matcha Tiramisu</h3>
+                        </div>
+                        <p class="menu-item-description">Japanese twist on the classic Italian dessert</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/ten/dorayaki.jpg') }}" alt="Dorayaki">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Dorayaki</h3>
+                        </div>
+                        <p class="menu-item-description">Japanese pancake sandwich filled with sweet red bean paste</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/ten/crsl2.jpg') }}" alt="Mitarashi Dango">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Mitarashi Dango</h3>
+                        </div>
+                        <p class="menu-item-description">Dumpling made of glutinous rice formed into a ball. Skewered and served with sweet syrup.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/ten/strb-cream-parfait.jpg') }}" alt="Strawberry Cream Parfait">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Strawberry Cream Parfait</h3>
+                        </div>
+                        <p class="menu-item-description">Sweet cream, strawberries, crumbles stacked to form a faux cake in a glass.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/ten/flan-cake.jpg') }}" alt="Flan Cake">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Flan Cake</h3>
+                        </div>
+                        <p class="menu-item-description">Flan or custard base with a layer of clear caramel atop.</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="menu-items" id="drink-items">
-                @php $items = $products->where('category', 'drink'); @endphp
-                @forelse($items as $product)
-                    <div class="menu-item">
-                        <div class="menu-item-image">
-                            <img src="{{ $product->image_path ? asset($product->image_path) : asset('img/products/placeholder.jpg') }}" alt="{{ $product->name }}">
-                        </div>
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-name">{{ $product->name }}</h3>
-                                <span class="menu-item-price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
-                            </div>
-                            <p class="menu-item-description">{{ $product->description ?? 'No description provided.' }}</p>
-                        </div>
+            <div class="menu-items" id="beverages-items">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/gaen/sake.jpg') }}" alt="Premium Sake">
                     </div>
-                @empty
-                    <p class="no-items">Belum ada produk tersedia.</p>
-                @endforelse
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Premium Sake</h3>
+                        </div>
+                        <p class="menu-item-description">Traditional Japanese rice wine served warm or cold</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/gaen/matcha.jpg') }}" alt="Ceremonial Matcha">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Ceremonial Matcha</h3>
+                        </div>
+                        <p class="menu-item-description">Traditional Japanese green tea prepared ceremonially</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/gaen/whiskey.jpg') }}" alt="Japanese Whiskey">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Japanese Whiskey</h3>
+                        </div>
+                        <p class="menu-item-description">Award-winning Japanese single malt whiskey</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/gaen/cappucino.jpg') }}" alt="Cappucino">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Cappucino</h3>
+                        </div>
+                        <p class="menu-item-description">Hot mixed espresso and milk, savoury with distinct frothed milk decoration</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/gaen/spring.jpg') }}" alt="Spring Water">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Spring Water</h3>
+                        </div>
+                        <p class="menu-item-description">Premium spring water in a glass bottle. Very refreshing</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{{ asset('img/source/gaen/asahi.jpg') }}" alt="Asahi Beer">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Asahi Beer</h3>
+                        </div>
+                        <p class="menu-item-description">popular japanese beer</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -304,7 +864,6 @@
                         <li>Holidays: 12:00 PM - 9:00 PM</li>
                     </ul>
                 </div>
-            </div>
         </div>
     </footer>
 
@@ -324,7 +883,7 @@
         
         <div class="user-info">
             <div class="user-avatar">
-                <i class="fas fa-user-circle"></i>
+                <i class="fas fa-user-circle "></i>
             </div>
             @auth
                 <div class="user-name" id="user-name">{{ auth()->user()->name }}</div>
@@ -345,7 +904,6 @@
         </div>
     </div>
 
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
 
     <script src="{{ asset('js/frontend/menu.js') }}"></script>
 </body>

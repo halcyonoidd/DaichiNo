@@ -32,7 +32,15 @@
         <p>Click one of our sushi to get our attention!</p>
     </section>
 
-    <div class="container">
+    <section class="contact-summary">
+        <div class="container">
+            <div class="section-head">
+                <p class="eyebrow">Stay Connected</p>
+                <h2>Connect with Us</h2>
+                <p class="lead">Choose the fastest way to reach us — whatever your needs.</p>
+            </div>
+
+                <div class="container">
         <br>
         
         <div class="sushi-board">
@@ -53,7 +61,7 @@
             
             <div class="sushi-piece roll california-roll" data-contact="hours">
                 <div class="sushi-type">HOURS</div>
-                <div class="sushi-label">California</div>
+                <div class="sushi-label">California-Roll</div>
             </div>
 
             <div class="sushi-piece nigiri unagi-nigiri" data-contact="social">
@@ -61,6 +69,50 @@
                 <div class="sushi-label">Eel</div>
             </div>
         </div>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-phone"></i></div>
+                    <div class="summary-title">Phone</div>
+                    <p class="summary-text">+62 6767 1234 567<br>Every day 10:00 AM - 10:00 PM</p>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="summary-title">Email</div>
+                    <p class="summary-text">info@daichino.com<br>reservations@daichino.com</p>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="summary-title">Location</div>
+                    <p class="summary-text">123 Graha Natura Park<br>Surabaya, Indonesia</p>
+                    <a class="summary-link" href="#map">View map</a>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-clock"></i></div>
+                    <div class="summary-title">Operating Hours</div>
+                    <p class="summary-text">Monday-Friday 11:30 AM - 10:00 PM<br>Saturday-Sunday 12:00 PM - 11:00 PM</p>
+                    <span class="summary-pill">Open today</span>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-hashtag"></i></div>
+                    <div class="summary-title">Social</div>
+                    <p class="summary-text">Instagram @daichino_<br>Facebook /daichino</p>
+                </div>
+            </div>
+
+            <div class="summary-cta">
+                <div>
+                    <p class="eyebrow">Need a quick answer?</p>
+                    <h3>Our concierge team is ready to assist.</h3>
+                    <p class="lead">Call directly for reservation changes, or email for special requests.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="tel:+6267671234567" class="cta-btn primary">Call</a>
+                    <a href="mailto:reservations@daichino.com" class="cta-btn ghost">Email</a>
+                    <a href="{{ route('reservation') }}" class="cta-btn accent">Book a Table</a>
+                </div>
+            </div>
+        </div>
+    </section>
     
         <div class="contact-modal">
             <div class="contact-content">
@@ -133,7 +185,7 @@
         </div>
     </div>
 
-    <section class="map-section">
+    <section class="map-section" id="map">
         <div class="container">
             <div class="section-title">
                 <h2 class="title is-2">Find Us</h2>
@@ -163,11 +215,6 @@
                 <div class="footer-column">
                     <h3>Daichi No</h3>
                     <p>Experience the authentic taste of Japan with our carefully crafted dishes made from the finest ingredients.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>

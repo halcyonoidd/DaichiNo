@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daichi No - Japanese Restaurant</title>
     <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/vendors/all.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/frontend/landing.css') }}">
 
 </head>
@@ -54,7 +54,7 @@
                     <p>In Tokyo and Kyoto, To perfect their crafts.</p>
                     <p>In doing so, creating something that is both</p>
                     <p><b style="color:var(--primary-color)">Unique</b> yet amazingly, feel <b style="color:var(--light-accent)">home.</b></p>
-                    <a href="about.html" class="btn" style="margin-top: 20px;">More</a>
+                    <a href="{{ route('about') }}" class="btn" style="margin-top: 20px;">More</a>
                 </div>
                 <div class="about-image">
                     <div class="carousel-container">
@@ -319,7 +319,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
         <div class="menu-category-content" id="ten-content">
                 <div class="menu-items">
@@ -386,18 +385,41 @@
                 <h2>Our Rep.</h2>
             <div class="trapezoid">
                 <div class="testimonial-slider">
-                    <div class="testimonial">
-                        <p class="testimonial-text">The best Japanese food I've had outside of Japan. The sushi was incredibly fresh and the service was impeccable. Will definitely be returning soon!</p>
-                        <p class="testimonial-author">- Sarah Johnson</p>
+                    <div class="testimonial-track">
+                        <div class="testimonial">
+                            <p class="testimonial-text">The best Japanese food I've had outside of Japan. The sushi was incredibly fresh and the service was impeccable. Will definitely be returning soon!</p>
+                            <p class="testimonial-author">- Sarah Johnson</p>
+                        </div>
+
+                        <div class="testimonial">
+                            <p class="testimonial-text">An unforgettable dining experience. Each dish was a work of art, perfectly balanced and beautifully presented. The omakase menu exceeded all expectations.</p>
+                            <p class="testimonial-author">- Michael Tanaka</p>
+                        </div>
+
+                        <div class="testimonial">
+                            <p class="testimonial-text">The attention to detail is remarkable. From the ambiance to the exquisite flavors, every aspect of the meal was carefully curated. Truly worthy of its Michelin stars.</p>
+                            <p class="testimonial-author">- Elena Rodriguez</p>
+                        </div>
+
+                        <div class="testimonial">
+                            <p class="testimonial-text">I've dined at many Michelin-starred restaurants worldwide, but this one stands out. The chef's creativity with traditional Japanese techniques is simply brilliant.</p>
+                            <p class="testimonial-author">- David Chen</p>
+                        </div>
                     </div>
+
+                    <div class="slider-indicators">
+                        <div class="indicator-s active" data-slide="0"></div>
+                        <div class="indicator-s" data-slide="1"></div>
+                        <div class="indicator-s" data-slide="2"></div>
+                        <div class="indicator-s" data-slide="3"></div>
+                    </div>
+                    
                 </div>
-                <div class="michelin">
-                    <div>
-                        <img src="../img/landingImage/MichelinStar.png" class="michelin-image-1">
-                        <img src="../img/landingImage/MichelinStar.png" class="michelin-image-2">
-                    </div>
-                    <div>
-                        <h2>Certified two michelin 2020</h2>
+                <div class="michelin ">
+                    <div class="michelin-word">
+                        <p><b>Certified</b></p><br>
+                        <p><b>Two <i>Michelin Star</i></b></p><br>
+                        <p><b>2020</b></p>
                     </div>
                 </div>
             </div>
@@ -453,12 +475,6 @@
                 <div class="footer-column">
                     <h3>Daichi No</h3>
                     <p>Experience the authentic taste of Japan with our carefully crafted dishes made from the finest ingredients.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
-                    </div>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
@@ -478,9 +494,6 @@
                         <li>Holidays: 12:00 PM - 9:00 PM</li>
                     </ul>
                 </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Daichi No. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent-color);"></i></p>
-            </div>
         </div>
     </footer>
 

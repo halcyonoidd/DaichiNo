@@ -10,12 +10,12 @@ class Voucher extends Model
     use HasFactory;
 
     protected $fillable = [
-        'code',
-        'name',
+        'badge',
+        'title',
+        'category',
         'description',
-        'discount_type',
-        'discount_value',
-        'validity_days',
-        'is_active',
+        'validity',
+        'capacity',
+        'price',
     ];
 }

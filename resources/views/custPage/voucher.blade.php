@@ -111,240 +111,54 @@
         </div>
         
         <div class="vouchers-grid" id="vouchers-grid">
-            <div class="voucher-card" data-type="experience" data-id="1">
-                <div class="voucher-header">
-                    <div class="voucher-tier experience-voucher">Experience Voucher</div>
-                    <h3 class="voucher-title">Complete Sakura Experience</h3>
-                    <p class="voucher-description">Full 6-course dining experience for one person</p>
-                </div>
-                <div class="voucher-body">
-                    <div class="voucher-details">
-                        <div class="detail-item">
-                            <i class="fas fa-utensils"></i>
-                            <span><strong>Includes:</strong> 6-course meal, drinks, dessert</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span><strong>Duration:</strong> 1.5 hours</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span><strong>Validity:</strong> 12 months from purchase</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-user-friends"></i>
-                            <span><strong>For:</strong> 1 person (can combine multiple)</span>
-                        </div>
+            @forelse($vouchers as $voucher)
+                @php
+                    $categoryMap = [
+                        'experience_vouchers' => ['type' => 'experience', 'label' => 'Experience Voucher', 'class' => 'experience-voucher'],
+                        'discount_vouchers' => ['type' => 'discount', 'label' => 'Discount Voucher', 'class' => 'discount-voucher'],
+                        'meal_add_ons' => ['type' => 'meal', 'label' => 'Meal Add-on', 'class' => 'meal-voucher']
+                    ];
+                    $categoryInfo = $categoryMap[$voucher->category] ?? ['type' => 'experience', 'label' => 'Voucher', 'class' => 'experience-voucher'];
+                @endphp
+                
+                <div class="voucher-card" data-type="{{ $categoryInfo['type'] }}" data-id="{{ $voucher->id }}">
+                    <div class="voucher-header">
+                        <div class="voucher-tier {{ $categoryInfo['class'] }}">{{ $voucher->badge }}</div>
+                        <h3 class="voucher-title">{{ $voucher->title }}</h3>
+                        <p class="voucher-description">{{ Str::limit($voucher->description, 100) }}</p>
                     </div>
-                    <div class="original-price">¥12,500</div>
-                    <div class="voucher-price">¥11,500</div>
-                    <div class="value-info">Save ¥1,000 (8% discount)</div>
-                </div>
-                <div class="voucher-footer">
-                    <button class="add-to-cart-btn" data-id="1">
-                        <i class="fas fa-cart-plus"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="voucher-card" data-type="discount" data-id="2">
-                <div class="voucher-header">
-                    <div class="voucher-tier discount-voucher">Discount Voucher</div>
-                    <h3 class="voucher-title">20% Off Any Experience</h3>
-                    <p class="voucher-description">Significant savings on any dining experience</p>
-                </div>
-                <div class="voucher-body">
-                    <div class="voucher-details">
-                        <div class="detail-item">
-                            <i class="fas fa-percentage"></i>
-                            <span><strong>Discount:</strong> 20% off total bill</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span><strong>Validity:</strong> 6 months from purchase</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-user-friends"></i>
-                            <span><strong>Max Group:</strong> Up to 6 people</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <span><strong>Note:</strong> Cannot combine with other offers</span>
-                        </div>
-                    </div>
-                    <div class="voucher-price">¥8,000</div>
-                    <div class="value-info">Save up to ¥15,200 on Platinum Experience</div>
-                </div>
-                <div class="voucher-footer">
-                    <button class="add-to-cart-btn" data-id="2">
-                        <i class="fas fa-cart-plus"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="voucher-card" data-type="meal" data-id="3">
-                <div class="voucher-header">
-                    <div class="voucher-tier meal-voucher">Meal Add-on</div>
-                    <h3 class="voucher-title">Premium Sake Pairing</h3>
-                    <p class="voucher-description">Enhanced beverage experience with your meal</p>
-                </div>
-                <div class="voucher-body">
-                    <div class="voucher-details">
-                        <div class="detail-item">
-                            <i class="fas fa-wine-glass-alt"></i>
-                            <span><strong>Includes:</strong> 5 premium sake tastings</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-concierge-bell"></i>
-                            <span><strong>Served with:</strong> Expert pairing guidance</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span><strong>Validity:</strong> 12 months from purchase</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-user-friends"></i>
-                            <span><strong>For:</strong> 1 person (additional available)</span>
-                        </div>
-                    </div>
-                    <div class="original-price">¥6,500</div>
-                    <div class="voucher-price">¥5,500</div>
-                    <div class="value-info">Save ¥1,000 (15% discount)</div>
-                </div>
-                <div class="voucher-footer">
-                    <button class="add-to-cart-btn" data-id="3">
-                        <i class="fas fa-cart-plus"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <div class="voucher-card" data-type="experience" data-id="4">
-                <div class="voucher-header">
-                    <div class="voucher-tier gift-voucher">Gift Card</div>
-                    <h3 class="voucher-title">Custom Amount Gift Card</h3>
-                    <p class="voucher-description">Flexible gift amount for any Daichi No experience</p>
-                </div>
-                <div class="voucher-body">
-                    <div class="voucher-details">
-                        <div class="detail-item">
-                            <i class="fas fa-yen-sign"></i>
-                            <span><strong>Amount:</strong> Customizable (min ¥5,000)</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span><strong>Validity:</strong> 18 months from purchase</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-gift"></i>
-                            <span><strong>Includes:</strong> Premium gift packaging</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-credit-card"></i>
-                            <span><strong>Redemption:</strong> Online or in-restaurant</span>
-                        </div>
-                    </div>
-                    <div class="voucher-price">Custom</div>
-                    <div class="value-info">Choose amount at checkout</div>
-                    <div class="field mt-4">
-                        <label class="label is-small">Select Amount (¥)</label>
-                        <div class="control">
-                            <div class="select is-fullwidth">
-                                <select id="gift-card-amount">
-                                    <option value="5000">¥5,000</option>
-                                    <option value="10000">¥10,000</option>
-                                    <option value="15000" selected>¥15,000</option>
-                                    <option value="20000">¥20,000</option>
-                                    <option value="30000">¥30,000</option>
-                                    <option value="50000">¥50,000</option>
-                                </select>
+                    <div class="voucher-body">
+                        <div class="voucher-details">
+                            <div class="detail-item">
+                                <i class="fas fa-align-left"></i>
+                                <span>{{ $voucher->description }}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span><strong>Validity:</strong> {{ $voucher->validity }} days from purchase</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-box"></i>
+                                <span><strong>Available:</strong> {{ $voucher->capacity }} vouchers remaining</span>
                             </div>
                         </div>
+                        <div class="voucher-price">Rp{{ number_format($voucher->price, 0) }}</div>
+                        <div class="value-info">{{ $categoryInfo['label'] }}</div>
+                    </div>
+                    <div class="voucher-footer">
+                        <button class="add-to-cart-btn" data-id="{{ $voucher->id }}" data-price="{{ $voucher->price }}" data-title="{{ $voucher->title }}">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
-                <div class="voucher-footer">
-                    <button class="add-to-cart-btn" data-id="4" data-custom="true">
-                        <i class="fas fa-cart-plus"></i>
-                        Add to Cart
-                    </button>
+            @empty
+                <div class="has-text-centered" style="grid-column: 1/-1; padding: 3rem;">
+                    <i class="fas fa-ticket-alt fa-4x mb-4 has-text-grey-light"></i>
+                    <p class="subtitle is-4 has-text-grey">No vouchers available</p>
+                    <p class="has-text-grey">Please check back later for new vouchers</p>
                 </div>
-            </div>
-
-            <div class="voucher-card" data-type="meal" data-id="5">
-                <div class="voucher-header">
-                    <div class="voucher-tier meal-voucher">Meal Add-on</div>
-                    <h3 class="voucher-title">A5 Wagyu Beef Upgrade</h3>
-                    <p class="voucher-description">Upgrade your experience with premium Wagyu</p>
-                </div>
-                <div class="voucher-body">
-                    <div class="voucher-details">
-                        <div class="detail-item">
-                            <i class="fas fa-drumstick-bite"></i>
-                            <span><strong>Includes:</strong> 150g A5 Wagyu steak</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-mortar-pestle"></i>
-                            <span><strong>Preparation:</strong> Teppanyaki or traditional</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span><strong>Validity:</strong> 12 months from purchase</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-user-friends"></i>
-                            <span><strong>For:</strong> 1 person (additional available)</span>
-                        </div>
-                    </div>
-                    <div class="original-price">¥12,000</div>
-                    <div class="voucher-price">¥10,500</div>
-                    <div class="value-info">Save ¥1,500 (12.5% discount)</div>
-                </div>
-                <div class="voucher-footer">
-                    <button class="add-to-cart-btn" data-id="5">
-                        <i class="fas fa-cart-plus"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <div class="voucher-card" data-type="discount" data-id="6">
-                <div class="voucher-header">
-                    <div class="voucher-tier discount-voucher">Special Offer</div>
-                    <h3 class="voucher-title">Anniversary Celebration Package</h3>
-                    <p class="voucher-description">Special package for anniversary celebrations</p>
-                </div>
-                <div class="voucher-body">
-                    <div class="voucher-details">
-                        <div class="detail-item">
-                            <i class="fas fa-glass-cheers"></i>
-                            <span><strong>Includes:</strong> Champagne & dessert</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-camera"></i>
-                            <span><strong>Bonus:</strong> Professional photo session</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span><strong>Validity:</strong> 3 months from purchase</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-user-friends"></i>
-                            <span><strong>For:</strong> Couples (2 people)</span>
-                        </div>
-                    </div>
-                    <div class="original-price">¥15,000</div>
-                    <div class="voucher-price">¥12,000</div>
-                    <div class="value-info">Save ¥3,000 (20% discount)</div>
-                </div>
-                <div class="voucher-footer">
-                    <button class="add-to-cart-btn" data-id="6">
-                        <i class="fas fa-cart-plus"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
+            @endforelse
         </div>
         
         <div class="how-it-works">
