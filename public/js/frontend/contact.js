@@ -190,19 +190,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     //data
-    function updateUserStats() {
-        const userName = "Takashi Yamada";
-        const userEmail = "takashi.yamada@email.com";
-        const reservations = 3;
-        const points = 1250;
-        const vouchers = 2;
-        
-        document.getElementById('user-name').textContent = userName;
-        document.getElementById('user-email').textContent = userEmail;
-        document.getElementById('reservation-count').textContent = reservations;
-        document.getElementById('points-earned').textContent = points.toLocaleString();
-        document.getElementById('vouchers-owned').textContent = vouchers;
-    }
 
     updateUserStats();
     

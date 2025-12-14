@@ -163,41 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
-    //data
-    function updateUserStats() {
-        const userName = "Takashi Yamada";
-        const userEmail = "takashi.yamada@email.com";
-        const reservations = 3;
-        const points = 1250;
-        const vouchers = 2;
-        
-        document.getElementById('user-name').textContent = userName;
-        document.getElementById('user-email').textContent = userEmail;
-        document.getElementById('reservation-count').textContent = reservations;
-        document.getElementById('points-earned').textContent = points.toLocaleString();
-        document.getElementById('vouchers-owned').textContent = vouchers;
-    }
 
-    updateUserStats();
-    
-    let panelTouchStartY = 0;
-    let panelTouchStartTime = 0;
-    
-    userPanel.addEventListener('touchstart', e => {
-        panelTouchStartY = e.touches[0].clientY;
-        panelTouchStartTime = Date.now();
-    });
-    
-    userPanel.addEventListener('touchend', e => {
-        const panelTouchEndY = e.changedTouches[0].clientY;
-        const panelTouchDeltaY = panelTouchEndY - panelTouchStartY;
-        const panelTouchDuration = Date.now() - panelTouchStartTime;
-
-        if (panelTouchDeltaY > 100 || (panelTouchDeltaY > 50 && panelTouchDuration < 300)) {
-            closeUserPanel();
-        }
-    });
 
     window.addEventListener('scroll', function() {
         const scrollIndicator = document.querySelector('.scroll-indicator');

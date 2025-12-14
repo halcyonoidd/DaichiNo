@@ -80,7 +80,7 @@
 
                 <!-- Price -->
                 <div class="field">
-                    <label class="label">Price ($)</label>
+                    <label class="label">Price (Rp)</label>
                     <div class="control">
                         <input class="input @error('price') is-danger @enderror" type="number" name="price" step="0.01" value="{{ old('price', $product->price) }}" required>
                     </div>

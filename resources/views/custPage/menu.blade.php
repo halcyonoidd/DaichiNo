@@ -878,7 +878,7 @@
         </div>
     </footer>
 
-    <div class="panel-overlay" id="panel-overlay"></div>
+<div class="panel-overlay" id="panel-overlay"></div>
 
     <div class="floating-user-btn" id="floating-user-btn">
         <i class="fas fa-user"></i>
@@ -896,40 +896,25 @@
             <div class="user-avatar">
                 <i class="fas fa-user-circle"></i>
             </div>
-            <div class="user-name" id="user-name">Takashi Yamada</div>
-            <div class="user-email" id="user-email">takashi.yamada@email.com</div>
-            
-            <div class="user-stats">
-                <div class="stat-item">
-                    <div class="stat-value" id="reservation-count">3</div>
-                    <div class="stat-label">Reservations</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="points-earned">1,250</div>
-                    <div class="stat-label">Points</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="vouchers-owned">2</div>
-                    <div class="stat-label">Vouchers</div>
-                </div>
-            </div>
+            @auth
+                <div class="user-name" id="user-name">{{ auth()->user()->name }}</div>
+                <div class="user-email" id="user-email">{{ auth()->user()->email }}</div>
+            @else
+                <div class="user-name" id="user-name">Guest</div>
+                <div class="user-email" id="user-email">Please log in</div>
+            @endauth
         </div>
         
         <div class="panel-actions">
             <a href="{{ route('profile') }}" class="panel-btn panel-btn-primary">
                 <i class="fas fa-user-circle mr-2"></i> View Profile
             </a>
-            <a href="reservation.html" class="panel-btn panel-btn-secondary">
-                <i class="fas fa-calendar-alt mr-2"></i> My Reservations
-            </a>
-            <a href="voucher.html" class="panel-btn panel-btn-secondary">
-                <i class="fas fa-gift mr-2"></i> My Vouchers
-            </a>
             <button class="panel-btn panel-btn-logout" id="logout-btn">
                 <i class="fas fa-sign-out-alt mr-2"></i> Log Out
             </button>
         </div>
     </div>
+
 
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
 

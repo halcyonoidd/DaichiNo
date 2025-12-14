@@ -183,6 +183,18 @@ body {
 
 .about-text {
     flex: 1;
+    color: var(--dark-color);
+}
+
+.about-text h3 {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.about-text p {
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 12px;
 }
 
 .about-image {
@@ -307,36 +319,28 @@ body {
     margin-bottom: 15px;
 }
 
-.michelin{
+.michelin {
     position: absolute;
+    top: 40px;
+    left: -650px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 1;
 }
 
-.michelin-image-1 {
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    margin-top: -3vh;
-    margin-left: -65vh;
-}
-
-.michelin-image-2 {
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    margin-top: -3vh;
-    margin-left: -93vh;
-}
 
 .michelin-word {
-    position: absolute;
-    margin-top: 15vh;
-    margin-left: -130vh;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .michelin p {
     text-align: left;
     color: white;
-    font-size: 52px;
+    font-size: 32px;
+    margin: 0;
 }
 
 .michelin i {
@@ -476,6 +480,18 @@ body {
 
 .location-info {
     flex: 1;
+    color: var(--dark-color);
+}
+
+.location-info h3 {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.location-info p {
+    color: #333;
+    line-height: 1.7;
 }
 
 .location-map {

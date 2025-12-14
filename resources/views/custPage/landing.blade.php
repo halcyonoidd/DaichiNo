@@ -17,7 +17,7 @@
         </div>
         
         <div class="nav-center">
-            <a href="#" class="home-link dark">Daichi No</a>
+            <a href="{{ route('home') }}" class="home-link dark">Daichi No</a>
         </div>
         
         <div class="nav-section right">
@@ -31,7 +31,7 @@
         <h1>A Fragment of <b style="color: #ebc34c">Everything</b>,</h1>
         <h1>On earth that are Delicious</h1>
         <div class="hero-buttons">
-            <a href="reservation.html" class="btn">Experience Now!</a>
+            <a href="{{ route('reservation') }}" class="btn">Experience Now!</a>
             <a href="#menu" class="btn" style="background-color: transparent; border: 2px solid white; margin-left: 15px;">View Menu</a>
         </div>
     </section>
@@ -302,9 +302,8 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="menu-category-content" id="ten-content">
+            <div class="menu-category-content" id="ten-content">
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-image">
@@ -355,7 +354,7 @@
         </div>
         
         <div class="menu-down">
-            <a href="menu.html" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">More Items</a>
+            <a href="{{ route('menu') }}" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">More Items</a>
         </div>
     </section>
 
@@ -395,11 +394,7 @@
                     </div>
                     
                 </div>
-                <div class="michelin">
-                    <div>
-                        <img src="/img/landingImage/MichelinStar.svg.png" class="michelin-image-1">
-                        <img src="/img/landingImage/MichelinStar.svg.png" class="michelin-image-2">
-                    </div>
+                <div class="michelin ">
                     <div class="michelin-word">
                         <p><b>Certified</b></p><br>
                         <p><b>Two <i>Michelin Star</i></b></p><br>
@@ -502,36 +497,20 @@
         
         <div class="user-info">
             <div class="user-avatar">
-                <i class="fas fa-user-circle"></i>
+                <i class="fas fa-user-circle "></i>
             </div>
-            <div class="user-name" id="user-name">Takashi Yamada</div>
-            <div class="user-email" id="user-email">takashi.yamada@email.com</div>
-            
-            <div class="user-stats">
-                <div class="stat-item">
-                    <div class="stat-value" id="reservation-count">3</div>
-                    <div class="stat-label">Reservations</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="points-earned">1,250</div>
-                    <div class="stat-label">Points</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="vouchers-owned">2</div>
-                    <div class="stat-label">Vouchers</div>
-                </div>
-            </div>
+            @auth
+                <div class="user-name" id="user-name">{{ auth()->user()->name }}</div>
+                <div class="user-email" id="user-email">{{ auth()->user()->email }}</div>
+            @else
+                <div class="user-name" id="user-name">Guest</div>
+                <div class="user-email" id="user-email">Please log in</div>
+            @endauth
         </div>
         
         <div class="panel-actions">
             <a href="{{ route('profile') }}" class="panel-btn panel-btn-primary">
                 <i class="fas fa-user-circle mr-2"></i> View Profile
-            </a>
-            <a href="reservation.html" class="panel-btn panel-btn-secondary">
-                <i class="fas fa-calendar-alt mr-2"></i> My Reservations
-            </a>
-            <a href="voucher.html" class="panel-btn panel-btn-secondary">
-                <i class="fas fa-gift mr-2"></i> My Vouchers
             </a>
             <button class="panel-btn panel-btn-logout" id="logout-btn">
                 <i class="fas fa-sign-out-alt mr-2"></i> Log Out
