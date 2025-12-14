@@ -81,6 +81,7 @@ function bindAddToCartButtons(products) {
 // ===============================
 // CART UI UPDATE
 // ===============================
+// Update bagian display price di cart. js
 function updateCartDisplay() {
     const cartItemsContainer = document.getElementById('cart-items');
     const emptyCartSection = document.getElementById('empty-cart');
@@ -100,23 +101,25 @@ function updateCartDisplay() {
     });
 
     const tax = subtotal * 0.10;
-    const serviceFee = cart.length > 0 ? 500 : 0;
+    const serviceFee = cart.length > 0 :  5000 : 0;
     const total = subtotal + tax + serviceFee;
 
-    cartBadge.textContent = totalItems;
-    itemCountElement.textContent = totalItems;
-    subtotalElement.textContent = `¥${subtotal.toLocaleString()}`;
-    taxElement.textContent = `¥${tax.toLocaleString()}`;
-    serviceFeeElement.textContent = `¥${serviceFee.toLocaleString()}`;
-    totalElement.textContent = `¥${total.toLocaleString()}`;
+    if (cartBadge) cartBadge.textContent = totalItems;
+    if (itemCountElement) itemCountElement.textContent = totalItems;
+    if (subtotalElement) subtotalElement.textContent = `Rp ${subtotal.toLocaleString('id-ID')}`;
+    if (taxElement) taxElement.textContent = `Rp ${tax.toLocaleString('id-ID')}`;
+    if (serviceFeeElement) serviceFeeElement.textContent = `Rp ${serviceFee.toLocaleString('id-ID')}`;
+    if (totalElement) totalElement.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+
+    if (! cartItemsContainer) return;
 
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '';
-        emptyCartSection.style.display = 'block';
+        cartItemsContainer. innerHTML = '';
+        if (emptyCartSection) emptyCartSection.style.display = 'block';
         return;
     }
 
-    emptyCartSection.style.display = 'none';
+    if (emptyCartSection) emptyCartSection.style.display = 'none';
     cartItemsContainer.innerHTML = '';
 
     cart.forEach((item, index) => {
@@ -124,22 +127,58 @@ function updateCartDisplay() {
         cartItem.className = 'cart-item';
 
         cartItem.innerHTML = `
-            <img src="${item.image}" alt="${item.name}">
-            <div class="cart-info">
-                <h4>${item.name}</h4>
-                <p>¥${item.price.toLocaleString()}</p>
-                <div class="qty-control">
-                    <button onclick="changeQty(${index}, -1)">-</button>
-                    <span>${item.quantity}</span>
-                    <button onclick="changeQty(${index}, 1)">+</button>
+            <div class="cart-item-image">
+                <img src="${item. image}" alt="${item.name}">
+            </div>
+            <div class="cart-item-content">
+                <div class="cart-item-header">
+                    <div>
+                        <div class="cart-item-title">${item.name}</div>
+                        <span class="cart-item-category">${item.category. replace(/_/g, ' ')}</span>
+                    </div>
+                    <div class="cart-item-price">Rp ${Number(item.price).toLocaleString('id-ID')}</div>
+                </div>
+                <div class="cart-item-details">
+                    <p>${item.description || ''}</p>
+                </div>
+                <div class="cart-item-controls">
+                    <div class="quantity-controls">
+                        <button class="qty-btn decrease-qty" onclick="changeQty(${index}, -1)">-</button>
+                        <span class="qty-value">${item.quantity}</span>
+                        <button class="qty-btn increase-qty" onclick="changeQty(${index}, 1)">+</button>
+                    </div>
+                    <button class="remove-item" onclick="removeItem(${index})">
+                        <i class="fas fa-trash"></i> Remove
+                    </button>
                 </div>
             </div>
-            <button onclick="removeItem(${index})">✕</button>
         `;
 
         cartItemsContainer.appendChild(cartItem);
     });
 }
+
+function changeQty(index, delta) {
+    cart[index].quantity += delta;
+
+    if (cart[index].quantity <= 0) {
+        cart. splice(index, 1);
+    }
+
+    saveCart();
+    updateCartDisplay();
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    saveCart();
+    updateCartDisplay();
+}
+
+// Init on page load
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartDisplay();
+});
 
 // ===============================
 // CART ACTIONS
