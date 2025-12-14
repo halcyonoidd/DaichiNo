@@ -405,12 +405,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     logoutBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        if (confirm('Logout sekarang?')) {
-            const form = document.getElementById('logout-form');
-            if (form) {
-                form.submit();
-            }
-        }
+        showLogoutModal();
     });
     
     //data
@@ -443,6 +438,60 @@ document.addEventListener('DOMContentLoaded', function() {
             scrollIndicator.innerHTML = '<i class="fas fa-check mr-2"></i> Button stays visible';
         } else {
             scrollIndicator.innerHTML = '<i class="fas fa-arrow-down mr-2"></i> Scroll to test';
+        }
+    });
+});
+
+function showLogoutModal() {
+    const modal = document.getElementById('logout-modal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function hideLogoutModal() {
+    const modal = document.getElementById('logout-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+function confirmLogout() {
+    const form = document.getElementById('logout-form');
+    if (form) {
+        form.submit();
+    }
+}
+
+// Event listeners untuk modal
+document.addEventListener('DOMContentLoaded', function() {
+    const logoutModal = document.getElementById('logout-modal');
+    const cancelLogoutBtn = document.getElementById('cancel-logout');
+    const confirmLogoutBtn = document.getElementById('confirm-logout');
+    const logoutModalOverlay = document.querySelector('.logout-modal-overlay');
+    
+    if (cancelLogoutBtn) {
+        cancelLogoutBtn.addEventListener('click', hideLogoutModal);
+    }
+    
+    if (confirmLogoutBtn) {
+        confirmLogoutBtn.addEventListener('click', confirmLogout);
+    }
+    
+    if (logoutModalOverlay) {
+        logoutModalOverlay.addEventListener('click', function(e) {
+            if (e.target === logoutModalOverlay) {
+                hideLogoutModal();
+            }
+        });
+    }
+    
+    // ESC key to close modal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && logoutModal && logoutModal.classList.contains('active')) {
+            hideLogoutModal();
         }
     });
 });

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/frontend/menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frontend/logout-notification.css') }}">
 </head>
 <body>
     <nav class="navbar transparent" id="navbar">
@@ -346,6 +347,26 @@
     </div>
 
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logout-modal" class="logout-modal">
+        <div class="logout-modal-overlay"></div>
+        <div class="logout-modal-content">
+            <div class="logout-modal-icon">
+                <i class="fas fa-sign-out-alt"></i>
+            </div>
+            <h2 class="logout-modal-title">Konfirmasi Logout</h2>
+            <p class="logout-modal-text">Apakah Anda yakin ingin keluar?</p>
+            <div class="logout-modal-buttons">
+                <button id="cancel-logout" class="btn-cancel">
+                    <i class="fas fa-times"></i> Batal
+                </button>
+                <button id="confirm-logout" class="btn-confirm">
+                    <i class="fas fa-check"></i> Ya, Logout
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script src="{{ asset('js/frontend/menu.js') }}"></script>
 </body>
