@@ -336,7 +336,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     //data
 
-
     updateUserStats();
     
     // Logout modal event listeners
