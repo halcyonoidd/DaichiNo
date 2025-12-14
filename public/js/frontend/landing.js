@@ -159,6 +159,34 @@ document.addEventListener('DOMContentLoaded', function() {
         showLogoutModal();
     });
 
+    // Logout modal event listeners
+    const logoutModal = document.getElementById('logout-modal');
+    const cancelLogoutBtn = document.getElementById('cancel-logout');
+    const confirmLogoutBtn = document.getElementById('confirm-logout');
+    const logoutModalOverlay = document.querySelector('.logout-modal-overlay');
+    
+    if (cancelLogoutBtn) {
+        cancelLogoutBtn.addEventListener('click', hideLogoutModal);
+    }
+    
+    if (confirmLogoutBtn) {
+        confirmLogoutBtn.addEventListener('click', confirmLogout);
+    }
+    
+    if (logoutModalOverlay) {
+        logoutModalOverlay.addEventListener('click', function(e) {
+            if (e.target === logoutModalOverlay) {
+                hideLogoutModal();
+            }
+        });
+    }
+    
+    // ESC key to close modal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && logoutModal && logoutModal.classList.contains('active')) {
+            hideLogoutModal();
+        }
+    });
 
     window.addEventListener('scroll', function() {
         const scrollIndicator = document.querySelector('.scroll-indicator');
@@ -194,34 +222,3 @@ function confirmLogout() {
         form.submit();
     }
 }
-
-// Event listeners untuk modal
-document.addEventListener('DOMContentLoaded', function() {
-    const logoutModal = document.getElementById('logout-modal');
-    const cancelLogoutBtn = document.getElementById('cancel-logout');
-    const confirmLogoutBtn = document.getElementById('confirm-logout');
-    const logoutModalOverlay = document.querySelector('.logout-modal-overlay');
-    
-    if (cancelLogoutBtn) {
-        cancelLogoutBtn.addEventListener('click', hideLogoutModal);
-    }
-    
-    if (confirmLogoutBtn) {
-        confirmLogoutBtn.addEventListener('click', confirmLogout);
-    }
-    
-    if (logoutModalOverlay) {
-        logoutModalOverlay.addEventListener('click', function(e) {
-            if (e.target === logoutModalOverlay) {
-                hideLogoutModal();
-            }
-        });
-    }
-    
-    // ESC key to close modal
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && logoutModal && logoutModal.classList.contains('active')) {
-            hideLogoutModal();
-        }
-    });
-});
