@@ -36,20 +36,6 @@ Sebelum menginstal, pastikan sistem Anda memiliki:
 
 ## 🚀 Cara Instalasi
 
-### Instalasi Otomatis
-
-Untuk kemudahan, kami menyediakan skrip instalasi otomatis: 
-
-**Windows:**
-```bash
-setup-reservasi.bat
-```
-
-**Linux/Mac:**
-```bash
-chmod +x setup-reservasi.sh
-./setup-reservasi.sh
-```
 
 ### Instalasi Manual
 
@@ -163,18 +149,6 @@ Kontribusi selalu diterima! Jika Anda ingin berkontribusi:
 4. Push ke branch (`git push origin fitur-baru`)
 5. Buat Pull Request
 
-## 📝 Lisensi
 
-Proyek ini menggunakan lisensi MIT. Silakan lihat file `LICENSE` untuk detail lebih lanjut.
-
-## 👨‍💻 Pengembang
-
-Dikembangkan dengan ❤️ oleh [@halcyonoidd](https://github.com/halcyonoidd)
-
-## 📞 Kontak & Dukungan
-
-Jika Anda memiliki pertanyaan atau membutuhkan bantuan, silakan buat [issue](https://github.com/halcyonoidd/DaichiNo/issues) di repository ini.
-
----
 
 ⭐ Jika proyek ini membantu Anda, jangan lupa berikan star di repository ini! 
