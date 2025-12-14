@@ -50,18 +50,14 @@
             </div>
             <div class="column is-3">
                 <div class="stats-card">
-                    <p class="heading">Total Orders</p>
-                </div>
-            </div>
-            <div class="column is-3">
-                <div class="stats-card">
                     <p class="heading">Total Products</p>
-                    <p class="stats-number">{{ \App\Models\Product::count() }}</p>
+                    <p class="stats-number">60</p>
                 </div>
             </div>
             <div class="column is-3">
                 <div class="stats-card">
-                    <p class="heading">Reservations</p>
+                    <p class="heading">Total Reservasi</p>
+                    <p class="stats-number">{{ \App\Models\Reservation::count() }}</p>
                 </div>
             </div>
         </div>
@@ -83,24 +79,7 @@
                     <p class="subtitle">Manage customers & staff</p>
                 </a>
             </div>
-            <div class="column is-4">
-                <a href="#" class="menu-card">
-                    <span class="icon is-large">
-                        <i class="fas fa-receipt fa-3x"></i>
-                    </span>
-                    <p class="title">Orders</p>
-                    <p class="subtitle">Track & process orders</p>
-                </a>
-            </div>
-            <div class="column is-4">
-                <a href="{{ route('admin.products.index') }}" class="menu-card">
-                    <span class="icon is-large">
-                        <i class="fas fa-utensils fa-3x"></i>
-                    </span>
-                    <p class="title">Products</p>
-                    <p class="subtitle">Update dishes & prices</p>
-                </a>
-            </div>
+
             <div class="column is-4">
                 <a href="{{ route('admin.reservations.index') }}" class="menu-card">
                     <span class="icon is-large">
@@ -108,24 +87,6 @@
                     </span>
                     <p class="title">Reservations</p>
                     <p class="subtitle">Manage table bookings</p>
-                </a>
-            </div>
-            <div class="column is-4">
-                <a href="#" class="menu-card">
-                    <span class="icon is-large">
-                        <i class="fas fa-chart-line fa-3x"></i>
-                    </span>
-                    <p class="title">Reports</p>
-                    <p class="subtitle">Sales & analytics</p>
-                </a>
-            </div>
-            <div class="column is-4">
-                <a href="{{ route('admin.vouchers.index') }}" class="menu-card">
-                    <span class="icon is-large">
-                        <i class="fas fa-ticket-alt fa-3x"></i>
-                    </span>
-                    <p class="title">Voucher</p>
-                    <p class="subtitle">Manage and update vouchers</p>
                 </a>
             </div>
         </div>

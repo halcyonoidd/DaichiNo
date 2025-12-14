@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Flow Testing</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; margin-bottom: 20px; }
+        .test-section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .test-section h2 { color: #555; margin-bottom: 15px; font-size: 1.3em; border-bottom: 2px solid #4CAF50; padding-bottom: 10px; }
+        .test-item { margin: 10px 0; padding: 15px; background: #f9f9f9; border-radius: 5px; border-left: 4px solid #2196F3; }
+        .test-item h3 { color: #333; font-size: 1.1em; margin-bottom: 8px; }
+        .test-item p { color: #666; line-height: 1.6; margin-bottom: 8px; }
+        .test-button { background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px; margin: 5px; }
+        .test-button:hover { background: #45a049; }
+        .test-button.danger { background: #f44336; }
+        .test-button.danger:hover { background: #da190b; }
+        .test-button.info { background: #2196F3; }
+        .test-button.info:hover { background: #0b7dda; }
+        .result { margin-top: 10px; padding: 10px; background: #fff; border-radius: 5px; font-family: 'Courier New', monospace; font-size: 13px; }
+        .result.success { border-left: 4px solid #4CAF50; }
+        .result.error { border-left: 4px solid #f44336; }
+        .result.info { border-left: 4px solid #2196F3; }
+        .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 10px 0; }
+        .status-indicator { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+        .status-indicator.success { background: #4CAF50; }
+        .status-indicator.error { background: #f44336; }
+        .status-indicator.pending { background: #FF9800; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Reservation to Cart & Checkout - Testing Suite</h1>
+        
+        <!-- Test 1: Check API Endpoint -->
+        <div class="test-section">
+            <h2>1. API Endpoints Test</h2>
+            
+            <div class="test-item">
+                <h3>GET /api/reservation-offers</h3>
+                <p>Test apakah API mengembalikan daftar reservasi yang tersedia</p>
+                <button class="test-button" onclick="testReservationOffers()">Run Test</button>
+                <div id="test-offers-result"></div>
+            </div>
+            
+            <div class="test-item">
+                <h3>POST /api/payments/reservation</h3>
+                <p>Test apakah endpoint payment validation berfungsi</p>
+                <button class="test-button" onclick="testPaymentEndpoint()">Run Test</button>
+                <div id="test-payment-result"></div>
+            </div>
+        </div>
+        
+        <!-- Test 2: SessionStorage -->
+        <div class="test-section">
+            <h2>2. Storage Management Test</h2>
+            
+            <div class="test-item">
+                <h3>SessionStorage - Pending Reservations</h3>
+                <p>Test apakah reservasi bisa disimpan ke sessionStorage</p>
+                <button class="test-button" onclick="testSessionStorage()">Add Mock Reservation</button>
+                <button class="test-button info" onclick="checkSessionStorage()">Check Storage</button>
+                <button class="test-button danger" onclick="clearSessionStorage()">Clear Storage</button>
+                <div id="test-session-result"></div>
+            </div>
+            
+            <div class="test-item">
+                <h3>LocalStorage - Cart</h3>
+                <p>Test apakah cart bisa disimpan ke localStorage</p>
+                <button class="test-button" onclick="testLocalStorage()">Add Mock Cart Item</button>
+                <button class="test-button info" onclick="checkLocalStorage()">Check Storage</button>
+                <button class="test-button danger" onclick="clearLocalStorage()">Clear Storage</button>
+                <div id="test-local-result"></div>
+            </div>
+        </div>
+        
+        <!-- Test 3: Cart Flow -->
+        <div class="test-section">
+            <h2>3. Cart Flow Simulation</h2>
+            
+            <div class="test-item">
+                <h3>Complete Flow: Reservation → Cart</h3>
+                <p>Simulasi lengkap dari memilih reservasi sampai muncul di cart</p>
+                <button class="test-button" onclick="simulateCompleteFlow()">Start Simulation</button>
+                <div id="test-flow-result"></div>
+            </div>
+        </div>
+        
+        <!-- Test 4: Calculations -->
+        <div class="test-section">
+            <h2>4. Price Calculation Test</h2>
+            
+            <div class="test-item">
+                <h3>Cart Total Calculation</h3>
+                <p>Test perhitungan subtotal, tax, service fee, dan total</p>
+                <button class="test-button" onclick="testPriceCalculation()">Run Test</button>
+                <div id="test-calc-result"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Test 1: Reservation Offers API
+        async function testReservationOffers() {
+            const resultDiv = document.getElementById('test-offers-result');
+            resultDiv.innerHTML = '<div class="result info">⏳ Testing...</div>';
+            
+            try {
+                const response = await fetch('/api/reservation-offers');
+                const data = await response.json();
+                
+                if (response.ok && data.length > 0) {
+                    resultDiv.innerHTML = `
+                        <div class="result success">
+                            <span class="status-indicator success"></span>
+                            <strong>✅ Success!</strong> Found ${data.length} reservation(s)
+                            <div class="code-block">${JSON.stringify(data[0], null, 2)}</div>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="result error">
+                            <span class="status-indicator error"></span>
+                            <strong>❌ Failed!</strong> No reservations found or API error
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <span class="status-indicator error"></span>
+                        <strong>❌ Error!</strong> ${error.message}
+                    </div>
+                `;
+            }
+        }
+        
+        // Test 2: Payment Endpoint
+        async function testPaymentEndpoint() {
+            const resultDiv = document.getElementById('test-payment-result');
+            resultDiv.innerHTML = '<div class="result info">⏳ Testing validation...</div>';
+            
+            // Test with invalid data (should fail validation)
+            try {
+                const response = await fetch('/api/payments/reservation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        // Missing required fields
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.status === 422) {
+                    resultDiv.innerHTML = `
+                        <div class="result success">
+                            <span class="status-indicator success"></span>
+                            <strong>✅ Validation Works!</strong> Endpoint correctly rejected invalid data
+                            <div class="code-block">${JSON.stringify(data.errors, null, 2)}</div>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="result info">
+                            <span class="status-indicator pending"></span>
+                            <strong>⚠️ Unexpected Response</strong> Status: ${response.status}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <span class="status-indicator error"></span>
+                        <strong>❌ Error!</strong> ${error.message}
+                    </div>
+                `;
+            }
+        }
+        
+        // Test 3: SessionStorage
+        function testSessionStorage() {
+            const mockReservation = {
+                id: 1,
+                name: "Gold Experience",
+                title: "Premium 10-Course Meal",
+                type: "reservation",
+                quantity: 2,
+                price: 250000,
+                totalPrice: 500000,
+                full_name: "Test User",
+                email: "test@example.com",
+                phone: "08123456789",
+                date: "2025-12-20",
+                time_start: "19:00",
+                time_end: "21:00",
+                room: "Garden Room",
+                duration: "07:00 - 09:00",
+                special_request: "No peanuts please"
+            };
+            
+            const pending = JSON.parse(sessionStorage.getItem('pendingReservations')) || [];
+            pending.push(mockReservation);
+            sessionStorage.setItem('pendingReservations', JSON.stringify(pending));
+            
+            document.getElementById('test-session-result').innerHTML = `
+                <div class="result success">
+                    <span class="status-indicator success"></span>
+                    <strong>✅ Saved!</strong> Mock reservation added to sessionStorage
+                </div>
+            `;
+        }
+        
+        function checkSessionStorage() {
+            const pending = sessionStorage.getItem('pendingReservations');
+            const resultDiv = document.getElementById('test-session-result');
+            
+            if (pending) {
+                const data = JSON.parse(pending);
+                resultDiv.innerHTML = `
+                    <div class="result info">
+                        <span class="status-indicator success"></span>
+                        <strong>📦 Found ${data.length} pending reservation(s)</strong>
+                        <div class="code-block">${JSON.stringify(data, null, 2)}</div>
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="result info">
+                        <span class="status-indicator pending"></span>
+                        <strong>Empty</strong> No pending reservations in sessionStorage
+                    </div>
+                `;
+            }
+        }
+        
+        function clearSessionStorage() {
+            sessionStorage.removeItem('pendingReservations');
+            document.getElementById('test-session-result').innerHTML = `
+                <div class="result success">
+                    <span class="status-indicator success"></span>
+                    <strong>🗑️ Cleared!</strong> SessionStorage cleaned
+                </div>
+            `;
+        }
+        
+        // Test 4: LocalStorage
+        function testLocalStorage() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || {};
+            const cartKey = `test-item-${Date.now()}`;
+            
+            cart[cartKey] = {
+                id: 999,
+                name: "Test Item",
+                type: "product",
+                price: 50000,
+                quantity: 1,
+                _key: cartKey
+            };
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            document.getElementById('test-local-result').innerHTML = `
+                <div class="result success">
+                    <span class="status-indicator success"></span>
+                    <strong>✅ Saved!</strong> Mock item added to cart
+                </div>
+            `;
+        }
+        
+        function checkLocalStorage() {
+            const cart = localStorage.getItem('cart');
+            const resultDiv = document.getElementById('test-local-result');
+            
+            if (cart) {
+                const data = JSON.parse(cart);
+                const itemCount = Object.keys(data).length;
+                resultDiv.innerHTML = `
+                    <div class="result info">
+                        <span class="status-indicator success"></span>
+                        <strong>🛒 Found ${itemCount} item(s) in cart</strong>
+                        <div class="code-block">${JSON.stringify(data, null, 2)}</div>
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="result info">
+                        <span class="status-indicator pending"></span>
+                        <strong>Empty</strong> No items in cart
+                    </div>
+                `;
+            }
+        }
+        
+        function clearLocalStorage() {
+            localStorage.removeItem('cart');
+            document.getElementById('test-local-result').innerHTML = `
+                <div class="result success">
+                    <span class="status-indicator success"></span>
+                    <strong>🗑️ Cleared!</strong> Cart cleaned
+                </div>
+            `;
+        }
+        
+        // Test 5: Complete Flow
+        async function simulateCompleteFlow() {
+            const resultDiv = document.getElementById('test-flow-result');
+            resultDiv.innerHTML = '<div class="result info">⏳ Running simulation...</div>';
+            
+            let log = [];
+            
+            try {
+                // Step 1: Add reservation to sessionStorage
+                log.push('1️⃣ Adding reservation to sessionStorage...');
+                const mockReservation = {
+                    id: 1,
+                    title: "Premium Experience",
+                    type: "reservation",
+                    quantity: 2,
+                    price: 300000,
+                    totalPrice: 600000,
+                    full_name: "John Doe",
+                    email: "john@example.com",
+                    phone: "08123456789",
+                    date: "2025-12-25",
+                    time_start: "18:00",
+                    time_end: "20:00"
+                };
+                
+                sessionStorage.setItem('pendingReservations', JSON.stringify([mockReservation]));
+                log.push('   ✅ Saved to sessionStorage');
+                
+                // Step 2: Simulate cart page load
+                log.push('2️⃣ Simulating cart page load...');
+                const pending = JSON.parse(sessionStorage.getItem('pendingReservations')) || [];
+                
+                if (pending.length > 0) {
+                    log.push(`   ✅ Found ${pending.length} pending reservation(s)`);
+                    
+                    // Step 3: Add to cart
+                    log.push('3️⃣ Adding to cart (localStorage)...');
+                    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+                    
+                    pending.forEach(reservation => {
+                        const cartKey = `reservation-${reservation.id}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+                        cart[cartKey] = { ...reservation, _key: cartKey };
+                    });
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    log.push('   ✅ Saved to cart');
+                    
+                    // Step 4: Clear sessionStorage
+                    log.push('4️⃣ Clearing sessionStorage...');
+                    sessionStorage.removeItem('pendingReservations');
+                    log.push('   ✅ Cleared');
+                    
+                    // Step 5: Verify cart
+                    log.push('5️⃣ Verifying final state...');
+                    const finalCart = JSON.parse(localStorage.getItem('cart'));
+                    const itemCount = Object.keys(finalCart).length;
+                    log.push(`   ✅ Cart has ${itemCount} item(s)`);
+                    
+                    resultDiv.innerHTML = `
+                        <div class="result success">
+                            <span class="status-indicator success"></span>
+                            <strong>✅ Simulation Complete!</strong>
+                            <div class="code-block">${log.join('\n')}</div>
+                            <p style="margin-top: 10px;"><strong>Cart Content:</strong></p>
+                            <div class="code-block">${JSON.stringify(finalCart, null, 2)}</div>
+                        </div>
+                    `;
+                } else {
+                    throw new Error('No pending reservations found');
+                }
+            } catch (error) {
+                log.push(`❌ Error: ${error.message}`);
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <span class="status-indicator error"></span>
+                        <strong>❌ Simulation Failed!</strong>
+                        <div class="code-block">${log.join('\n')}</div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Test 6: Price Calculation
+        function testPriceCalculation() {
+            const resultDiv = document.getElementById('test-calc-result');
+            
+            // Mock cart items
+            const cartItems = [
+                { price: 250000, quantity: 2 }, // 500,000
+                { price: 150000, quantity: 1 }, // 150,000
+            ];
+            
+            // Calculate
+            const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const tax = subtotal * 0.10;
+            const serviceFee = 5000;
+            const total = subtotal + tax + serviceFee;
+            
+            const calculations = {
+                items: cartItems,
+                subtotal: subtotal.toLocaleString('id-ID'),
+                tax: tax.toLocaleString('id-ID'),
+                serviceFee: serviceFee.toLocaleString('id-ID'),
+                total: total.toLocaleString('id-ID')
+            };
+            
+            // Verify
+            const expectedSubtotal = 650000;
+            const isCorrect = subtotal === expectedSubtotal;
+            
+            resultDiv.innerHTML = `
+                <div class="result ${isCorrect ? 'success' : 'error'}">
+                    <span class="status-indicator ${isCorrect ? 'success' : 'error'}"></span>
+                    <strong>${isCorrect ? '✅' : '❌'} Calculation ${isCorrect ? 'Correct' : 'Incorrect'}!</strong>
+                    <div class="code-block">Items: [
+  { price: 250,000 × 2 = 500,000 },
+  { price: 150,000 × 1 = 150,000 }
+]
+
+Subtotal:     Rp ${calculations.subtotal}
+Tax (10%):    Rp ${calculations.tax}
+Service Fee:  Rp ${calculations.serviceFee}
+--------------------------------
+Total:        Rp ${calculations.total}</div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

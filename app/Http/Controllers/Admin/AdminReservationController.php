@@ -32,15 +32,20 @@ class AdminReservationController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'full_name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
-            'date' => 'required|date',
-            'time_start' => 'required|date_format:H:i',
-            'time_end' => 'required|date_format:H:i',
-            'guests' => 'required|integer|min:1',
-            'special_request' => 'nullable|string',
+            'title' => 'required|string|max:255',
+            'badge' => 'nullable|string|max:100',
+            'duration' => 'required|string|max:100',
+            'room' => 'required|string|max:100',
+            'price' => 'required|integer|min:0',
+            'capacity' => 'required|integer|min:1',
+            'menu' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('reservations', 'public');
+            $validated['image_path'] = '/storage/' . $path;
+        }
 
         Reservation::create($validated);
 
@@ -64,15 +69,20 @@ class AdminReservationController extends Controller
         $reservation = Reservation::findOrFail($id);
 
         $validated = $request->validate([
-            'full_name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
-            'date' => 'required|date',
-            'time_start' => 'required|date_format:H:i',
-            'time_end' => 'required|date_format:H:i',
-            'guests' => 'required|integer|min:1',
-            'special_request' => 'nullable|string',
+            'title' => 'required|string|max:255',
+            'badge' => 'nullable|string|max:100',
+            'duration' => 'required|string|max:100',
+            'room' => 'required|string|max:100',
+            'price' => 'required|integer|min:0',
+            'capacity' => 'required|integer|min:1',
+            'menu' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('reservations', 'public');
+            $validated['image_path'] = '/storage/' . $path;
+        }
 
         $reservation->update($validated);
 

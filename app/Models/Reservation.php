@@ -10,13 +10,18 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'full_name',
-        'email',
-        'phone',
-        'date',
-        'time_start',
-        'time_end',
-        'guests',
-        'special_request',
+        'title',
+        'badge',
+        'duration',
+        'room',
+        'price',
+        'capacity',
+        'menu',
+        'image_path',
     ];
+
+    public function bookings()
+    {
+        return $this->hasMany(ReservationBooking::class);
+    }
 }

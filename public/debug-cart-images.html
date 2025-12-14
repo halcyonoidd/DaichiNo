@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Cart Images</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .debug-section { background: white; padding: 20px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h2 { color: #333; border-bottom: 2px solid #4CAF50; padding-bottom: 10px; }
+        button { background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+        button:hover { background: #45a049; }
+        .result { margin-top: 10px; padding: 15px; background: #f9f9f9; border-radius: 5px; }
+        .success { color: #4CAF50; font-weight: bold; }
+        .error { color: #f44336; font-weight: bold; }
+        .warning { color: #FF9800; font-weight: bold; }
+        img { max-width: 200px; border: 1px solid #ddd; border-radius: 5px; margin: 10px 0; }
+        pre { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Debug: Gambar Reservasi di Cart</h1>
+    
+    <div class="debug-section">
+        <h2>1. Test API Response</h2>
+        <button onclick="testAPI()">Test API /api/reservation-offers</button>
+        <div id="api-result"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>2. Check LocalStorage Cart</h2>
+        <button onclick="checkCart()">Check Cart</button>
+        <button onclick="clearCart()">Clear Cart</button>
+        <div id="cart-result"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>3. Test Image URL Direct</h2>
+        <input type="text" id="image-url-test" placeholder="Paste image URL here" style="width: 70%; padding: 8px;">
+        <button onclick="testImageURL()">Test URL</button>
+        <div id="image-test-result"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>4. Add Test Item to Cart</h2>
+        <button onclick="addTestItem()">Add Test Item with Image</button>
+        <button onclick="viewCart()">View Cart Page</button>
+        <div id="test-result"></div>
+    </div>
+
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.innerHTML = '<p>Loading...</p>';
+            
+            try {
+                const response = await fetch('/api/reservation-offers');
+                const data = await response.json();
+                console.log('API Response:', data);
+                
+                const items = data.data || data;
+                
+                if (!items || items.length === 0) {
+                    resultDiv.innerHTML = '<p class="error">❌ No items returned from API</p>';
+                    return;
+                }
+                
+                const firstItem = items[0];
+                
+                let html = `<p class="success">✅ API OK! Found ${items.length} items</p>`;
+                html += `<h3>First Item Analysis:</h3>`;
+                html += `<ul>`;
+                html += `<li>ID: ${firstItem.id}</li>`;
+                html += `<li>Title: ${firstItem.title}</li>`;
+                html += `<li>image_path: ${firstItem.image_path || 'NULL'}</li>`;
+                html += `<li>image_url: ${firstItem.image_url || 'NULL'}</li>`;
+                html += `<li>Has image_url: ${firstItem.image_url ? '✅ YES' : '❌ NO'}</li>`;
+                html += `</ul>`;
+                
+                if (firstItem.image_url) {
+                    html += `<h3>Testing Image Load:</h3>`;
+                    html += `<p>URL: <code>${firstItem.image_url}</code></p>`;
+                    html += `<img src="${firstItem.image_url}" onerror="this.parentElement.innerHTML += '<p class=\\'error\\'>❌ Image failed to load!</p>';" onload="this.parentElement.innerHTML += '<p class=\\'success\\'>✅ Image loaded successfully!</p>';">`;
+                } else if (firstItem.image_path) {
+                    html += `<p class="warning">⚠️ image_url missing, but image_path exists: ${firstItem.image_path}</p>`;
+                    html += `<p>Trying to construct URL manually...</p>`;
+                    const constructedUrl = window.location.origin + '/storage/' + firstItem.image_path.replace(/^\/+/, '');
+                    html += `<p>Constructed URL: <code>${constructedUrl}</code></p>`;
+                    html += `<img src="${constructedUrl}" onerror="this.parentElement.innerHTML += '<p class=\\'error\\'>❌ Image failed to load!</p>';" onload="this.parentElement.innerHTML += '<p class=\\'success\\'>✅ Image loaded successfully!</p>';">`;
+                }
+                
+                html += `<h3>Full API Response:</h3>`;
+                html += `<pre>${JSON.stringify(firstItem, null, 2)}</pre>`;
+                
+                resultDiv.innerHTML = html;
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+                console.error('API Error:', error);
+            }
+        }
+        
+        function checkCart() {
+            const resultDiv = document.getElementById('cart-result');
+            const cart = localStorage.getItem('cart');
+            
+            if (!cart) {
+                resultDiv.innerHTML = '<p class="warning">⚠️ Cart is empty</p>';
+                return;
+            }
+            
+            try {
+                const cartData = JSON.parse(cart);
+                const items = Array.isArray(cartData) ? cartData : Object.values(cartData);
+                
+                if (items.length === 0) {
+                    resultDiv.innerHTML = '<p class="warning">⚠️ Cart has no items</p>';
+                    return;
+                }
+                
+                let html = `<p class="success">✅ Found ${items.length} item(s) in cart</p>`;
+                
+                items.forEach((item, index) => {
+                    html += `<h3>Item ${index + 1}: ${item.title || item.name}</h3>`;
+                    html += `<ul>`;
+                    html += `<li>Type: ${item.type}</li>`;
+                    html += `<li>image_url: ${item.image_url || 'NULL'}</li>`;
+                    html += `<li>image: ${item.image || 'NULL'}</li>`;
+                    html += `<li>image_path: ${item.image_path || 'NULL'}</li>`;
+                    html += `<li>Has Image: ${(item.image_url || item.image || item.image_path) ? '✅ YES' : '❌ NO'}</li>`;
+                    html += `</ul>`;
+                    
+                    const imgUrl = item.image_url || item.image || item.image_path;
+                    if (imgUrl) {
+                        html += `<p>Image URL: <code>${imgUrl}</code></p>`;
+                        html += `<img src="${imgUrl}" onerror="this.parentElement.innerHTML += '<p class=\\'error\\'>❌ Failed to load!</p>';" onload="this.parentElement.innerHTML += '<p class=\\'success\\'>✅ Loaded!</p>';">`;
+                    }
+                    
+                    html += `<details><summary>Full Item Data</summary><pre>${JSON.stringify(item, null, 2)}</pre></details>`;
+                });
+                
+                resultDiv.innerHTML = html;
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ Error parsing cart: ${error.message}</p>`;
+            }
+        }
+        
+        function clearCart() {
+            localStorage.removeItem('cart');
+            document.getElementById('cart-result').innerHTML = '<p class="success">✅ Cart cleared!</p>';
+        }
+        
+        function testImageURL() {
+            const url = document.getElementById('image-url-test').value;
+            const resultDiv = document.getElementById('image-test-result');
+            
+            if (!url) {
+                resultDiv.innerHTML = '<p class="error">❌ Please enter a URL</p>';
+                return;
+            }
+            
+            resultDiv.innerHTML = `
+                <p>Testing URL: <code>${url}</code></p>
+                <img src="${url}" 
+                     onerror="this.parentElement.innerHTML += '<p class=\\'error\\'>❌ Image failed to load! Check if file exists and URL is correct.</p>';" 
+                     onload="this.parentElement.innerHTML += '<p class=\\'success\\'>✅ Image loaded successfully!</p>';">
+            `;
+        }
+        
+        async function addTestItem() {
+            const resultDiv = document.getElementById('test-result');
+            resultDiv.innerHTML = '<p>Loading...</p>';
+            
+            try {
+                // Get first item from API
+                const response = await fetch('/api/reservation-offers');
+                const data = await response.json();
+                const items = data.data || data;
+                
+                if (!items || items.length === 0) {
+                    resultDiv.innerHTML = '<p class="error">❌ No items from API</p>';
+                    return;
+                }
+                
+                const apiItem = items[0];
+                
+                // Create cart item
+                const cartItem = {
+                    id: apiItem.id,
+                    title: apiItem.title,
+                    name: apiItem.title,
+                    type: 'reservation',
+                    badge: apiItem.badge,
+                    price: apiItem.price,
+                    quantity: 2,
+                    totalPrice: apiItem.price * 2,
+                    room: apiItem.room,
+                    duration: apiItem.duration,
+                    menu: apiItem.menu,
+                    date: '2025-12-25',
+                    time_start: '19:00',
+                    time_end: '21:00',
+                    full_name: 'Test User',
+                    email: 'test@example.com',
+                    phone: '08123456789',
+                    // Image fields
+                    image_url: apiItem.image_url,
+                    image: apiItem.image_url || apiItem.image_path,
+                    image_path: apiItem.image_path,
+                    _key: `test-${Date.now()}`
+                };
+                
+                // Add to cart
+                let cart = JSON.parse(localStorage.getItem('cart')) || {};
+                cart[cartItem._key] = cartItem;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                let html = '<p class="success">✅ Test item added to cart!</p>';
+                html += `<h3>Item Details:</h3>`;
+                html += `<ul>`;
+                html += `<li>Title: ${cartItem.title}</li>`;
+                html += `<li>image_url: ${cartItem.image_url || 'NULL'}</li>`;
+                html += `<li>image: ${cartItem.image || 'NULL'}</li>`;
+                html += `<li>Has Image: ${(cartItem.image_url || cartItem.image) ? '✅ YES' : '❌ NO'}</li>`;
+                html += `</ul>`;
+                
+                if (cartItem.image_url || cartItem.image) {
+                    html += `<p>Testing image load:</p>`;
+                    html += `<img src="${cartItem.image_url || cartItem.image}" onerror="this.parentElement.innerHTML += '<p class=\\'error\\'>❌ Failed!</p>';" onload="this.parentElement.innerHTML += '<p class=\\'success\\'>✅ Success!</p>';">`;
+                }
+                
+                html += `<pre>${JSON.stringify(cartItem, null, 2)}</pre>`;
+                
+                resultDiv.innerHTML = html;
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+                console.error('Error:', error);
+            }
+        }
+        
+        function viewCart() {
+            window.location.href = '/cart';
+        }
+    </script>
+</body>
+</html>

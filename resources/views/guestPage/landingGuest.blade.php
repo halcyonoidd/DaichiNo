@@ -14,7 +14,6 @@
         <div class="nav-section left">
             <a href="{{ route('login') }}" class="nav-link light">About</a>
             <a href="{{ route('login') }}" class="nav-link light">Contact</a>
-            <a href="{{ route('login') }}" class="nav-link light">Voucher</a>
         </div>
         
         <div class="nav-center">
@@ -32,8 +31,8 @@
         <h1>A Fragment of <b style="color: #ebc34c">Everything</b>,</h1>
         <h1>On earth that are Delicious</h1>
         <div class="hero-buttons">
-            <a href="#reservation" class="btn">Make Reservation</a>
-            <a href="#menu" class="btn" style="background-color: transparent; border: 2px solid white; margin-left: 15px;">View Menu</a>
+            <a href="{{ route('login') }}" class="btn">Make Reservation</a>
+            <a href="{{ route('login') }}" class="btn" style="background-color: transparent; border: 2px solid white; margin-left: 15px;">View Menu</a>
         </div>
     </section>
 
@@ -471,29 +470,28 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Daichi No</h3>
-                    <p>Experience the authentic taste of Japan with our carefully crafted dishes made from the finest ingredients.</p>
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-5 has-text-white">Daichi No</h3>
+                    <p>Authentic Japanese dining experiences</p>
                 </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="menu.html">Our Menu</a></li>
-                        <li><a href="reservation.html">Reservations</a></li>
-                        <li><a href="voucher.html">Gift Vouchers</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
+                <div class="column">
+                    <h3 class="title is-5 has-text-white">Order Support</h3>
+                    <p><i class="fas fa-phone mr-2"></i> +81 3 1234 5678</p>
+                    <p><i class="fas fa-clock mr-2"></i> 9:00 AM - 9:00 PM JST</p>
                 </div>
-                <div class="footer-column">
-                    <h3>Opening Hours</h3>
-                    <ul class="footer-links">
-                        <li>Monday - Friday: 11:00 AM - 10:00 PM</li>
-                        <li>Saturday - Sunday: 11:00 AM - 11:00 PM</li>
-                        <li>Holidays: 12:00 PM - 9:00 PM</li>
-                    </ul>
+                <div class="column">
+                    <h3 class="title is-5 has-text-white">Follow Us</h3>
+                    <p>
+                        <a href="#" class="has-text-light mr-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="has-text-light mr-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="has-text-light"><i class="fab fa-twitter"></i></a>
+                    </p>
                 </div>
+            </div>
+            <hr class="mt-5 mb-5" style="background-color: rgba(255,255,255,0.1);">
+            <p>&copy; 2023 Daichi No. All rights reserved.</p>
+            <p>All transactions are secured with SSL encryption.</p>
         </div>
     </footer>
 

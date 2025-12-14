@@ -23,7 +23,7 @@
                         <span class="icon is-small">
                             <i class="fas fa-arrow-left"></i>
                         </span>
-                        <span>Kembali</span>
+                        <span>Back</span>
                     </a>
                     <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                         @csrf
@@ -53,63 +53,64 @@
 
         <!-- Form -->
         <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 8px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <form action="{{ route('admin.reservations.store') }}" method="POST">
+            <form action="{{ route('admin.reservations.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="field">
-                    <label class="label">Full Name</label>
+                    <label class="label">Title</label>
                     <div class="control">
-                        <input class="input" type="text" name="full_name" value="{{ old('full_name') }}" required>
+                        <input class="input" type="text" name="title" value="{{ old('title') }}" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Email</label>
+                    <label class="label">Badge</label>
                     <div class="control">
-                        <input class="input" type="email" name="email" value="{{ old('email') }}" required>
+                        <input class="input" type="text" name="badge" value="{{ old('badge') }}" placeholder="e.g., Bronze / Silver / Gold">
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Phone</label>
+                    <label class="label">Duration</label>
                     <div class="control">
-                        <input class="input" type="text" name="phone" value="{{ old('phone') }}" required>
+                        <input class="input" type="text" name="duration" value="{{ old('duration') }}" placeholder="2.5 hours" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Date</label>
+                    <label class="label">Room</label>
                     <div class="control">
-                        <input class="input" type="date" name="date" value="{{ old('date') }}" required>
+                        <input class="input" type="text" name="room" value="{{ old('room') }}" placeholder="e.g., Garden Room" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Start Time</label>
+                    <label class="label">Price (Rp)</label>
                     <div class="control">
-                        <input class="input" type="time" name="time_start" value="{{ old('time_start') }}" required>
+                        <input class="input" type="number" name="price" value="{{ old('price') }}" min="0" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">End Time</label>
+                    <label class="label">Capacity (Guests)</label>
                     <div class="control">
-                        <input class="input" type="time" name="time_end" value="{{ old('time_end') }}" required>
+                        <input class="input" type="number" name="capacity" value="{{ old('capacity') }}" min="1" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Number of Guests</label>
+                    <label class="label">Menu (Description)</label>
                     <div class="control">
-                        <input class="input" type="number" name="guests" value="{{ old('guests', 1) }}" min="1" required>
+                        <textarea class="textarea" name="menu" placeholder="Describe the courses or items included">{{ old('menu') }}</textarea>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Special Request</label>
+                    <label class="label">Image</label>
                     <div class="control">
-                        <textarea class="textarea" name="special_request">{{ old('special_request') }}</textarea>
+                        <input class="input" type="file" name="image" accept="image/*">
                     </div>
+                    <p class="help">Optional: JPG, PNG, or WEBP up to 2MB.</p>
                 </div>
 
                 <div class="field is-grouped">
@@ -118,7 +119,7 @@
                             <span class="icon is-small">
                                 <i class="fas fa-save"></i>
                             </span>
-                            <span>Save Reservation</span>
+                            <span>Save</span>
                         </button>
                     </div>
                     <div class="control">

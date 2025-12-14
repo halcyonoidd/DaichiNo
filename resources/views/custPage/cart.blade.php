@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="user-name" content="{{ auth()->user()->name ?? 'Guest User' }}">
+    <meta name="user-email" content="{{ auth()->user()->email ?? 'guest@example.com' }}">
+    <meta name="user-phone" content="{{ auth()->user()->phone ?? '0000000000' }}">
     <title>Daichi No - Your Cart & Checkout</title>
     <!-- Bulma CSS Framework -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -17,7 +21,6 @@
         <div class="nav-section left">
             <a href="{{ route('about') }}" class="nav-link">About</a>
             <a href="{{ route('contact') }}" class="nav-link">Contact</a>
-            <a href="{{ route('voucher') }}" class="nav-link">Vouchers</a>
         </div>
         
         <div class="nav-center">
@@ -27,10 +30,6 @@
         <div class="nav-section right">
             <a href="{{ route('menu') }}" class="nav-link">Menu</a>
             <a href="{{ route('reservation') }}" class="nav-link">Reservations</a>
-            <a href="cart.html" class="nav-link">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-badge" id="cart-badge">3</span>
-            </a>
         </div>
     </nav>
 
@@ -197,7 +196,7 @@
                 <h3>Your Cart is Empty</h3>
                 <p>Looks like you haven't added any experiences or vouchers to your cart yet. Browse our experiences or vouchers to start planning your Daichi No journey.</p>
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                    <a href="reservations.html" class="button is-primary is-medium">
+                    <a href="{{ route('reservation') }}" class="button is-primary is-medium">
                         <span class="icon">
                             <i class="fas fa-utensils"></i>
                         </span>
@@ -212,15 +211,7 @@
                 </div>
             </div>
             
-            <!-- Promo Code Section -->
-            <div class="promo-section">
-                <div class="promo-title">Apply Promo Code</div>
-                <div class="promo-input-group">
-                    <input type="text" class="promo-input" id="promo-code" placeholder="Enter promo code (e.g. DAICHI10)">
-                    <button class="apply-promo-btn" id="apply-promo">Apply</button>
-                </div>
-                <div class="promo-message" id="promo-message"></div>
-            </div>
+
         </div>
         
         <!-- Order Summary Sidebar -->
@@ -253,50 +244,6 @@
                     <span class="summary-amount" id="total">¥48,350</span>
                 </div>
                 
-                <!-- Payment Methods -->
-                <div class="payment-methods">
-                    <div class="payment-title">Select Payment Method</div>
-                    <div class="payment-options">
-                        <div class="payment-option selected" data-method="credit-card">
-                            <div class="payment-icon">
-                                <i class="far fa-credit-card"></i>
-                            </div>
-                            <div class="payment-details">
-                                <div class="payment-name">Credit / Debit Card</div>
-                                <div class="payment-desc">Visa, Mastercard, American Express</div>
-                            </div>
-                            <div class="checkmark">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="payment-option" data-method="paypal">
-                            <div class="payment-icon">
-                                <i class="fab fa-paypal"></i>
-                            </div>
-                            <div class="payment-details">
-                                <div class="payment-name">PayPal</div>
-                                <div class="payment-desc">Secure online payments</div>
-                            </div>
-                            <div class="checkmark">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="payment-option" data-method="bank-transfer">
-                            <div class="payment-icon">
-                                <i class="fas fa-university"></i>
-                            </div>
-                            <div class="payment-details">
-                                <div class="payment-name">Bank Transfer</div>
-                                <div class="payment-desc">Domestic bank transfers only</div>
-                            </div>
-                            <div class="checkmark">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
                 <!-- Pay Now Button -->
                 <button class="pay-now-btn" id="pay-now-btn">
@@ -305,7 +252,7 @@
                 </button>
                 
                 <!-- Continue Shopping Button -->
-                <a href="reservations.html" class="continue-shopping">
+                <a href="{{ route('reservation') }}" class="continue-shopping">
                     <i class="fas fa-arrow-left"></i>
                     Continue Shopping
                 </a>
@@ -364,33 +311,7 @@
         </div>
     </footer>
 </body>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
 <script src="{{ asset('js/frontend/cart.js') }}"></script>
-<script src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="Mid-client-50I6UArbKtOJfmtn"></script>
-<script>
-fetch('http://127.0.0.1:8000/api/payments', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer TOKEN_LOGIN'
-    },
-    body: JSON.stringify({
-        amount: 150000
-    })
-})
-.then(res => res.json())
-.then(data => {
-    snap.pay(data.snap_token, {
-        onSuccess: function(result){
-            console.log('SUCCESS', result);
-        },
-        onPending: function(result){
-            console.log('PENDING', result);
-        },
-        onError: function(result){
-            console.log('ERROR', result);
-        }
-    });
-});
-</script>
+<script src="{{ asset('js/frontend/cart-reservations.js') }}"></script>
 </html>

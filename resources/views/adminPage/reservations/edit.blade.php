@@ -23,7 +23,7 @@
                         <span class="icon is-small">
                             <i class="fas fa-arrow-left"></i>
                         </span>
-                        <span>Kembali</span>
+                        <span>Back</span>
                     </a>
                     <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                         @csrf
@@ -53,64 +53,71 @@
 
         <!-- Form -->
         <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 8px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <form action="{{ route('admin.reservations.update', $reservation->id) }}" method="POST">
+            <form action="{{ route('admin.reservations.update', $reservation->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <div class="field">
-                    <label class="label">Full Name</label>
+                    <label class="label">Title</label>
                     <div class="control">
-                        <input class="input" type="text" name="full_name" value="{{ old('full_name', $reservation->full_name) }}" required>
+                        <input class="input" type="text" name="title" value="{{ old('title', $reservation->title) }}" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Email</label>
+                    <label class="label">Badge</label>
                     <div class="control">
-                        <input class="input" type="email" name="email" value="{{ old('email', $reservation->email) }}" required>
+                        <input class="input" type="text" name="badge" value="{{ old('badge', $reservation->badge) }}" placeholder="e.g., Bronze / Silver / Gold">
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Phone</label>
+                    <label class="label">Duration</label>
                     <div class="control">
-                        <input class="input" type="text" name="phone" value="{{ old('phone', $reservation->phone) }}" required>
+                        <input class="input" type="text" name="duration" value="{{ old('duration', $reservation->duration) }}" placeholder="07:00 - 09:00" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Date</label>
+                    <label class="label">Room</label>
                     <div class="control">
-                        <input class="input" type="date" name="date" value="{{ old('date', $reservation->date) }}" required>
+                        <input class="input" type="text" name="room" value="{{ old('room', $reservation->room) }}" placeholder="e.g., Garden Room" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Start Time</label>
+                    <label class="label">Price (Rp)</label>
                     <div class="control">
-                        <input class="input" type="time" name="time_start" value="{{ old('time_start', $reservation->time_start) }}" required>
+                        <input class="input" type="number" name="price" value="{{ old('price', $reservation->price) }}" min="0" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">End Time</label>
+                    <label class="label">Capacity (Guests)</label>
                     <div class="control">
-                        <input class="input" type="time" name="time_end" value="{{ old('time_end', $reservation->time_end) }}" required>
+                        <input class="input" type="number" name="capacity" value="{{ old('capacity', $reservation->capacity) }}" min="1" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Number of Guests</label>
+                    <label class="label">Menu (Description)</label>
                     <div class="control">
-                        <input class="input" type="number" name="guests" value="{{ old('guests', $reservation->guests) }}" min="1" required>
+                        <textarea class="textarea" name="menu">{{ old('menu', $reservation->menu) }}</textarea>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Special Request</label>
+                    <label class="label">Image</label>
                     <div class="control">
-                        <textarea class="textarea" name="special_request">{{ old('special_request', $reservation->special_request) }}</textarea>
+                        <input class="input" type="file" name="image" accept="image/*">
                     </div>
+                    @if(!empty($reservation->image_path))
+                        <div class="mt-3">
+                            <p class="label">Current Image:</p>
+                            <img src="{{ $reservation->image_path }}" alt="Reservation Image" style="max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px;"/>
+                        </div>
+                    @endif
+                    <p class="help">Optional: JPG, PNG, or WEBP up to 2MB.</p>
                 </div>
 
                 <div class="field is-grouped">
@@ -119,7 +126,7 @@
                             <span class="icon is-small">
                                 <i class="fas fa-save"></i>
                             </span>
-                            <span>Update Reservation</span>
+                            <span>Update</span>
                         </button>
                     </div>
                     <div class="control">

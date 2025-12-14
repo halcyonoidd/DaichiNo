@@ -29,7 +29,7 @@
                         <span class="icon is-small">
                             <i class="fas fa-arrow-left"></i>
                         </span>
-                        <span>Kembali</span>
+                        <span>Back</span>
                     </a>
                     <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                         @csrf
@@ -59,24 +59,24 @@
                     <table class="table is-striped is-hoverable is-fullwidth">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Guests</th>
+                                <th>Title</th>
+                                <th>Badge</th>
+                                <th>Duration</th>
+                                <th>Room</th>
+                                <th>Price</th>
+                                <th>Capacity</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($reservations as $reservation)
                                 <tr>
-                                    <td><strong>{{ $reservation->full_name }}</strong></td>
-                                    <td>{{ $reservation->email }}</td>
-                                    <td>{{ $reservation->phone }}</td>
-                                    <td>{{ $reservation->date }}</td>
-                                    <td>{{ $reservation->time_start }} - {{ $reservation->time_end }}</td>
-                                    <td><span class="tag is-info">{{ $reservation->guests }}</span></td>
+                                    <td><strong>{{ $reservation->title }}</strong></td>
+                                    <td>{{ $reservation->badge ?? '-' }}</td>
+                                    <td>{{ $reservation->duration ?? '-' }}</td>
+                                    <td>{{ $reservation->room ?? '-' }}</td>
+                                    <td>Rp {{ number_format($reservation->price, 0, ',', '.') }}</td>
+                                    <td><span class="tag is-info">{{ $reservation->capacity }}</span></td>
                                     <td>
                                         <a href="{{ route('admin.reservations.edit', $reservation->id) }}" class="button is-small is-info">
                                             <span class="icon is-small">

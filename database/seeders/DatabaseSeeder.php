@@ -24,5 +24,10 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admindaichino123'), // Password admin
             'role' => 'admin',
         ]);
+
+        // Seed reservation offers
+        $this->call([
+            ReservationSeeder::class,
+        ]);
     }
 }

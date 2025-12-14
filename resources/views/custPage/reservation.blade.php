@@ -13,7 +13,6 @@
         <div class="nav-section left">
             <a href="{{ route('about') }}" class="nav-link light">About</a>
             <a href="{{ route('contact') }}" class="nav-link light">Contact</a>
-            <a href="{{ route('voucher') }}" class="nav-link light">Voucher</a>
         </div>
         
         <div class="nav-center">
@@ -23,7 +22,7 @@
         <div class="nav-section right">
             <a href="{{ route('menu') }}" class="nav-link light">Menu</a>
             <a href="{{ route('reservation') }}" class="nav-link light">Reservation</a>
-            <a href="{{ route('cart') }}" class="nav-link light">Cart(0)</a>
+            <a href="{{ route('cart') }}" class="nav-link light">Cart</a>
         </div>
     </nav>
 
@@ -31,6 +30,39 @@
         <i class="fas fa-check-circle"></i>
         <span>Added to cart!</span>
     </div>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Reservation Cart</h3>
+            <button class="close-cart" id="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="has-text-centered py-6" id="empty-cart-message">
+                <i class="fas fa-shopping-cart fa-3x mb-4 has-text-grey-light"></i>
+                <p class="subtitle is-6 has-text-grey">Your cart is empty</p>
+                <p class="is-size-7 has-text-grey">Add reservations to get started</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-amount" id="cart-total">Rp0</span>
+            </div>
+            <button class="button is-primary is-fullwidth is-large" id="checkout-btn">
+                <span class="icon">
+                    <i class="fas fa-credit-card"></i>
+                </span>
+                <span>Proceed to Checkout</span>
+            </button>
+        </div>
+    </div>
+
+    <button class="view-cart-btn" id="view-cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+    </button>
 
     <div class="reserve-modal" id="reserve-modal">
         <div class="modal-content">
@@ -44,6 +76,36 @@
                 <div class="modal-details">
                     <div class="modal-price" id="modal-experience-price">¥0</div>
                     <p id="modal-experience-description">Experience description</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="full-name">Full Name *</label>
+                    <input type="text" class="input" id="full-name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" class="input" id="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" class="input" id="phone" placeholder="Enter your phone number" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reservation-date">Reservation Date *</label>
+                    <input type="date" class="input" id="reservation-date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time-start">Start Time *</label>
+                    <input type="time" class="input" id="time-start" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time-end">End Time *</label>
+                    <input type="time" class="input" id="time-end" required>
                 </div>
                 
                 <div class="form-group">
@@ -214,372 +276,36 @@
                 <h2>Available Experiences</h2>
                 <p class="subtitle">Browse and select from our exclusive dining experiences</p>
             </div>
-
-            <div class="experience-item" data-duration="short" data-courses="few" data-price="budget" data-tier="bronze" data-id="1">
-                <div class="experience-image">
-                    <img src="source\bg\sakura.jpg">
-                </div>
-                <div class="experience-content">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Sakura Experience</div>
-                            <div class="experience-tier bronze-tier">Bronze Tier</div>
-                        </div>
-                        <div>
-                            <div class="experience-price">¥12,500</div>
-                            <div class="price-subtitle">per person</div>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-details">
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span><strong>Duration:</strong> 1.5 hours</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-utensils"></i>
-                            <span><strong>Courses:</strong> 6-course meal</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-user-friends"></i>
-                            <span><strong>Group Size:</strong> 2-4 people</span>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-features">
-                        <ul class="feature-list">
-                            <li>Full Yomi Experience</li>
-                            <li>Part Mizu Experience</li>
-                            <li>Part Daichi Menu</li>
-                            <li>Few Gaen Menu</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="experience-footer">
-                        <div class="experience-tags">
-                            <span class="experience-tag">Short Duration</span>
-                            <span class="experience-tag">Few Courses</span>
-                            <span class="experience-tag">Budget Friendly</span>
-                        </div>
-                        <button class="reserve-btn" data-id="1">
-                            <i class="fas fa-calendar-plus"></i>
-                            Reserve Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="experience-item" data-duration="medium" data-courses="few" data-price="mid-range" data-tier="silver" data-id="2">
-                <div class="experience-image">
-                    <img src="source\bg\koi.jpg">
-                </div>
-                <div class="experience-content">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Koi Experience</div>
-                            <div class="experience-tier silver-tier">Silver Tier</div>
-                        </div>
-                        <div>
-                            <div class="experience-price">¥18,500</div>
-                            <div class="price-subtitle">per person</div>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-details">
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span><strong>Duration:</strong> 2 hours</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-utensils"></i>
-                            <span><strong>Courses:</strong> 7-course meal</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-user-friends"></i>
-                            <span><strong>Group Size:</strong> 2-6 people</span>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-features">
-                        <ul class="feature-list">
-                            <li>Full Yomi Experience</li>
-                            <li>Full Mizu Experience</li>
-                            <li>Part Kaen Experience</li>
-                            <li>Full Gaen Menu</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="experience-footer">
-                        <div class="experience-tags">
-                            <span class="experience-tag">Medium Duration</span>
-                            <span class="experience-tag">Few Courses</span>
-                            <span class="experience-tag">Mid-Range</span>
-                        </div>
-                        <button class="reserve-btn" data-id="2">
-                            <i class="fas fa-calendar-plus"></i>
-                            Reserve Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="experience-item" data-duration="medium" data-courses="many" data-price="mid-range" data-tier="gold" data-id="3">
-                <div class="experience-image">
-                    <img src="source\bg\fuji.jpg">
-                </div>
-                <div class="experience-content">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Fuji Experience</div>
-                            <div class="experience-tier gold-tier">Gold Tier</div>
-                        </div>
-                        <div>
-                            <div class="experience-price">¥25,000</div>
-                            <div class="price-subtitle">per person</div>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-details">
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span><strong>Duration:</strong> 2.5 hours</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-utensils"></i>
-                            <span><strong>Courses:</strong> 9-course meal</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-user-friends"></i>
-                            <span><strong>Group Size:</strong> 2-8 people</span>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-features">
-                        <ul class="feature-list">
-                            <li>Full Daichi Menu</li>
-                            <li>Full Mizu Experience</li>
-                            <li>Full Kaen Experience</li>
-                            <li>Part Ten Menu</li>
-                            <li>Part Yomi Experience</li>
-                            <li>Full Gaen Menu</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="experience-footer">
-                        <div class="experience-tags">
-                            <span class="experience-tag">Medium Duration</span>
-                            <span class="experience-tag">Many Courses</span>
-                            <span class="experience-tag">Mid-Range</span>
-                        </div>
-                        <button class="reserve-btn" data-id="3">
-                            <i class="fas fa-calendar-plus"></i>
-                            Reserve Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="experience-item" data-duration="long" data-courses="many" data-price="premium" data-tier="platinum" data-id="4">
-                <div class="experience-image">
-                    <img src="source\bg\imperial.jpg">
-                </div>
-                <div class="experience-content">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Imperial Experience</div>
-                            <div class="experience-tier platinum-tier">Platinum Tier</div>
-                        </div>
-                        <div>
-                            <div class="experience-price">¥38,000</div>
-                            <div class="price-subtitle">per person</div>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-details">
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span><strong>Duration:</strong> 3.5 hours</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-utensils"></i>
-                            <span><strong>Courses:</strong> 12-course omakase</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-user-friends"></i>
-                            <span><strong>Group Size:</strong> 2-4 people</span>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-features">
-                        <ul class="feature-list">
-                            <li>Full Mizu Experience</li>
-                            <li>Full Daichi Menu</li>
-                            <li>Full Gaen Menu & Experience</li>
-                            <li>Full Kaen Experience</li>
-                            <li>Full Yomi Experience</li>
-                            <li>Full Ten Menu</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="experience-footer">
-                        <div class="experience-tags">
-                            <span class="experience-tag">Long Duration</span>
-                            <span class="experience-tag">Many Courses</span>
-                            <span class="experience-tag">Premium</span>
-                        </div>
-                        <button class="reserve-btn" data-id="4">
-                            <i class="fas fa-calendar-plus"></i>
-                            Reserve Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="experience-item" data-duration="short" data-courses="few" data-price="budget" data-tier="bronze" data-id="5">
-                <div class="experience-image">
-                    <img src="source\bg\zen.jpg">
-                </div>
-                <div class="experience-content">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Zen Experience</div>
-                            <div class="experience-tier bronze-tier">Bronze Tier</div>
-                        </div>
-                        <div>
-                            <div class="experience-price">¥9,800</div>
-                            <div class="price-subtitle">per person</div>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-details">
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span><strong>Duration:</strong> 1 hour</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-utensils"></i>
-                            <span><strong>Courses:</strong> 5-course lunch</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-user-friends"></i>
-                            <span><strong>Group Size:</strong> 1-8 people</span>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-features">
-                        <ul class="feature-list">
-                            <li>Full Daichi Menu</li>
-                            <li>Full Yomi Experience</li>
-                            <li>Part Ten Menu</li>
-                            <li>Part Gaen Menu</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="experience-footer">
-                        <div class="experience-tags">
-                            <span class="experience-tag">Short Duration</span>
-                            <span class="experience-tag">Few Courses</span>
-                            <span class="experience-tag">Budget Friendly</span>
-                        </div>
-                        <button class="reserve-btn" data-id="5">
-                            <i class="fas fa-calendar-plus"></i>
-                            Reserve Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="experience-item" data-duration="long" data-courses="many" data-price="mid-range" data-tier="gold" data-id="6">
-                <div class="experience-image">
-                    <img src="source\bg\samurai.jpg">
-                </div>
-                <div class="experience-content">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Samurai Experience</div>
-                            <div class="experience-tier gold-tier">Gold Tier</div>
-                        </div>
-                        <div>
-                            <div class="experience-price">¥28,500</div>
-                            <div class="price-subtitle">per person</div>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-details">
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span><strong>Duration:</strong> 3 hours</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-utensils"></i>
-                            <span><strong>Courses:</strong> 10-course meal</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-user-friends"></i>
-                            <span><strong>Group Size:</strong> 4-10 people</span>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-features">
-                        <ul class="feature-list">
-                            <li>Full Daichi Menu</li>
-                            <li>Full Yomi Experience</li>
-                            <li>Full Mizu Experience</li>
-                            <li>Full Gaen Menu</li>
-                            <li>Part Kaen Experience</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="experience-footer">
-                        <div class="experience-tags">
-                            <span class="experience-tag">Long Duration</span>
-                            <span class="experience-tag">Many Courses</span>
-                            <span class="experience-tag">Mid-Range</span>
-                        </div>
-                        <button class="reserve-btn" data-id="6">
-                            <i class="fas fa-calendar-plus"></i>
-                            Reserve Now
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
-    <footer class="footer">
+     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Daichi No</h3>
-                    <p>Experience the authentic taste of Japan with our carefully crafted dishes made from the finest ingredients.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-5 has-text-white">Daichi No</h3>
+                    <p>Authentic Japanese dining experiences</p>
                 </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="menu.html">Our Menu</a></li>
-                        <li><a href="reservation.html">Reservations</a></li>
-                        <li><a href="voucher.html">Gift Vouchers</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
+                <div class="column">
+                    <h3 class="title is-5 has-text-white">Order Support</h3>
+                    <p><i class="fas fa-phone mr-2"></i> +81 3 1234 5678</p>
+                    <p><i class="fas fa-clock mr-2"></i> 9:00 AM - 9:00 PM JST</p>
                 </div>
-                <div class="footer-column">
-                    <h3>Opening Hours</h3>
-                    <ul class="footer-links">
-                        <li>Monday - Friday: 11:00 AM - 10:00 PM</li>
-                        <li>Saturday - Sunday: 11:00 AM - 11:00 PM</li>
-                        <li>Holidays: 12:00 PM - 9:00 PM</li>
-                    </ul>
+                <div class="column">
+                    <h3 class="title is-5 has-text-white">Follow Us</h3>
+                    <p>
+                        <a href="#" class="has-text-light mr-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="has-text-light mr-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="has-text-light"><i class="fab fa-twitter"></i></a>
+                    </p>
                 </div>
+            </div>
+            <hr class="mt-5 mb-5" style="background-color: rgba(255,255,255,0.1);">
+            <p>&copy; 2023 Daichi No. All rights reserved.</p>
+            <p>All transactions are secured with SSL encryption.</p>
         </div>
     </footer>
-
-<div class="panel-overlay" id="panel-overlay"></div>
+    <div class="panel-overlay" id="panel-overlay"></div>
 
     <div class="floating-user-btn" id="floating-user-btn">
         <i class="fas fa-user"></i>
@@ -595,7 +321,7 @@
         
         <div class="user-info">
             <div class="user-avatar">
-                <i class="fas fa-user-circle"></i>
+                <i class="fas fa-user-circle "></i>
             </div>
             @auth
                 <div class="user-name" id="user-name">{{ auth()->user()->name }}</div>
@@ -618,6 +344,7 @@
 
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
 
-    <script src ="{{ asset('js/frontend/reservation.js') }}"></script>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+    <script src="{{ asset('js/frontend/reservation.js') }}"></script>
 </body>
 </html>

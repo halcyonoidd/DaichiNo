@@ -62,10 +62,6 @@ Route::middleware('auth')->group(function () {
             return view('custPage.reservation');
         })->name('reservation');
 
-        Route::get('/voucher', function () {
-            $vouchers = \App\Models\Voucher::where('capacity', '>', 0)->get();
-            return view('custPage.voucher', compact('vouchers'));
-        })->name('voucher');
     });
 
     // Admin routes (grouped for clarity)
@@ -79,9 +75,6 @@ Route::middleware('auth')->group(function () {
 
         // Product management
         Route::resource('products', AdminProductController::class);
-
-        // Voucher management
-        Route::resource('vouchers', AdminVoucherController::class);
 
         // Reservation management
         Route::resource('reservations', AdminReservationController::class);
