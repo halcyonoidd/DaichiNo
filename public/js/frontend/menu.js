@@ -12,194 +12,44 @@ window.addEventListener('scroll', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const hexahedron = document.getElementById('hexahedron');
-    const faces = document.querySelectorAll('.face');
+    const menuCategories = document.querySelectorAll('.menu-category');
     const menuItems = document.querySelectorAll('.menu-items');
     const categoryDescriptions = document.querySelectorAll('.category-description');
-    const categoryIndicator = document.getElementById('category-indicator');
-    
-    const rotateUpBtn = document.getElementById('rotate-up');
-    const rotateLeftBtn = document.getElementById('rotate-left');
-    const rotateDownBtn = document.getElementById('rotate-down');
-    const rotateRightBtn = document.getElementById('rotate-right');
-    
-    const faceRotations = {
-        'sushi': { x: 0, y: 0 },     
-        'ramen': { x: 0, y: 180 },
-        'grilled': { x: 0, y: -90 }, 
-        'appetizers': { x: 0, y: 90 },
-        'desserts': { x: -90, y: 0 },
-        'beverages': { x: 90, y: 0 }
-    };
-    
-    const navigationMap = {
-        'sushi': { up: 'desserts', down: 'beverages', left: 'grilled', right: 'appetizers' },
-        'ramen': { up: 'desserts', down: 'beverages', left: 'appetizers', right: 'grilled' },
-        'grilled': { up: 'desserts', down: 'beverages', left: 'ramen', right: 'sushi' },
-        'appetizers': { up: 'desserts', down: 'beverages', left: 'sushi', right: 'ramen' },
-        'desserts': { up: 'ramen', down: 'sushi', left: 'grilled', right: 'appetizers' },
-        'beverages': { up: 'sushi', down: 'ramen', left: 'grilled', right: 'appetizers' }
-    };
-    
-    let currentCategory = 'sushi';
-    
-    rotateToFace('sushi');
-    
-    function rotateToFace(category) {
-        currentCategory = category;
-        const targetRotation = faceRotations[category];
-        
-        hexahedron.style.transform = `rotateX(${targetRotation.x}deg) rotateY(${targetRotation.y}deg)`;
-        
-        updateActiveFace(category);
-        
-        const faceText = Array.from(faces).find(f => f.getAttribute('data-category') === category).textContent;
-        categoryIndicator.textContent = `Current Category: ${faceText}`;
-        
-        updateMenuDisplay();
+    const categoryOrder = ['sushi_and_sashimi', 'ramen_and_noodles', 'grilled_specialties', 'appetizer', 'dessert', 'drink'];
+    let currentCategory = 'sushi_and_sashimi';
 
-        updateCategoryDescription();
-    }
-    
-    function updateActiveFace(category) {
-        faces.forEach((face) => {
-            if (face.getAttribute('data-category') === category) {
-                face.classList.add('active');
-            } else {
-                face.classList.remove('active');
-            }
+    function switchCategory(category) {
+        if (!categoryOrder.includes(category)) return;
+        currentCategory = category;
+
+        menuCategories.forEach(cat => {
+            cat.classList.toggle('active', cat.dataset.category === category);
         });
-    }
-    
-    function updateMenuDisplay() {
+
         menuItems.forEach(items => {
-            if (items.id === `${currentCategory}-items`) {
-                items.classList.add('active');
-            } else {
-                items.classList.remove('active');
-            }
+            items.classList.toggle('active', items.id === `${category}-items`);
         });
-    }
-    
-    function updateCategoryDescription() {
+
         categoryDescriptions.forEach(desc => {
-            if (desc.id === `${currentCategory}-description`) {
-                desc.classList.add('active');
-            } else {
-                desc.classList.remove('active');
-            }
+            desc.classList.toggle('active', desc.id === `${category}-description`);
         });
     }
-    
-    rotateUpBtn.addEventListener('click', () => {
-        const nextCategory = navigationMap[currentCategory].up;
-        rotateToFace(nextCategory);
+
+    menuCategories.forEach(cat => {
+        cat.addEventListener('click', () => switchCategory(cat.dataset.category));
     });
-    
-    rotateLeftBtn.addEventListener('click', () => {
-        const nextCategory = navigationMap[currentCategory].left;
-        rotateToFace(nextCategory);
-    });
-    
-    rotateDownBtn.addEventListener('click', () => {
-        const nextCategory = navigationMap[currentCategory].down;
-        rotateToFace(nextCategory);
-    });
-    
-    rotateRightBtn.addEventListener('click', () => {
-        const nextCategory = navigationMap[currentCategory].right;
-        rotateToFace(nextCategory);
-    });
-    
+
     document.addEventListener('keydown', e => {
-        switch(e.key) {
-            case 'ArrowUp':
-                e.preventDefault();
-                const upCategory = navigationMap[currentCategory].up;
-                rotateToFace(upCategory);
-                break;
-            case 'ArrowLeft':
-                e.preventDefault();
-                const leftCategory = navigationMap[currentCategory].left;
-                rotateToFace(leftCategory);
-                break;
-            case 'ArrowDown':
-                e.preventDefault();
-                const downCategory = navigationMap[currentCategory].down;
-                rotateToFace(downCategory);
-                break;
-            case 'ArrowRight':
-                e.preventDefault();
-                const rightCategory = navigationMap[currentCategory].right;
-                rotateToFace(rightCategory);
-                break;
-        }
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+        e.preventDefault();
+        const index = categoryOrder.indexOf(currentCategory);
+        const nextIndex = e.key === 'ArrowRight'
+            ? (index + 1) % categoryOrder.length
+            : (index - 1 + categoryOrder.length) % categoryOrder.length;
+        switchCategory(categoryOrder[nextIndex]);
     });
-    
-    let touchStartX = 0;
-    let touchStartY = 0;
-    
-    hexahedron.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY;
-    });
-    
-    hexahedron.addEventListener('touchend', e => {
-        const touchEndX = e.changedTouches[0].screenX;
-        const touchEndY = e.changedTouches[0].screenY;
-        handleSwipe(touchStartX, touchStartY, touchEndX, touchEndY);
-    });
-    
-    function handleSwipe(startX, startY, endX, endY) {
-        const swipeThreshold = 50;
-        const deltaX = endX - startX;
-        const deltaY = endY - startY;
-        
-        if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            if (deltaX < -swipeThreshold) {
-                const leftCategory = navigationMap[currentCategory].left;
-                rotateToFace(leftCategory);
-            } else if (deltaX > swipeThreshold) {
-                const rightCategory = navigationMap[currentCategory].right;
-                rotateToFace(rightCategory);
-            }
-        } else {
-            if (deltaY < -swipeThreshold) {
-                const upCategory = navigationMap[currentCategory].up;
-                rotateToFace(upCategory);
-            } else if (deltaY > swipeThreshold) {
-                const downCategory = navigationMap[currentCategory].down;
-                rotateToFace(downCategory);
-            }
-        }
-    }
-    
-    faces.forEach(face => {
-        face.addEventListener('click', () => {
-            const category = face.getAttribute('data-category');
-            rotateToFace(category);
-        });
-    });
-    
-    document.querySelectorAll('.btn-small').forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const menuItem = this.closest('.menu-item');
-            const itemName = menuItem.querySelector('.menu-item-name').textContent;
-            const itemPrice = menuItem.querySelector('.menu-item-price').textContent;
-            
-            alert(`Added ${itemName} (${itemPrice}) to cart!`);
-            
-            const originalText = this.textContent;
-            this.innerHTML = '<i class="fas fa-check"></i> Added!';
-            this.style.backgroundColor = '#2e7d32';
-            
-            setTimeout(() => {
-                this.textContent = originalText;
-                this.style.backgroundColor = '';
-            }, 2000);
-        });
-    });
+
+    switchCategory(currentCategory);
 });
 
 document.addEventListener('DOMContentLoaded', function() {

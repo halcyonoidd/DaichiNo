@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daichi No - Menu</title>
+    <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/frontend/menu.css') }}">
+</head>
+<body>
+            <div class="menu-items" id="desserts-items">
+                @php $items = $products->where('category', $categoryMap['desserts']); @endphp
+                @forelse($items as $product)
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{{ $product->image_path ? asset($product->image_path) : asset('img/products/placeholder.jpg') }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">{{ $product->name }}</h3>
+                                <span class="menu-item-price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                            </div>
+                            <p class="menu-item-description">{{ $product->description ?? 'No description provided.' }}</p>
+                        </div>
+                    </div>
+                @empty
+                    <p class="no-items">Belum ada produk tersedia.</p>
+                @endforelse
+            </div>
+                </div>
+                
+                <div class="category-description" id="beverages-description">
+                    <h3 class="category-title"><i class="fas fa-glass-whiskey"></i> 側 (Gawa)</h3>
+                    <p class="category-text">
+                        Complement your meal with our carefully selected beverage program. From premium sake 
+                        curated by our sommelier to traditional teas and innovative cocktails, each drink is 
+                        chosen to enhance your dining experience. Our sake selection includes rare finds and 
+                        regional specialties, while our tea service follows traditional Japanese ceremony principles.
+                    </p>
+                    <div class="category-features">
+                        <span class="feature-tag">Premium Sake Selection</span>
+                        <span class="feature-tag">Traditional Tea Ceremony</span>
+                        <span class="feature-tag">Beverages</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-items active" id="sushi-items">
+                @php $items = $products->where('category', $categoryMap['sushi']); @endphp
+                @forelse($items as $product)
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{{ $product->image_path ? asset($product->image_path) : asset('img/products/placeholder.jpg') }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">{{ $product->name }}</h3>
+                                <span class="menu-item-price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                            </div>
+                            <p class="menu-item-description">{{ $product->description ?? 'No description provided.' }}</p>
+                        </div>
+                    </div>
+                @empty
+                    <p class="no-items">Belum ada produk tersedia.</p>
+                @endforelse
+            </div>
+            
+            <div class="menu-items" id="ramen-items">
+                @php $items = $products->where('category', $categoryMap['ramen']); @endphp
+                @forelse($items as $product)
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{{ $product->image_path ? asset($product->image_path) : asset('img/products/placeholder.jpg') }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">{{ $product->name }}</h3>
+                                <span class="menu-item-price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                            </div>
+                            <p class="menu-item-description">{{ $product->description ?? 'No description provided.' }}</p>
+                        </div>
+                    </div>
+                @empty
+                    <p class="no-items">Belum ada produk tersedia.</p>
+                @endforelse
+            </div>
+
+            <div class="menu-items" id="grilled-items">
+                @php $items = $products->where('category', $categoryMap['grilled']); @endphp
+                @forelse($items as $product)
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{{ $product->image_path ? asset($product->image_path) : asset('img/products/placeholder.jpg') }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">{{ $product->name }}</h3>
+                                <span class="menu-item-price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                            </div>
+                            <p class="menu-item-description">{{ $product->description ?? 'No description provided.' }}</p>
+                        </div>
+                    </div>
+                @empty
+                    <p class="no-items">Belum ada produk tersedia.</p>
+                @endforelse
+            </div>
+
+            <div class="menu-items" id="appetizers-items">
+                @php $items = $products->where('category', $categoryMap['appetizers']); @endphp
+                @forelse($items as $product)
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{{ $product->image_path ? asset($product->image_path) : asset('img/products/placeholder.jpg') }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-name">{{ $product->name }}</h3>
+                                <span class="menu-item-price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                            </div>
+                            <p class="menu-item-description">{{ $product->description ?? 'No description provided.' }}</p>
+                        </div>
+                    </div>
+                @empty
+                    <p class="no-items">Belum ada produk tersedia.</p>
+                @endforelse
+            </div>
+
+            <div class="menu-items" id="desserts-items">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="source\ten\mochi.jpg">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Mochi</h3>
+                        </div>
+                        <p class="menu-item-description">Colourful glutinous rice cakes fromed into balls with sweet fillings.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="source\ten\matcha.jpg">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Matcha Tiramisu</h3>
+                        </div>
+                        <p class="menu-item-description">Japanese twist on the classic Italian dessert</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="source\ten\dorayaki.jpg">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Dorayaki</h3>
+                        </div>
+                        <p class="menu-item-description">Japanese pancake sandwich filled with sweet red bean paste</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="source\ten\crsl2.jpg">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Mitarashi Dango</h3>
+                        </div>
+                        <p class="menu-item-description">Dumpling made of glutinous rice formed into a ball. Skewered and served with sweet syrup.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="source\ten\strb-cream-parfait.jpg">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Strawberry Cream Parfait</h3>
+                        </div>
+                        <p class="menu-item-description">Sweet cream, strawberries, crumbles stacked to form a faux cake in a glass.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="source\ten\flan-cake.jpg">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Flan Cake</h3>
+                        </div>
+                        <p class="menu-item-description">Flan or custard base with a layer of clear caramel atop.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-items" id="beverages-items">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="source\gaen\sake.jpg">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Premium Sake</h3>
+                        </div>
+                        <p class="menu-item-description">Traditional Japanese rice wine served warm or cold</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="source\gaen\matcha.jpg">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Ceremonial Matcha</h3>
+                        </div>
+                        <p class="menu-item-description">Traditional Japanese green tea prepared ceremonially</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="source\gaen\whiskey.jpg">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Japanese Whiskey</h3>
+                        </div>
+                        <p class="menu-item-description">Award-winning Japanese single malt whiskey</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="source\gaen\cappucino.jpg">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Cappucino</h3>
+                        </div>
+                        <p class="menu-item-description">Hot mixed espresso and milk, savoury with distinct frothed milk decoration</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="source\gaen\spring.jpg">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Spring Water</h3>
+                        </div>
+                        <p class="menu-item-description">Premium spring water in a glass bottle. Very refreshing</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="source\gaen\asahi.jpg">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Asahi Beer</h3>
+                        </div>
+                        <p class="menu-item-description">popular japanese beer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Daichi No</h3>
+                    <p>Experience the authentic taste of Japan with our carefully crafted dishes made from the finest ingredients.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="reservation.html">Reservations</a></li>
+                        <li><a href="voucher.html">Gift Vouchers</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Opening Hours</h3>
+                    <ul class="footer-links">
+                        <li>Monday - Friday: 11:00 AM - 10:00 PM</li>
+                        <li>Saturday - Sunday: 11:00 AM - 11:00 PM</li>
+                        <li>Holidays: 12:00 PM - 9:00 PM</li>
+                    </ul>
+                </div>
+        </div>
+    </footer>
+
+<div class="panel-overlay" id="panel-overlay"></div>
+
+    <div class="floating-user-btn" id="floating-user-btn">
+        <i class="fas fa-user"></i>
+    </div>
+
+    <div class="user-panel" id="user-panel">
+        <div class="user-panel-header">
+            <h3>My Account</h3>
+            <button class="close-panel" id="close-panel">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-info">
+            <div class="user-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            @auth
+                <div class="user-name" id="user-name">{{ auth()->user()->name }}</div>
+                <div class="user-email" id="user-email">{{ auth()->user()->email }}</div>
+            @else
+                <div class="user-name" id="user-name">Guest</div>
+                <div class="user-email" id="user-email">Please log in</div>
+            @endauth
+        </div>
+        
+        <div class="panel-actions">
+            <a href="{{ route('profile') }}" class="panel-btn panel-btn-primary">
+                <i class="fas fa-user-circle mr-2"></i> View Profile
+            </a>
+            <button class="panel-btn panel-btn-logout" id="logout-btn">
+                <i class="fas fa-sign-out-alt mr-2"></i> Log Out
+            </button>
+        </div>
+    </div>
+
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
+
+    <script src="{{ asset('js/frontend/menu.js') }}"></script>
+</body>
+</html>

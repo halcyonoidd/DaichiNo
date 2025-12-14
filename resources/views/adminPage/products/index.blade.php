@@ -29,7 +29,7 @@
                         <span class="icon is-small">
                             <i class="fas fa-arrow-left"></i>
                         </span>
-                        <span>Kembali</span>
+                        <span>Back</span>
                     </a>
                     <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                         @csrf
@@ -75,7 +75,7 @@
                                     <td>
                                         <span class="tag is-info">{{ str_replace('_', ' ', ucfirst($product->category)) }}</span>
                                     </td>
-                                    <td><strong>${{ number_format($product->price, 2) }}</strong></td>
+                                    <td><strong>Rp{{ number_format($product->price, 2) }}</strong></td>
                                     <td>
                                         @if($product->is_available)
                                             <span class="tag is-success">Available</span>
@@ -113,12 +113,12 @@
                 </div>
             @else
                 <div class="has-text-centered" style="padding: 2rem;">
-                    <p class="subtitle is-5">Tidak ada product yang ditemukan</p>
+                    <p class="subtitle is-5">No products found</p>
                     <a href="{{ route('admin.products.create') }}" class="button is-success mt-3">
                         <span class="icon is-small">
                             <i class="fas fa-plus"></i>
                         </span>
-                        <span>Buat Product Pertama</span>
+                        <span>Create First Product</span>
                     </a>
                 </div>
             @endif

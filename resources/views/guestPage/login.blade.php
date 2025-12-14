@@ -36,7 +36,6 @@
                         <input type="checkbox" id="remember" name="remember" style="width: auto; margin: 0;">
                         <span style="font-size: 14px; color: #333;">Remember me</span>
                     </label>
-                    <a href="#" style="font-size: 14px; color: #d14920; font-weight: bold;">Forgot password?</a>
                 </div>
 
                 <button type="submit">Login</button>

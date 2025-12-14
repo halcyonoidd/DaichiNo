@@ -12,19 +12,19 @@
 <body>
     <nav class="navbar transparent" id="navbar">
         <div class="nav-section left">
-            <a href="{{ route('about') }}" class="nav-link light">About</a>
-            <a href="{{ route('contact') }}" class="nav-link light">Contact</a>
-            <a href="{{ route('voucher') }}" class="nav-link light">Voucher</a>
+            <a href="{{ route('login') }}" class="nav-link light">About</a>
+            <a href="{{ route('login') }}" class="nav-link light">Contact</a>
+            <a href="{{ route('login') }}" class="nav-link light">Voucher</a>
         </div>
         
         <div class="nav-center">
-            <a href="{{ route('home') }}" class="home-link dark">Daichi No</a>
+            <a href="{{ route('login') }}" class="home-link dark">Daichi No</a>
         </div>
         
         <div class="nav-section right">
-            <a href="{{ route('menu') }}" class="nav-link light">Menu</a>
-            <a href="{{ route('reservation') }}" class="nav-link light">Reservation</a>
-            <a href="{{ route('register') }}" class="nav-link light">Register</a>
+            <a href="{{ route('login') }}" class="nav-link light">Menu</a>
+            <a href="{{ route('login') }}" class="nav-link light">Reservation</a>
+            <a href="{{ route('login') }}" class="nav-link light">Login</a>
         </div>
     </nav>
 

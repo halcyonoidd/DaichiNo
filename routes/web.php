@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Admin\AdminUserController;
@@ -8,7 +9,7 @@ use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminVoucherController;
 use App\Http\Controllers\Admin\AdminReservationController;
 
-// Guest landing
+// Guest landing with role-aware redirect
 Route::get('/', function () {
     return view('guestPage.landingGuest');
 })->name('landingGuest');
@@ -31,38 +32,40 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    // Customer pages
-    Route::get('/menu', function () {
-        $products = \App\Models\Product::where('is_available', true)->get();
-        return view('custPage.menu', compact('products'));
-    })->name('menu');
+    // Customer-only pages
+    Route::middleware('customer')->group(function () {
+        Route::get('/menu', function () {
+            $products = \App\Models\Product::where('is_available', true)->get();
+            return view('custPage.menu', compact('products'));
+        })->name('menu');
 
-    Route::get('/about', function () {
-        return view('custPage.about');
-    })->name('about');
+        Route::get('/about', function () {
+            return view('custPage.about');
+        })->name('about');
 
-    Route::get('/home', function () {
-        return view('custPage.landing');
-    })->name('home');
+        Route::get('/home', function () {
+            return view('custPage.landing');
+        })->name('home');
 
-    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
-    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+        Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-    Route::get('/cart', function () {
-        return view('custPage.cart');
-    })->name('cart');
+        Route::get('/cart', function () {
+            return view('custPage.cart');
+        })->name('cart');
 
-    Route::get('/contact', function () {
-        return view('custPage.contact');
-    })->name('contact');
+        Route::get('/contact', function () {
+            return view('custPage.contact');
+        })->name('contact');
 
-    Route::get('/reservation', function () {
-        return view('custPage.reservation');
-    })->name('reservation');
+        Route::get('/reservation', function () {
+            return view('custPage.reservation');
+        })->name('reservation');
 
-    Route::get('/voucher', function () {
-        return view('custPage.voucher');
-    })->name('voucher');
+        Route::get('/voucher', function () {
+            return view('custPage.voucher');
+        })->name('voucher');
+    });
 
     // Admin routes (grouped for clarity)
     Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {

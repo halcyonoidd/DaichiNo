@@ -100,7 +100,7 @@
                 </div>
             @else
                 <div class="has-text-centered" style="padding: 2rem;">
-                    <p class="subtitle is-5">Tidak ada user yang ditemukan</p>
+                    <p class="subtitle is-5">No users found</p>
                 </div>
             @endif
         </div>

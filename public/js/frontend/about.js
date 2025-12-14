@@ -89,9 +89,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
     
-    let currentIndex = 2;
+    let currentIndex = 0;
     let isPlaying = true;
     let autoScrollInterval;
+
+    let cardWidth = 320; // fallback; updated after cards render
+    const cardGap = 40;
+
+    const getRelativeDiff = (index) => {
+        const total = chefsData.length;
+        let diff = (index - currentIndex) % total;
+        diff = (diff + total) % total; // ensure positive
+        if (diff > total / 2) diff -= total; // use shortest direction
+        return diff;
+    };
     
     function createChefCards() {
         carouselContainer.innerHTML = '';
@@ -131,6 +142,12 @@ document.addEventListener('DOMContentLoaded', function() {
             dotsContainer.appendChild(dot);
         });
         
+        // update width reference once cards exist
+        const firstCard = carouselContainer.querySelector('.chef-card');
+        if (firstCard) {
+            cardWidth = firstCard.getBoundingClientRect().width;
+        }
+
         updateCarousel();
     }
     
@@ -138,33 +155,30 @@ document.addEventListener('DOMContentLoaded', function() {
         const totalChefs = chefsData.length;
         const wrappers = document.querySelectorAll('.chef-card-wrapper');
         const dots = document.querySelectorAll('.carousel-dot');
-        
-        wrappers.forEach(wrapper => {
-            wrapper.className = 'chef-card-wrapper';
-        });
-        
+
         wrappers.forEach((wrapper, index) => {
-            const diff = index - currentIndex;
-            
-            if (diff === 0) {
-                wrapper.classList.add('active');
-            } else if (diff === -1 || (diff === totalChefs - 1 && currentIndex === 0)) {
-                wrapper.classList.add('prev');
-            } else if (diff === 1 || (diff === -totalChefs + 1 && currentIndex === totalChefs - 1)) {
-                wrapper.classList.add('next');
-            } else if (diff === -2 || (currentIndex === 0 && diff === totalChefs - 2) || (currentIndex === 1 && diff === totalChefs - 1)) {
-                wrapper.classList.add('far-left');
-            } else if (diff === 2 || (currentIndex === totalChefs - 1 && diff === -totalChefs + 2) || (currentIndex === totalChefs - 2 && diff === -totalChefs + 1)) {
-                wrapper.classList.add('far-right');
-            }
+            const diff = getRelativeDiff(index);
+            const absDiff = Math.abs(diff);
+
+            wrapper.className = 'chef-card-wrapper';
+
+            if (diff === 0) wrapper.classList.add('active');
+            if (diff === -1) wrapper.classList.add('prev');
+            if (diff === 1) wrapper.classList.add('next');
+
+            const offsetX = diff * (cardWidth + cardGap);
+            const scale = absDiff === 0 ? 1 : absDiff === 1 ? 0.9 : 0.8;
+            const hidden = absDiff > 2;
+
+            wrapper.style.transform = `translateX(${offsetX}px) scale(${scale})`;
+            wrapper.style.opacity = hidden ? 0 : 1;
+            wrapper.style.pointerEvents = hidden ? 'none' : 'auto';
+            wrapper.style.zIndex = 10 - absDiff; // keep active on top
+            wrapper.style.filter = absDiff === 0 ? 'blur(0)' : 'blur(2px)';
         });
-        
+
         dots.forEach((dot, index) => {
-            if (index === currentIndex) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
+            dot.classList.toggle('active', index === currentIndex);
         });
     }
     

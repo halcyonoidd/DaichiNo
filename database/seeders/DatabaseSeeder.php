@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@daichino.com', // Email khusus admin
             'phone' => '081234567890',
-            'password' => bcrypt('admin12345678'), // Password admin
+            'password' => bcrypt('admindaichino123'), // Password admin
             'role' => 'admin',
         ]);
     }

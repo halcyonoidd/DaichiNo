@@ -29,7 +29,7 @@
                         <span class="icon is-small">
                             <i class="fas fa-arrow-left"></i>
                         </span>
-                        <span>Kembali</span>
+                        <span>Back</span>
                     </a>
                     <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                         @csrf
@@ -117,12 +117,12 @@
                 </div>
             @else
                 <div class="has-text-centered" style="padding: 2rem;">
-                    <p class="subtitle is-5">Tidak ada voucher yang ditemukan</p>
+                    <p class="subtitle is-5">No vouchers found</p>
                     <a href="{{ route('admin.vouchers.create') }}" class="button is-success mt-3">
                         <span class="icon is-small">
                             <i class="fas fa-plus"></i>
                         </span>
-                        <span>Buat Voucher Pertama</span>
+                        <span>Create First Voucher</span>
                     </a>
                 </div>
             @endif

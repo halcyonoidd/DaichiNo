@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ReservationController;
 use App\Http\Controllers\Api\ProductController; 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\PaymentController;
 
 
 // Public Routes
@@ -31,6 +32,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/orders', [OrderController::class, 'store']);      // Bikin Order
     Route::get('/my-orders', [OrderController::class, 'index']);    // Lihat History Sendiri
     Route::get('/orders/{id}', [OrderController::class, 'show']);   // Lihat Detail 1 Order
+
+    //payement
+    Route::post('/payments', [PaymentController::class, 'create']);
 
     // Admin Orders (view all)
     Route::get('/admin/orders', [OrderController::class, 'allOrders']); 
