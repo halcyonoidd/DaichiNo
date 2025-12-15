@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/frontend/reservation.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frontend/mobile-responsive.css') }}">
 </head>
 <body>
     <nav class="navbar transparent" id="navbar">
@@ -141,136 +142,12 @@
         </div>
     </div>
 
-    <section class="reservation-hero">
+    <section class="reservation-hero" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('img/landingImage/restaurantInterior.png') }}') center/cover no-repeat;">
         <h1>Book Your Experience</h1>
         <p>Select from our curated dining experiences and secure your reservation</p>
     </section>
 
     <div class="reservation-container">
-        <div class="category-sidebar">
-            <div class="sidebar-title">
-                <h3>Filter Experiences</h3>
-            </div>
-            
-            <div class="category-filters">
-                <div class="filter-group">
-                    <div class="filter-group-title">
-                        <i class="fas fa-clock"></i>
-                        <span>Duration</span>
-                    </div>
-                    <ul class="filter-options">
-                        <li class="filter-option active" data-filter="all-duration">
-                            <i class="fas fa-star"></i>
-                            <span>All Durations</span>
-                            <span class="filter-count">6</span>
-                        </li>
-                        <li class="filter-option" data-filter="short">
-                            <i class="fas fa-hourglass-start"></i>
-                            <span>Short (1-2 hours)</span>
-                            <span class="filter-count">2</span>
-                        </li>
-                        <li class="filter-option" data-filter="medium">
-                            <i class="fas fa-hourglass-half"></i>
-                            <span>Medium (2-3 hours)</span>
-                            <span class="filter-count">2</span>
-                        </li>
-                        <li class="filter-option" data-filter="long">
-                            <i class="fas fa-hourglass-end"></i>
-                            <span>Long (3+ hours)</span>
-                            <span class="filter-count">2</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="filter-group">
-                    <div class="filter-group-title">
-                        <i class="fas fa-utensils"></i>
-                        <span>Number of Courses</span>
-                    </div>
-                    <ul class="filter-options">
-                        <li class="filter-option" data-filter="all-courses">
-                            <i class="fas fa-star"></i>
-                            <span>All Courses</span>
-                            <span class="filter-count">6</span>
-                        </li>
-                        <li class="filter-option" data-filter="few">
-                            <i class="fas fa-layer-group"></i>
-                            <span>Few (5-8 courses)</span>
-                            <span class="filter-count">3</span>
-                        </li>
-                        <li class="filter-option" data-filter="many">
-                            <i class="fas fa-layer-group"></i>
-                            <span>Many (8-12 courses)</span>
-                            <span class="filter-count">3</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="filter-group">
-                    <div class="filter-group-title">
-                        <i class="fas fa-yen-sign"></i>
-                        <span>Price Range</span>
-                    </div>
-                    <ul class="filter-options">
-                        <li class="filter-option" data-filter="all-price">
-                            <i class="fas fa-star"></i>
-                            <span>All Prices</span>
-                            <span class="filter-count">6</span>
-                        </li>
-                        <li class="filter-option" data-filter="budget">
-                            <i class="fas fa-wallet"></i>
-                            <span>Budget (under ¥15,000)</span>
-                            <span class="filter-count">2</span>
-                        </li>
-                        <li class="filter-option" data-filter="mid-range">
-                            <i class="fas fa-wallet"></i>
-                            <span>Mid-Range (¥15,000-¥30,000)</span>
-                            <span class="filter-count">2</span>
-                        </li>
-                        <li class="filter-option" data-filter="premium">
-                            <i class="fas fa-gem"></i>
-                            <span>Premium (¥30,000+)</span>
-                            <span class="filter-count">2</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="filter-group">
-                    <div class="filter-group-title">
-                        <i class="fas fa-crown"></i>
-                        <span>Experience Tier</span>
-                    </div>
-                    <ul class="filter-options">
-                        <li class="filter-option" data-filter="all-tier">
-                            <i class="fas fa-star"></i>
-                            <span>All Tiers</span>
-                            <span class="filter-count">6</span>
-                        </li>
-                        <li class="filter-option" data-filter="bronze">
-                            <i class="fas fa-award"></i>
-                            <span>Bronze</span>
-                            <span class="filter-count">2</span>
-                        </li>
-                        <li class="filter-option" data-filter="silver">
-                            <i class="fas fa-award"></i>
-                            <span>Silver</span>
-                            <span class="filter-count">1</span>
-                        </li>
-                        <li class="filter-option" data-filter="gold">
-                            <i class="fas fa-award"></i>
-                            <span>Gold</span>
-                            <span class="filter-count">2</span>
-                        </li>
-                        <li class="filter-option" data-filter="platinum">
-                            <i class="fas fa-award"></i>
-                            <span>Platinum</span>
-                            <span class="filter-count">1</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
         <div class="experience-list">
             <div class="section-title">
                 <h2>Available Experiences</h2>

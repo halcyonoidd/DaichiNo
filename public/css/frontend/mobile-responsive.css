@@ -1,0 +1,647 @@
+/* ========================================
+   MOBILE RESPONSIVE FIXES - ALL PAGES
+   ======================================== */
+
+/* Base Mobile Settings */
+@media screen and (max-width: 768px) {
+    /* Prevent horizontal scroll */
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    html {
+        overflow-x: hidden;
+    }
+    
+    /* Fix container widths */
+    .container,
+    .reservation-container,
+    .experience-list,
+    .category-sidebar {
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+/* ========================================
+   NAVBAR RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px !important;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-section {
+        gap: 10px !important;
+        font-size: 14px;
+    }
+    
+    .nav-section.left,
+    .nav-section.right {
+        margin: 0;
+        flex: 1;
+    }
+    
+    .nav-section.left {
+        justify-content: flex-start;
+    }
+    
+    .nav-section.right {
+        justify-content: flex-end;
+    }
+    
+    .nav-center {
+        position: relative;
+        left: 0;
+        transform: none;
+        width: 100%;
+        text-align: center;
+        order: -1;
+        margin-bottom: 10px;
+    }
+    
+    .home-link {
+        font-size: 20px !important;
+    }
+    
+    .nav-link {
+        padding: 6px 10px !important;
+        font-size: 13px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 10px 15px !important;
+    }
+    
+    .nav-section {
+        gap: 5px !important;
+    }
+    
+    .nav-link {
+        padding: 5px 8px !important;
+        font-size: 12px !important;
+    }
+    
+    .home-link {
+        font-size: 18px !important;
+    }
+}
+
+/* ========================================
+   RESERVATION PAGE RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 1024px) {
+    .reservation-container {
+        grid-template-columns: 250px 1fr !important;
+        gap: 20px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .reservation-hero {
+        padding: 80px 20px 40px !important;
+        min-height: 200px !important;
+    }
+    
+    .reservation-hero h1 {
+        font-size: 32px !important;
+    }
+    
+    .reservation-hero p {
+        font-size: 16px !important;
+    }
+    
+    .reservation-container {
+        grid-template-columns: 1fr !important;
+        padding: 20px 15px !important;
+    }
+    
+    .category-sidebar {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        padding: 20px;
+    }
+    
+    .filter-group {
+        margin-bottom: 15px !important;
+    }
+    
+    .experience-list {
+        width: 100% !important;
+    }
+    
+    .experience-item {
+        flex-direction: column !important;
+        max-width: 100% !important;
+    }
+    
+    .experience-image {
+        width: 100% !important;
+        height: 200px !important;
+    }
+    
+    .experience-content {
+        width: 100% !important;
+        padding: 20px !important;
+    }
+    
+    .experience-header {
+        flex-direction: column !important;
+        gap: 10px !important;
+        align-items: flex-start !important;
+    }
+    
+    .experience-price {
+        font-size: 24px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .reservation-hero h1 {
+        font-size: 24px !important;
+    }
+    
+    .reservation-hero p {
+        font-size: 14px !important;
+    }
+    
+    .experience-image {
+        height: 180px !important;
+    }
+    
+    .experience-content {
+        padding: 15px !important;
+    }
+    
+    .experience-title {
+        font-size: 18px !important;
+    }
+    
+    .experience-price {
+        font-size: 20px !important;
+    }
+}
+
+/* ========================================
+   RESERVE MODAL RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .reserve-modal .modal-content {
+        width: 95% !important;
+        max-width: 95% !important;
+        margin: 20px auto !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+    }
+    
+    .modal-header {
+        padding: 20px 15px !important;
+    }
+    
+    .modal-header h3 {
+        font-size: 20px !important;
+    }
+    
+    .modal-body {
+        padding: 20px 15px !important;
+    }
+    
+    .modal-image {
+        height: 200px !important;
+    }
+    
+    .modal-footer {
+        flex-direction: column !important;
+        gap: 10px !important;
+        padding: 15px !important;
+    }
+    
+    .modal-footer .button {
+        width: 100% !important;
+    }
+    
+    .form-group {
+        margin-bottom: 15px !important;
+    }
+    
+    .input, .textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* ========================================
+   CART PAGE RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .cart-container {
+        flex-direction: column !important;
+        padding: 20px 15px !important;
+    }
+    
+    .cart-items-section,
+    .cart-summary {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .cart-item {
+        flex-direction: column !important;
+        padding: 15px !important;
+    }
+    
+    .cart-item-image {
+        width: 100% !important;
+        height: 200px !important;
+        margin-bottom: 15px;
+    }
+    
+    .cart-item-content {
+        width: 100% !important;
+    }
+    
+    .cart-item-header {
+        flex-direction: column !important;
+        gap: 10px !important;
+        align-items: flex-start !important;
+    }
+    
+    .cart-item-controls {
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+    
+    .quantity-controls {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    .remove-item {
+        width: 100% !important;
+    }
+}
+
+/* ========================================
+   CART SIDEBAR RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .cart-sidebar {
+        width: 90% !important;
+        max-width: 350px !important;
+    }
+    
+    .cart-header {
+        padding: 15px !important;
+    }
+    
+    .cart-header h3 {
+        font-size: 18px !important;
+    }
+    
+    .cart-footer {
+        padding: 15px !important;
+    }
+}
+
+/* ========================================
+   MENU PAGE RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        padding: 20px 15px !important;
+    }
+    
+    .menu-item {
+        flex-direction: column !important;
+    }
+    
+    .menu-item-image {
+        width: 100% !important;
+        height: 200px !important;
+    }
+    
+    .menu-item-content {
+        width: 100% !important;
+        padding: 20px !important;
+    }
+}
+
+/* ========================================
+   PROFILE PAGE RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .profile-container {
+        padding: 20px 15px !important;
+    }
+    
+    .profile-card {
+        padding: 20px !important;
+    }
+    
+    .profile-header {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    .profile-avatar {
+        margin: 0 auto 20px !important;
+    }
+    
+    .profile-form {
+        padding: 20px 15px !important;
+    }
+}
+
+/* ========================================
+   CONTACT PAGE RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr !important;
+        padding: 20px 15px !important;
+    }
+    
+    .contact-form,
+    .contact-info {
+        padding: 20px !important;
+    }
+    
+    .contact-header {
+        padding: 80px 20px 40px !important;
+    }
+    
+    .contact-header h1 {
+        font-size: 32px !important;
+    }
+}
+
+/* ========================================
+   ABOUT PAGE RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .about-section {
+        padding: 60px 20px !important;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+    
+    .about-header {
+        padding: 100px 20px 60px !important;
+    }
+    
+    .about-header h1 {
+        font-size: 36px !important;
+    }
+}
+
+/* ========================================
+   LANDING PAGE RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .hero-section {
+        padding: 100px 20px 60px !important;
+        min-height: 400px !important;
+    }
+    
+    .hero-title {
+        font-size: 36px !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px !important;
+    }
+    
+    .feature-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .cta-section {
+        padding: 60px 20px !important;
+    }
+}
+
+/* ========================================
+   FOOTER RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 40px 20px !important;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+    
+    .footer-column {
+        text-align: center !important;
+    }
+    
+    .social-links {
+        justify-content: center !important;
+    }
+}
+
+/* ========================================
+   USER PANEL RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .user-panel {
+        width: 90% !important;
+        max-width: 350px !important;
+    }
+    
+    .user-panel-header {
+        padding: 20px 15px !important;
+    }
+    
+    .user-info {
+        padding: 20px 15px !important;
+    }
+    
+    .panel-actions {
+        padding: 20px 15px !important;
+    }
+}
+
+/* ========================================
+   FLOATING BUTTONS RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .view-cart-btn,
+    .floating-user-btn {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 20px !important;
+    }
+    
+    .view-cart-btn {
+        bottom: 80px !important;
+        right: 15px !important;
+    }
+    
+    .floating-user-btn {
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+}
+
+/* ========================================
+   BUTTONS RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 480px) {
+    .button,
+    .btn {
+        padding: 10px 20px !important;
+        font-size: 14px !important;
+    }
+    
+    .button.is-large {
+        padding: 12px 24px !important;
+        font-size: 16px !important;
+    }
+}
+
+/* ========================================
+   TABLES RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    th, td {
+        padding: 10px !important;
+        font-size: 14px !important;
+    }
+}
+
+/* ========================================
+   FORMS RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .field {
+        margin-bottom: 15px !important;
+    }
+    
+    .label {
+        font-size: 14px !important;
+    }
+    
+    .input,
+    .textarea,
+    .select select {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+        padding: 10px !important;
+    }
+}
+
+/* ========================================
+   IMAGE RESPONSIVE
+   ======================================== */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .mobile-hide {
+        display: none !important;
+    }
+    
+    .mobile-show {
+        display: block !important;
+    }
+    
+    .mobile-text-center {
+        text-align: center !important;
+    }
+    
+    .mobile-full-width {
+        width: 100% !important;
+    }
+}
+
+/* ========================================
+   SCROLL FIXES
+   ======================================== */
+@media screen and (max-width: 768px) {
+    /* Prevent body scroll when modal is open */
+    body.modal-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+    }
+    
+    /* Fix for iOS Safari */
+    body {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ========================================
+   Z-INDEX MANAGEMENT
+   ======================================== */
+.navbar {
+    z-index: 1000 !important;
+}
+
+.cart-sidebar,
+.user-panel {
+    z-index: 1100 !important;
+}
+
+.reserve-modal,
+.modal {
+    z-index: 1200 !important;
+}
+
+.cart-notification {
+    z-index: 1300 !important;
+}
+
+.panel-overlay {
+    z-index: 1050 !important;
+}
+
+/* ========================================
+   TOUCH IMPROVEMENTS
+   ======================================== */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase tap targets for touch devices */
+    button,
+    a,
+    input[type="button"],
+    input[type="submit"],
+    .clickable {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    .nav-link:hover,
+    .button:hover,
+    .menu-item:hover {
+        transform: none !important;
+    }
+}

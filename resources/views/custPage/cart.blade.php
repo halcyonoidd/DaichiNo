@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/frontend/cart.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frontend/mobile-responsive.css') }}">
 
 
     
@@ -74,7 +75,7 @@
         </div>
     </div>
 
-    <section class="cart-hero">
+    <section class="cart-hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ asset('img/landingImage/restaurantInterior.png') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <h1>Your Shopping Cart</h1>
         <p>Review your selected experiences and proceed to checkout</p>
     </section>
@@ -222,11 +223,6 @@
                 <div class="summary-row">
                     <span>Subtotal</span>
                     <span class="summary-amount" id="subtotal">¥43,500</span>
-                </div>
-                
-                <div class="summary-row">
-                    <span>Discount <span class="discount-badge" id="discount-badge" style="display: none;">-10%</span></span>
-                    <span class="summary-amount" id="discount">-¥0</span>
                 </div>
                 
                 <div class="summary-row">

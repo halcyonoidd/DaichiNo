@@ -22,15 +22,16 @@ class ReservationOfferController extends Controller
             if ($offer->image_path) {
                 $path = ltrim($offer->image_path, '/');
                 
-                // Check if path starts with common public directories
-                if (str_starts_with($path, 'img/') || str_starts_with($path, 'images/') || str_starts_with($path, 'css/') || str_starts_with($path, 'js/')) {
-                    // Direct public asset
+                // If path already starts with 'storage/', use it directly
+                if (str_starts_with($path, 'storage/')) {
                     $offer->image_url = asset($path);
-                } elseif (str_starts_with($path, 'storage/')) {
-                    // Already has storage prefix
+                }
+                // If path starts with common public directories (img/, images/, css/, js/)
+                elseif (str_starts_with($path, 'img/') || str_starts_with($path, 'images/') || str_starts_with($path, 'css/') || str_starts_with($path, 'js/')) {
                     $offer->image_url = asset($path);
-                } else {
-                    // Assume it's in storage
+                }
+                // Otherwise, assume it's in storage folder
+                else {
                     $offer->image_url = asset('storage/' . $path);
                 }
             } else {

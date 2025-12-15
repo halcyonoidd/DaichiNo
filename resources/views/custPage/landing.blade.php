@@ -6,8 +6,7 @@
     <title>Daichi No - Japanese Restaurant</title>
     <link rel="stylesheet" href="{{ asset('css/vendors/bulma.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('css/frontend/landing.css') }}">
-</head>
+    <link rel="stylesheet" href="{{ asset('css/frontend/landing.css') }}">    <link rel="stylesheet" href="{{ asset('css/frontend/mobile-responsive.css') }}"></head>
 <body>
     <nav class="navbar transparent" id="navbar">
         <div class="nav-section left">

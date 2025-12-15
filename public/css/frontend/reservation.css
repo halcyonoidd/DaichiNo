@@ -128,8 +128,10 @@ body {
     padding: 0 20px;
     position: relative;
     overflow: hidden;
-    background:  url('/img/landingImage/restaurantInterior.jpg') no-repeat center center/cover,linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) 
-               
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../img/landingImage/restaurantInterior.png'), linear-gradient(135deg, #2c5530 0%, #1a1a1a 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .reservation-hero h1 {
