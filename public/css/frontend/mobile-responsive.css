@@ -645,3 +645,504 @@ img {
         transform: none !important;
     }
 }
+
+/* ========================================
+   ADMIN PAGE RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 1024px) {
+    .dashboard-container {
+        padding: 2rem 1.5rem !important;
+    }
+    
+    .menu-card .title {
+        font-size: 1.1rem !important;
+    }
+    
+    .menu-card .subtitle {
+        font-size: 0.85rem !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-container {
+        padding: 1.5rem 1rem !important;
+    }
+    
+    .welcome-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .welcome-card .level {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    
+    .welcome-card .level-left,
+    .welcome-card .level-right {
+        width: 100% !important;
+    }
+    
+    .welcome-card .title.is-2 {
+        font-size: 1.75rem !important;
+    }
+    
+    .welcome-card .subtitle.is-5 {
+        font-size: 1rem !important;
+    }
+    
+    /* Admin Stats Cards */
+    .stats-card {
+        padding: 1rem !important;
+    }
+    
+    .stats-number {
+        font-size: 2rem !important;
+    }
+    
+    .stats-card .heading {
+        font-size: 0.85rem !important;
+    }
+    
+    /* Admin Menu Cards */
+    .menu-card {
+        padding: 1.5rem 1rem !important;
+        min-height: 180px !important;
+    }
+    
+    .menu-card .icon.is-large {
+        font-size: 2rem !important;
+    }
+    
+    .menu-card .title {
+        font-size: 1rem !important;
+    }
+    
+    .menu-card .subtitle {
+        font-size: 0.8rem !important;
+    }
+    
+    /* Admin Table Responsive */
+    .table-wrapper {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    .table {
+        min-width: 600px !important;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.5rem !important;
+        font-size: 0.85rem !important;
+    }
+    
+    /* Admin Buttons */
+    .button.is-logout,
+    .welcome-card .button {
+        width: 100% !important;
+        justify-content: center !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .level-right {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    
+    .level-right form,
+    .level-right a {
+        width: 100% !important;
+    }
+    
+    .level-right .mr-2 {
+        margin-right: 0 !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .dashboard-container {
+        padding: 1rem 0.75rem !important;
+    }
+    
+    .welcome-card {
+        padding: 1rem !important;
+    }
+    
+    .welcome-card .title.is-2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .welcome-card .subtitle.is-5 {
+        font-size: 0.9rem !important;
+    }
+    
+    .stats-number {
+        font-size: 1.75rem !important;
+    }
+    
+    .menu-card {
+        padding: 1rem !important;
+        min-height: 150px !important;
+    }
+    
+    .menu-card .icon.is-large i {
+        font-size: 2rem !important;
+    }
+}
+
+/* ========================================
+   GUEST/AUTH PAGES RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    /* Login/Register Container */
+    .container {
+        padding: 20px 15px !important;
+    }
+    
+    .card {
+        padding: 30px 20px !important;
+        margin: 20px 15px !important;
+        width: calc(100% - 30px) !important;
+    }
+    
+    .card h2 {
+        font-size: 1.75rem !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .card form label {
+        font-size: 14px !important;
+    }
+    
+    .card form input,
+    .card form button {
+        font-size: 16px !important;
+    }
+    
+    .card .switch {
+        flex-direction: column !important;
+        gap: 10px !important;
+        text-align: center !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        padding: 20px 15px !important;
+        margin: 10px !important;
+        width: calc(100% - 20px) !important;
+    }
+    
+    .card h2 {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* ========================================
+   LANDING PAGE HERO RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .hero.light h1 {
+        font-size: 2rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .hero-buttons {
+        flex-direction: column !important;
+        gap: 10px !important;
+        margin-top: 20px !important;
+    }
+    
+    .hero-buttons .btn {
+        width: 100% !important;
+        max-width: 280px !important;
+        margin-left: 0 !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero.light h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    .hero-buttons .btn {
+        padding: 10px 24px !important;
+        font-size: 14px !important;
+    }
+}
+
+/* ========================================
+   MENU CATEGORIES RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .menu-categories {
+        padding: 0 15px !important;
+        gap: 10px !important;
+    }
+    
+    .menu-category {
+        padding: 8px 16px !important;
+        font-size: 14px !important;
+    }
+    
+    .category-description-section {
+        padding: 20px 15px !important;
+    }
+    
+    .category-description {
+        padding: 20px !important;
+    }
+    
+    .category-title {
+        font-size: 1.25rem !important;
+    }
+    
+    .category-text {
+        font-size: 0.95rem !important;
+    }
+    
+    .feature-tag {
+        font-size: 0.75rem !important;
+        padding: 4px 10px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .menu-category {
+        padding: 6px 12px !important;
+        font-size: 12px !important;
+    }
+    
+    .category-title {
+        font-size: 1.1rem !important;
+    }
+    
+    .category-text {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* ========================================
+   CAROUSEL RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .carousel-container {
+        height: 300px !important;
+        margin-top: 20px !important;
+    }
+    
+    .carousel-slide {
+        height: 300px !important;
+    }
+    
+    .carousel-slide img {
+        object-fit: cover !important;
+    }
+    
+    .slide-caption {
+        padding: 15px !important;
+    }
+    
+    .slide-caption h2 {
+        font-size: 1.25rem !important;
+    }
+    
+    .slide-caption p {
+        font-size: 0.85rem !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .carousel-container {
+        height: 250px !important;
+    }
+    
+    .carousel-slide {
+        height: 250px !important;
+    }
+    
+    .slide-caption h2 {
+        font-size: 1.1rem !important;
+    }
+    
+    .slide-caption p {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* ========================================
+   TIMELINE (ABOUT PAGE) RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .timeline-container {
+        padding: 0 15px !important;
+    }
+    
+    .timeline-item {
+        flex-direction: column !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .timeline-year {
+        width: 100% !important;
+        margin-bottom: 15px !important;
+        text-align: center !important;
+    }
+    
+    .year-box {
+        display: inline-block !important;
+        margin: 0 auto !important;
+    }
+    
+    .timeline-content {
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+    
+    .vision-points .media {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    .vision-points .media-left {
+        margin-bottom: 15px !important;
+    }
+}
+
+/* ========================================
+   IMPROVED SPACING & PADDING
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .section {
+        padding: 60px 15px !important;
+    }
+    
+    .section-title {
+        margin-bottom: 30px !important;
+    }
+    
+    .section-title h2 {
+        font-size: 1.75rem !important;
+    }
+    
+    .section-title p,
+    .section-title .subtitle {
+        font-size: 0.95rem !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .section {
+        padding: 40px 15px !important;
+    }
+    
+    .section-title h2 {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* ========================================
+   GRID LAYOUTS RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .columns.is-multiline {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    .column {
+        padding: 0.5rem !important;
+    }
+    
+    .columns.is-vcentered {
+        align-items: flex-start !important;
+    }
+}
+
+/* ========================================
+   NOTIFICATION/ALERT RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .notification {
+        padding: 1rem !important;
+        font-size: 0.9rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .msg,
+    .message {
+        padding: 0.75rem !important;
+        font-size: 0.9rem !important;
+        margin-bottom: 1rem !important;
+    }
+}
+
+/* ========================================
+   MOBILE MENU IMPROVEMENTS
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem !important;
+        padding: 0 20px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem !important;
+    }
+    
+    .hero-content p {
+        font-size: 1rem !important;
+    }
+}
+
+/* ========================================
+   FIX OVERFLOW ISSUES
+   ======================================== */
+@media screen and (max-width: 768px) {
+    * {
+        max-width: 100%;
+    }
+    
+    .about-content {
+        flex-direction: column !important;
+    }
+    
+    .about-text,
+    .about-image {
+        width: 100% !important;
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY IMPROVEMENTS
+   ======================================== */
+@media screen and (max-width: 768px) {
+    /* Ensure focus states are visible on mobile */
+    button:focus,
+    a:focus,
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: 2px solid var(--primary-color, #2c5530) !important;
+        outline-offset: 2px !important;
+    }
+    
+    /* Improve readability */
+    body {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+    }
+    
+    p {
+        line-height: 1.7 !important;
+    }
+}

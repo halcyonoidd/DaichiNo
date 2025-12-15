@@ -86,3 +86,97 @@ button:hover {
     background: #f8d7da;
     color: #721c24;
 }
+
+/* ========================================
+   MOBILE RESPONSIVE FOR AUTH PAGES
+   ======================================== */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+    
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 100%;
+        padding: 25px 20px;
+        margin: 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    label {
+        font-size: 13px;
+    }
+    
+    input {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+    
+    button {
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    .switch {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+    
+    .msg {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 15px 10px;
+        padding-top: 30px;
+    }
+    
+    .card {
+        padding: 20px 15px;
+        border-radius: 10px;
+    }
+    
+    h2 {
+        font-size: 1.35rem;
+        margin-bottom: 18px;
+    }
+    
+    input {
+        padding: 11px;
+    }
+    
+    button {
+        padding: 11px;
+        font-size: 15px;
+    }
+    
+    .switch {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .card {
+        padding: 18px 12px;
+    }
+    
+    h2 {
+        font-size: 1.25rem;
+    }
+}

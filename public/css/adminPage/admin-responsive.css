@@ -1,0 +1,632 @@
+/* ========================================
+   ADMIN PAGES MOBILE RESPONSIVE
+   Admin Dashboard & Management Pages
+   ======================================== */
+
+/* Base Mobile Settings */
+@media screen and (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        font-size: 14px;
+    }
+    
+    html {
+        overflow-x: hidden;
+    }
+}
+
+/* ========================================
+   DASHBOARD CONTAINER
+   ======================================== */
+@media screen and (max-width: 1024px) {
+    .dashboard-container {
+        padding: 2rem 1.5rem !important;
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-container {
+        padding: 1.5rem 1rem !important;
+    }
+    
+    /* Welcome Card */
+    .welcome-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .welcome-card .level {
+        display: flex;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    
+    .welcome-card .level-left,
+    .welcome-card .level-right {
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .welcome-card .title.is-2 {
+        font-size: 1.75rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .welcome-card .subtitle.is-5 {
+        font-size: 1rem !important;
+    }
+    
+    /* Action Buttons in Header */
+    .level-right {
+        display: flex;
+        flex-direction: column !important;
+        gap: 10px;
+        width: 100% !important;
+    }
+    
+    .level-right form,
+    .level-right a,
+    .level-right .button {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .level-right .mr-2 {
+        margin-right: 0 !important;
+    }
+    
+    .button.is-logout,
+    .button.is-success,
+    .button.is-info {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .dashboard-container {
+        padding: 1rem 0.75rem !important;
+    }
+    
+    .welcome-card {
+        padding: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .welcome-card .title.is-2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .welcome-card .subtitle.is-5 {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* ========================================
+   STATS CARDS
+   ======================================== */
+@media screen and (max-width: 1024px) {
+    .columns.is-multiline .column.is-3 {
+        width: 50% !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .columns.is-multiline .column.is-3 {
+        width: 100% !important;
+        padding: 0.5rem !important;
+    }
+    
+    .stats-card {
+        padding: 1.25rem !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stats-number {
+        font-size: 2rem !important;
+    }
+    
+    .stats-card .heading {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.75rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .stats-card {
+        padding: 1rem !important;
+    }
+    
+    .stats-number {
+        font-size: 1.75rem !important;
+    }
+    
+    .stats-card .heading {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* ========================================
+   MENU CARDS (Admin Dashboard Links)
+   ======================================== */
+@media screen and (max-width: 1024px) {
+    .columns .column.is-4 {
+        width: 50% !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .columns .column.is-4 {
+        width: 100% !important;
+        padding: 0.5rem !important;
+    }
+    
+    .menu-card {
+        padding: 1.5rem 1rem !important;
+        min-height: 150px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .menu-card .icon.is-large {
+        font-size: 2rem !important;
+        margin-bottom: 0.75rem;
+    }
+    
+    .menu-card .icon.is-large i {
+        font-size: 2rem !important;
+    }
+    
+    .menu-card .title {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .menu-card .subtitle {
+        font-size: 0.85rem !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .menu-card {
+        padding: 1.25rem 0.75rem !important;
+        min-height: 140px !important;
+    }
+    
+    .menu-card .icon.is-large i {
+        font-size: 1.75rem !important;
+    }
+    
+    .menu-card .title {
+        font-size: 1rem !important;
+    }
+    
+    .menu-card .subtitle {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* ========================================
+   TABLES RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 1024px) {
+    .table-wrapper {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .table-wrapper {
+        margin: 0 -1rem;
+        padding: 0 1rem;
+    }
+    
+    .table {
+        font-size: 0.85rem !important;
+        min-width: 600px;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.5rem 0.5rem !important;
+        vertical-align: middle;
+    }
+    
+    .table th {
+        font-size: 0.8rem !important;
+        white-space: nowrap;
+    }
+    
+    .table td {
+        font-size: 0.85rem !important;
+    }
+    
+    /* Table Actions */
+    .table td .button {
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.75rem !important;
+        height: auto !important;
+    }
+    
+    .table td .button .icon {
+        font-size: 0.75rem !important;
+    }
+    
+    .table td form {
+        display: inline-block;
+        margin: 0;
+    }
+    
+    /* Tags in Table */
+    .table .tag {
+        font-size: 0.7rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .table {
+        font-size: 0.75rem !important;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.4rem 0.3rem !important;
+    }
+    
+    .table td .button {
+        padding: 0.2rem 0.4rem !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* ========================================
+   FORMS RESPONSIVE (Create/Edit Pages)
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .field {
+        margin-bottom: 1rem !important;
+    }
+    
+    .label {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .control {
+        width: 100%;
+    }
+    
+    .input,
+    .textarea,
+    .select select {
+        width: 100%;
+        font-size: 16px !important; /* Prevents zoom on iOS */
+        padding: 0.75rem !important;
+    }
+    
+    .textarea {
+        min-height: 120px !important;
+    }
+    
+    /* File Input */
+    .file {
+        width: 100%;
+    }
+    
+    .file-label {
+        width: 100%;
+    }
+    
+    .file-input {
+        width: 100%;
+    }
+    
+    /* Form Actions */
+    .field.is-grouped {
+        flex-direction: column !important;
+        gap: 10px;
+    }
+    
+    .field.is-grouped .control {
+        width: 100% !important;
+    }
+    
+    .field.is-grouped .button {
+        width: 100% !important;
+    }
+}
+
+/* ========================================
+   BUTTONS RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .button {
+        padding: 0.75rem 1rem !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .button.is-large {
+        padding: 1rem 1.25rem !important;
+        font-size: 1rem !important;
+    }
+    
+    .button.is-small {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    /* Button with icon */
+    .button .icon {
+        margin-right: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .button {
+        padding: 0.65rem 0.85rem !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+/* ========================================
+   NOTIFICATIONS/ALERTS
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .notification {
+        padding: 1rem !important;
+        font-size: 0.9rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .notification .delete {
+        right: 0.5rem !important;
+        top: 0.5rem !important;
+    }
+}
+
+/* ========================================
+   PAGINATION
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center !important;
+    }
+    
+    .pagination-previous,
+    .pagination-next {
+        flex-grow: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .pagination-list {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .pagination-link {
+        min-width: 2.5rem;
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* ========================================
+   MODAL RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .modal-content,
+    .modal-card {
+        width: 95% !important;
+        max-width: 95% !important;
+        margin: 1rem auto !important;
+    }
+    
+    .modal-card-head,
+    .modal-card-body,
+    .modal-card-foot {
+        padding: 1rem !important;
+    }
+    
+    .modal-card-title {
+        font-size: 1.25rem !important;
+    }
+}
+
+/* ========================================
+   CARD/BOX RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .box,
+    .card {
+        padding: 1.25rem !important;
+        margin-bottom: 1rem !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .box,
+    .card {
+        padding: 1rem !important;
+    }
+}
+
+/* ========================================
+   TITLE RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .title.is-1 {
+        font-size: 2rem !important;
+    }
+    
+    .title.is-2 {
+        font-size: 1.75rem !important;
+    }
+    
+    .title.is-3 {
+        font-size: 1.5rem !important;
+    }
+    
+    .title.is-4 {
+        font-size: 1.25rem !important;
+    }
+    
+    .subtitle.is-4 {
+        font-size: 1.1rem !important;
+    }
+    
+    .subtitle.is-5 {
+        font-size: 1rem !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .title.is-1 {
+        font-size: 1.75rem !important;
+    }
+    
+    .title.is-2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .title.is-3 {
+        font-size: 1.25rem !important;
+    }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .has-text-centered-mobile {
+        text-align: center !important;
+    }
+    
+    .is-hidden-mobile {
+        display: none !important;
+    }
+    
+    .is-full-width-mobile {
+        width: 100% !important;
+    }
+}
+
+/* ========================================
+   IMAGE RESPONSIVE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    figure.image {
+        margin: 1rem 0;
+    }
+}
+
+/* ========================================
+   SECTIONS SPACING
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .section {
+        padding: 2rem 1rem !important;
+    }
+    
+    .mb-6 {
+        margin-bottom: 2rem !important;
+    }
+    
+    .mb-5 {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mt-4 {
+        margin-top: 1rem !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .section {
+        padding: 1.5rem 0.75rem !important;
+    }
+}
+
+/* ========================================
+   BULMA COLUMNS OVERRIDE
+   ======================================== */
+@media screen and (max-width: 768px) {
+    .columns {
+        margin-left: -0.5rem !important;
+        margin-right: -0.5rem !important;
+    }
+    
+    .column {
+        padding: 0.5rem !important;
+    }
+    
+    .columns.is-mobile > .column {
+        flex-basis: auto;
+    }
+}
+
+/* ========================================
+   TOUCH IMPROVEMENTS
+   ======================================== */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase tap targets for touch devices */
+    button,
+    a,
+    .button,
+    input[type="button"],
+    input[type="submit"] {
+        min-height: 44px;
+    }
+    
+    /* Remove hover effects on touch */
+    .menu-card:hover,
+    .stats-card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+@media screen and (max-width: 768px) {
+    /* Ensure focus states are visible */
+    button:focus,
+    a:focus,
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: 2px solid var(--primary-color, #2c5530) !important;
+        outline-offset: 2px !important;
+    }
+}
+
+/* ========================================
+   PRINT STYLES (BONUS)
+   ======================================== */
+@media print {
+    .button,
+    .navbar,
+    .level-right {
+        display: none !important;
+    }
+    
+    .dashboard-container {
+        padding: 0 !important;
+    }
+    
+    .table {
+        font-size: 10pt !important;
+    }
+}
