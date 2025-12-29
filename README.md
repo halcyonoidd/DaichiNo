@@ -1,154 +1,256 @@
-# 🍱 DaichiNo - Sistem Reservasi Restoran Jepang
+# DaichiNo 🍱
 
-Selamat datang di **DaichiNo**, sebuah aplikasi web modern untuk sistem reservasi restoran Jepang. Proyek ini dibangun menggunakan Laravel 12 dan menyediakan fitur lengkap untuk mengelola reservasi pelanggan, menu, dan pembayaran online.
+<div align="center">
 
-## 📋 Tentang Proyek
+**Website Restoran Jepang Premium**
 
-DaichiNo adalah platform reservasi restoran yang dirancang khusus untuk restoran Jepang. Aplikasi ini memungkinkan pelanggan untuk melakukan reservasi meja secara online, melihat menu, dan melakukan pembayaran dengan mudah.
+Daichi No adalah website untuk restoran bertemakan Jepang yang menyajikan pengalaman kuliner autentik dengan bahan-bahan alami dan segar. 
+
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+
+</div>
+
+---
+
+## 📖 Tentang Project
+
+Website Daichi No merupakan desain konsep untuk restoran premium bertemakan Jepang yang berlokasi di Indonesia. Website ini menghadirkan pengalaman digital yang selaras dengan nilai-nilai restoran melalui navigasi interaktif, palet warna earthy tones, dan elemen visual yang terinspirasi alam.
+
+### Konsep Restoran
+
+Daichi No bukan hanya restoran biasa - ini adalah pengalaman kuliner yang mendalam. Restoran ini: 
+- 🎯 Berfokus pada pelanggan kelas atas
+- 🍣 Menyajikan masakan tradisional dan modern Jepang
+- 🏛️ Memiliki area terpisah untuk setiap kategori makanan
+- ✨ Menawarkan pengalaman makan eksklusif berdasarkan tier
+
+---
 
 ## ✨ Fitur Utama
 
-- 🎫 **Sistem Reservasi Online** - Pelanggan dapat memesan meja dengan mudah
-- 🍣 **Manajemen Menu** - Tampilkan menu restoran dengan detail lengkap
-- 💳 **Pembayaran Terintegrasi** - Menggunakan Midtrans untuk pembayaran yang aman
-- 👥 **Manajemen Pelanggan** - Kelola data pelanggan dan riwayat reservasi
-- 📱 **Responsive Design** - Tampilan yang optimal di semua perangkat
-- 🔐 **Autentikasi & Otorisasi** - Sistem keamanan menggunakan Laravel Sanctum
+### 🎨 Interface & Navigation
+- **Navbar Dinamis** - Navbar transparan yang menjadi solid saat scroll
+- **Navbar Konsisten** - Tampilan navbar seragam di semua halaman (kecuali login/register)
+- **Footer Informatif** - Footer dengan informasi dasar dan quick links
+- **Floating Account Button** - Pop-under berisi info akun, cek reservasi, dan logout
+
+### 🏠 Homepage
+- **Carousel Interaktif** - Perkenalan restoran dan testimoni pelanggan
+- **Iframe Lokasi** - Peta interaktif menunjukkan lokasi restoran
+
+### 🍜 Menu
+- **Deskripsi Kategori** - Informasi lengkap setiap kategori makanan
+- **Daftar Menu Lengkap** - Semua menu dikelompokkan berdasarkan kategori (Mizu: seafood & sushi, dll)
+
+### 👨‍🍳 About
+- **Carousel Chef** - Info head chef dengan efek fade in/out
+- **Pop-up Detail** - Informasi detail chef saat card diklik
+
+### 🎫 Reservation
+- **Daftar Tiket Pengalaman** - Berbagai pilihan pengalaman dikelompokkan berdasarkan: 
+  - Tier pengalaman
+  - Lama waktu pengalaman
+  - Jumlah spread makanan
+- **Input Jumlah Pengunjung** - Sesuaikan reservasi dengan jumlah tamu
+
+### 🛒 Shopping Features
+- **Cart System** - Keranjang untuk menyimpan pesanan sebelum checkout
+- **Checkout** - Proses pembayaran terintegrasi
+
+### 📞 Contact
+- **Desain Unik** - Interface berbentuk sushi interaktif
+- **Informasi Kontak** - Email, telepon, dan media sosial restoran
+
+### 🔐 User Management
+- **Registration** - Pendaftaran akun pengguna baru
+- **Login** - Autentikasi pengguna
+
+---
 
 ## 🛠️ Teknologi yang Digunakan
 
-- **Backend**: PHP 8.2+ dengan Laravel 12
-- **Frontend**:  Blade Template (38.3%), JavaScript (17.4%), HTML & CSS
-- **Database**: MySQL/PostgreSQL (menggunakan Doctrine DBAL)
-- **Payment Gateway**: Midtrans
-- **Build Tools**: Vite
-- **Testing**:  Pest PHP
+### Backend
+- **PHP** - Bahasa pemrograman utama
+- **Laravel** - Framework PHP untuk backend
+- **PostgreSQL** - Database management system
 
-## 📦 Persyaratan Sistem
+### Frontend
+- **HTML5** - Struktur halaman
+- **CSS** - Styling dengan earthy tones theme
+- **JavaScript** - Logika interaktif
+- **Bulma** - Framework CSS
 
-Sebelum menginstal, pastikan sistem Anda memiliki: 
+### Development Tools
+- **Visual Studio Code** - IDE utama
+- **Postman** - API testing platform
+- **Render** - Cloud hosting platform
 
-- PHP >= 8.2
+---
+
+## 📦 Instalasi Manual
+
+### Prasyarat
+
+Pastikan sistem Anda sudah terinstal:
+- PHP >= 8.0
 - Composer
-- Node.js & NPM
-- MySQL atau PostgreSQL
+- Node. js & NPM
+- PostgreSQL
 - Git
 
-## 🚀 Cara Instalasi
-
-
-### Instalasi Manual
+### Langkah Instalasi
 
 1. **Clone Repository**
    ```bash
-   git clone https://github.com/halcyonoidd/DaichiNo. git
+   git clone https://github.com/halcyonoidd/DaichiNo.git
    cd DaichiNo
    ```
 
-2. **Install Dependencies**
+2. **Install Dependencies PHP**
    ```bash
    composer install
+   ```
+
+3. **Install Dependencies JavaScript**
+   ```bash
    npm install
    ```
 
-3. **Konfigurasi Environment**
+4. **Konfigurasi Environment**
    ```bash
    cp .env.example .env
+   ```
+
+5. **Generate Application Key**
+   ```bash
    php artisan key:generate
    ```
 
-4. **Konfigurasi Database**
+6. **Konfigurasi Database**
    
-   Buka file `.env` dan sesuaikan dengan konfigurasi database Anda: 
-   ```
-   DB_CONNECTION=mysql
+   Edit file `.env` dan sesuaikan konfigurasi database:
+   ```env
+   DB_CONNECTION=pgsql
    DB_HOST=127.0.0.1
-   DB_PORT=3306
+   DB_PORT=5432
    DB_DATABASE=daichino
-   DB_USERNAME=root
-   DB_PASSWORD=
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
    ```
 
-5. **Konfigurasi Midtrans**
+7. **Buat Database**
    
-   Tambahkan kredensial Midtrans Anda di file `.env`:
-   ```
-   MIDTRANS_SERVER_KEY=your_server_key
-   MIDTRANS_CLIENT_KEY=your_client_key
-   MIDTRANS_IS_PRODUCTION=false
+   Buat database baru di PostgreSQL:
+   ```sql
+   CREATE DATABASE daichino;
    ```
 
-6. **Migrasi Database**
+8. **Jalankan Migrasi Database**
    ```bash
    php artisan migrate
    ```
 
-7. **Build Assets**
+9. **Seed Database (Opsional)**
    ```bash
-   npm run build
+   php artisan db: seed
    ```
 
-## 🎯 Menjalankan Aplikasi
+10. **Build Assets Frontend**
+    ```bash
+    npm run build
+    ```
+    
+    Atau untuk development:
+    ```bash
+    npm run dev
+    ```
 
-### Mode Development
+11. **Generate Storage Link**
+    ```bash
+    php artisan storage:link
+    ```
 
-Jalankan server development dengan satu perintah: 
+12. **Jalankan Server**
+    
+    Di terminal pertama, jalankan Laravel:
+    ```bash
+    php artisan serve
+    ```
+    
+    Di terminal kedua (jika menggunakan npm run dev), jalankan:
+    ```bash
+    npm run dev
+    ```
 
-```bash
-composer dev
-```
+13. **Akses Website**
+    
+    Buka browser dan akses: 
+    ```
+    http://localhost:8000
+    ```
 
-Perintah ini akan menjalankan secara bersamaan:
-- Laravel development server (http://localhost:8000)
-- Queue listener
-- Vite hot module replacement
+---
 
-### Mode Production
+## 📄 Struktur Halaman
 
-```bash
-php artisan serve --host=0.0.0.0 --port=8000
-```
+| Halaman | Deskripsi | Akses |
+|---------|-----------|-------|
+| **Home** | Landing page dengan perkenalan restoran dan testimoni | Publik |
+| **Login** | Autentikasi pengguna | Publik |
+| **Register** | Pendaftaran akun baru | Publik |
+| **Menu** | Daftar menu restoran dengan kategori 3D | Perlu Login |
+| **About** | Informasi restoran, visi, misi, dan chef | Perlu Login |
+| **Reservation** | Pemesanan pengalaman makan | Perlu Login |
+| **Cart** | Keranjang pesanan dan checkout | Perlu Login |
+| **Contact** | Informasi kontak dengan desain sushi interaktif | Perlu Login |
 
-## 🧪 Testing
+---
 
-Jalankan test suite dengan perintah:
+## 🚀 Cara Menggunakan Website
 
-```bash
-composer test
-```
+1. **Kunjungi** halaman home dan jelajahi informasi restoran
+2. **Eksplorasi** menu dan halaman about untuk mengenal lebih dalam
+3. **Registrasi** akun baru jika belum memiliki akun
+4. **Login** menggunakan kredensial yang sudah dibuat
+5. **Pilih** pengalaman makan di halaman reservation
+6. **Masukkan** jumlah pengunjung dan permintaan khusus
+7. **Review** pesanan di halaman cart
+8. **Checkout** untuk menyelesaikan pembayaran
+9. **Hubungi** restoran melalui halaman contact untuk informasi lebih lanjut
 
-atau
+---
 
-```bash
-php artisan test
-```
+## 🎨 Design Philosophy
 
-## 📁 Struktur Proyek
+Website ini mengusung konsep **"Digital Meets Traditional"**:
+- ⛰️ **Earthy Tones** - Palet warna natural yang menenangkan
+- 🎌 **Japanese Aesthetics** - Elemen visual terinspirasi budaya Jepang
+- 💎 **Premium Experience** - Interface yang elegan dan eksklusif
+- 🌿 **Natural Elements** - Filosofi "Dari Bumi" tercermin dalam setiap detail
 
-```
-DaichiNo/
-├── app/              # Logika aplikasi (Controllers, Models, dll)
-├── bootstrap/        # File bootstrap framework
-├── config/           # File konfigurasi
-├── database/         # Migrations, seeders, dan factories
-├── public/           # Asset publik dan entry point
-├── resources/        # Views, CSS, dan JavaScript
-├── routes/           # Definisi routing aplikasi
-├── storage/          # File storage dan cache
-├── tests/            # Test cases
-└── vendor/           # Dependencies Composer
-```
+---
 
-## 🤝 Kontribusi
+## 👤 Author
 
-Kontribusi selalu diterima! Jika Anda ingin berkontribusi: 
+- **Agri Azzukhruf - 24051204085**
+- **Pratama Rizalekta Yudhayana - 24051204097**
+- **Agus Prasetya - 24051204098**
 
-1. Fork repository ini
-2. Buat branch fitur baru (`git checkout -b fitur-baru`)
-3. Commit perubahan Anda (`git commit -m 'Menambahkan fitur baru'`)
-4. Push ke branch (`git push origin fitur-baru`)
-5. Buat Pull Request
+---
 
+## 📝 License
 
+Project ini dibuat untuk keperluan pemenuhan tugas project akhir - Pemrograman Berbasis Platform. 
 
-⭐ Jika proyek ini membantu Anda, jangan lupa berikan star di repository ini! 
+---
+
+<div align="center">
+
+**Daichi No - Pengalaman Kuliner Autentik Jepang** 🍱
+
+*From Earth, to You*
+
+</div>
